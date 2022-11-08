@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:02:25 by flahoud           #+#    #+#             */
-/*   Updated: 2022/08/16 14:45:57 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/11/08 13:38:11 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ library (-lm man man 3 math)
 # include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include "libft.h"
+# include "libft/inc/libft.h"
 
 # define ESC 	53
 # define UP		13

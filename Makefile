@@ -3,7 +3,6 @@
 ## ************************************************************************** ##
 
 NAME	= cub3d
-
 EXECUTION = ./$(NAME) map.cub
 
 SRC =   map_validation.c \
@@ -12,7 +11,11 @@ SRC =   map_validation.c \
 		free.c \
 		main.c
 
+LIBFT = inc/libft
+LIBFTA = inc/libft/libft.a
+
 O = obj/
+S = src/
 I = inc/
 
 CC = gcc
@@ -25,6 +28,10 @@ RM = /bin/rm -f
 RMDIR = /bin/rm -rf
 
 ## ************************************************************************** ##
+##                             Pre-Compilation                                ##
+## ************************************************************************** ##
+
+## ************************************************************************** ##
 ##                               Compilation                                  ##
 ## ************************************************************************** ##
 
@@ -32,17 +39,22 @@ all: $(NAME)
 
 $O: #Create obj directory
 	@mkdir $@
-	@echo "\033[0;32mGenerating objects...\033[0m"
+	@echo "\033[0;32mCompiling $(NAME)...\033[0m"
 
 $(OBJ): | $O
 
-$(OBJ): $O%.o: % #Build objects $< take the name on the right of ":", $@ take the name on the left of ":"
+$(OBJ): $O%.o: $S% #Build objects $< take the name on the right of ":", $@ take the name on the left of ":"
 	@$(CC) $(CFLAGS) -c $< -o $@
-	
-$(NAME): $(OBJ) #Libft will compile only once, use "make libft" to recompile
-	@echo "\033[0;32mCompiling...\033[0m"
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-	@echo "\033[1;32m$(EX)\033[0;32m compiled! Execute as: $(EXECUTION)\033[0m"
+
+$(LIBFTA):
+	@echo "\033[0;32mCompiling libft...\033[0m"
+	@make -C $(LIBFT)
+	@make clean -C $(LIBFT)
+	@echo "\033[0;32mLibft compiled!\n\033[0m"
+
+$(NAME): $(LIBFTA) $(OBJ)
+	@$(CC) $(CFLAGS) $(LIBFTA) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@echo "\033[0;32mCompiled! Execute as: $(EXECUTION)\033[0m"
 
 ## ************************************************************************** ##
 ##                                 Cleaning                                   ##
@@ -58,10 +70,10 @@ clean: cleanobjdir #Delete obj directory and content
 	@echo "\033[0;31mObjects deleted!\033[0m"
 
 fclean: clean #Delete objects and executable
+	@$(RM) $(LIBFTA)
+	@echo "\033[0;31mLibft.a deleted!\033[0m"
 	@$(RM) $(NAME)
-	@$(RM) .DS_STORE
-	@$(RMDIR) $(NAME).dSYM
-	@echo "\033[1;31m$(EX)\033[0;31m executable deleted!\033[0m"
+	@echo "\033[0;31mExecutable deleted!\033[0m"
 
 re: fclean #Delete all and rebuild executable
 	@make
@@ -70,9 +82,9 @@ re: fclean #Delete all and rebuild executable
 ##                               Execution                                    ##
 ## ************************************************************************** ##
 
-MAP = map/good_map.cub
-#MAP = map/good_map.txt
-#MAP = map/map.cub
+MAP = maps/good_map.cub
+#MAP = maps/good_map.txt
+#MAP = maps/map.cub
 
 exe: $(NAME) #Execute program
 	@./$(NAME) $(MAP)
