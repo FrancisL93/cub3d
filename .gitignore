@@ -1,0 +1,5 @@
+cub3d
+obj/
+cub3d.dSYM
+.DS_STORE
+.vscode/
