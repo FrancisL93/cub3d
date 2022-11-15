@@ -6,7 +6,7 @@
 #    By: malord <malord@student.42quebec.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/28 11:18:03 by flahoud           #+#    #+#              #
-#    Updated: 2022/11/15 09:43:36 by malord           ###   ########.fr        #
+#    Updated: 2022/11/15 13:48:05 by malord           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC = 	src/add_string_first.c		\
 		src/ft_isascii.c 			\
 		src/ft_isdigit.c 			\
 		src/ft_isprint.c			\
+		src/ft_isspace.c			\
 		src/ft_itoa.c 				\
 		src/ft_itox.c 				\
 		src/ft_linelen.c			\
@@ -71,7 +72,7 @@ SRC = 	src/add_string_first.c		\
 		src/ft_lstmap.c 			\
 		src/get_next_line.c			\
 		src/int_realloc.c 			\
-		src/join_free_both			\
+		src/join_free_both.c		\
 		src/sort_int_tab.c 			\
 		src/strcdup.c 				\
 		src/strjoin_free_last.c		\
@@ -105,7 +106,7 @@ $(OBJ): | $O
 $(OBJ): $O%.o: $S%
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(PRINTCOMPILE) $(OBJ)
+$(NAME): $(OBJ)
 	@ar -rcs $(NAME) $(OBJ)
 	
 cleanobj:

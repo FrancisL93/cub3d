@@ -4,7 +4,7 @@ int	check_file(char *map)
 {
 	int	fd;
 
-	if (ft_strcmp(&map[ft_strlen(map - 4)], ".cub", 4))
+	if (ft_strncmp(&map[ft_strlen(map - 4)], ".cub", 4))
 	{
 		printf("Error: Map not a .cub file...\n");
 		exit (1);
@@ -25,36 +25,55 @@ int	check_file(char *map)
 	return (fd);
 }
 
-bool	readMap()
+bool	read_map(int fd)
 {
-	t_vars *vars;
+	t_vars	*vars;
+	int		i;
 
 	vars = get_data();
-	if (set_map_info() == false)
+	i = 0;
+	vars->full_config[i] = get_next_line(fd);
+	if (!vars->full_config)
 	{
-		printf("Error: Map is strange...\n");
-		return (false);
+		free_double_array((void **)vars->full_config);
+		close (fd);
+		printf("Error: File is empty\n");
+		exit (1);
 	}
-	if(set_map() == false)
+	while (vars->full_config[i])
 	{
-		printf("Error: Map is strange...\n");
-		return (false);
+		i++;
+		vars->full_config[i] = get_next_line(fd);
 	}
+	close(fd);
 	return (true);
 }
 
-bool	validate_map(t_vars *vars, char *mapfile)
-{
-	t_vars	*vars = get_data();
-	int	fd;
-	int	i;
-	int	j;
+//TODO Check if init_struct a des malloc pour ajouter free en cas d'erreur si applicable
 
-	j = -1;
+bool	validate_map(char *mapfile)
+{
+	t_vars	*vars;
+	int		fd;
+	int		size;
+	char	*temp;
+
+	vars = get_data();
+	size = 0;
 	fd = check_file(mapfile);
 	if (fd < 0)
 		return (false);
-	if (readMap(mapfile, fd) == false)
+	temp = get_next_line(fd);
+	while (temp)
+	{
+		size++;
+		free(temp);
+		temp = get_next_line(fd);
+	}
+	close (fd);
+	vars->full_config = ft_calloc(sizeof(char *), size + 1);
+	fd = open(mapfile, O_RDONLY);
+	if (read_map(fd) == false)
 		return (false);
 	return (true);
 }

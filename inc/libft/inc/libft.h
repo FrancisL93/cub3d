@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42quebec.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 11:17:43 by flahoud           #+#    #+#             */
-/*   Updated: 2022/11/15 09:34:37 by malord           ###   ########.fr       */
+/*   Updated: 2022/11/15 13:55:14 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char	*strpop(char *str, int position);
 
 int		ft_isalpha(int c);
 int		ft_isalnum(int c);
+int		ft_isspace(char c);
 int		ft_linelen(const char *str);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -83,7 +84,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
 void	*xfree(void *ptr);
-
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));

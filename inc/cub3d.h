@@ -37,6 +37,7 @@ typedef struct s_img {
 typedef struct s_vars {
 	void	*mlx;
 	void	*win;
+	char	**full_config;
 	char	**mapdata;
 	char	**map;
 	char	f_color[3];
@@ -57,7 +58,6 @@ void	launch_game(t_vars *vars);
 
 //main.c
 void	build_imgs(t_vars *vars);
-void	init_data(t_vars *vars);
 
 //map.c
 bool	set_map(void);
@@ -66,12 +66,14 @@ bool	set_map(void);
 bool	set_map_info(void);
 
 //map_validation.c
-int		validate_map(t_vars *vars, char *mapfile);
+bool	validate_map(char *mapfile);
+bool	read_map(int fd);
 
 //print.c
 void	print_result(t_vars *vars);
 
 //data.c
 t_vars	*get_data(void);
+void	init_data(void);
 
 #endif

@@ -4,3 +4,4 @@ cub3d.dSYM
 .DS_STORE
 .vscode/
 testmap.cub
+inc/libft/libft.a
