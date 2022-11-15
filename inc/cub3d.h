@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 14:02:25 by flahoud           #+#    #+#             */
-/*   Updated: 2022/11/15 11:28:32 by flahoud          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 /*
  open, close, read, write,
@@ -42,7 +31,7 @@ typedef struct s_img {
 	void	*south;
 	void	*east;
 	void	*west;
-	
+
 }t_img;
 
 typedef struct s_vars {
@@ -81,5 +70,8 @@ int		validate_map(t_vars *vars, char *mapfile);
 
 //print.c
 void	print_result(t_vars *vars);
+
+//data.c
+t_vars	*get_data(void);
 
 #endif

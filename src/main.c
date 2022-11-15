@@ -2,7 +2,9 @@
 
 int	main(int argc, char **argv)
 {	
-	t_vars	vars;
+	t_vars	*vars;
+
+	vars = get_data();
 
 	if (argc != 2)
 	{
@@ -29,10 +31,4 @@ void	build_imgs(t_vars *vars)
 		printf("Error\nCouldn't open floor asset\n");
 		exit(1);
 	}
-}
-
-void	init_data(t_vars *vars)
-{
-	vars->x = 0;
-	vars->y = 0;
 }
