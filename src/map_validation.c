@@ -4,7 +4,7 @@ int	check_file(char *map)
 {
 	int	fd;
 
-	if (ft_strncmp(&map[ft_strlen(map - 4)], ".cub", 4))
+	if (ft_strncmp(&map[ft_strlen(map) - 4], ".cub", 4))
 	{
 		printf("Error: Map not a .cub file...\n");
 		exit (1);

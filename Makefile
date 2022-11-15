@@ -10,7 +10,7 @@ SRC =   map_validation.c 	\
 		print.c 			\
 		map_info.c 			\
 		map.c 				\
-		data.C				\
+		data.c 				\
 		free.c 				\
 		main.c
 
