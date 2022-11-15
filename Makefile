@@ -95,14 +95,14 @@ exe-leak: $(NAME)
 #	--show-leak-kinds=all
 #	--trace-children=yes
 
-segfault: $(OBJ)
-	@$(CC) $(CFLAGS) -fsanitize=address $(OBJ) -o $(NAME)
+segfault: $(LIBFTA) $(OBJ)
+	@$(CC) $(CFLAGS) $(LIBFTA) -fsanitize=address -lmlx -framework OpenGL -framework AppKit $(OBJ) -o $(NAME)
+	@echo "\033[0;32mCompiled with segfault flag! Execute as: $(EXECUTION)\033[0m"
 #-fsanitize=threads (compiler les objets aussi avec)
 
-debug: $(OBJ) #Compile for debugger
-	@echo "\033[0;32mCompiling $(NAME)...\033[0m"
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-	@echo "\033[0;32m$(NAME) compiled! Execute as: $(EXECUTION)\033[0m"
+debug: $(LIBFTA) $(OBJ) #Compile for debugger
+	@$(CC) -g $(CFLAGS) $(LIBFTA) -lmlx -framework OpenGL -framework AppKit $(OBJ) -o $(NAME)
+	@echo "\033[0;32mCompiled with -g for debug! Execute as: $(EXECUTION)\033[0m"
 
 list: 	#Show all make rules
 	@grep '^[^#[:space:]].*:' Makefile
