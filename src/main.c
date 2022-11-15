@@ -32,9 +32,3 @@ void	build_imgs(t_vars *vars)
 		exit(1);
 	}
 }
-
-void	init_data(t_vars *vars)
-{
-	vars->x = 0;
-	vars->y = 0;
-}

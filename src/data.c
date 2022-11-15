@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42quebec.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:03:33 by malord            #+#    #+#             */
-/*   Updated: 2022/11/15 11:06:41 by malord           ###   ########.fr       */
+/*   Updated: 2022/11/15 11:10:02 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,11 @@ t_vars	*get_data(void)
 	return (data);
 }
 
+void	init_data(void)
+{
+	t_vars	*vars;
+
+	vars = get_data();
+	vars->x = 0;
+	vars->y = 0;
+}
