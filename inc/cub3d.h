@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42quebec.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:02:25 by flahoud           #+#    #+#             */
-/*   Updated: 2022/11/15 10:28:07 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/11/15 11:08:10 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,8 @@ int		validate_map(t_vars *vars, char *mapfile);
 
 //print.c
 void	print_result(t_vars *vars);
+
+//data.c
+t_vars	*get_data(void);
 
 #endif

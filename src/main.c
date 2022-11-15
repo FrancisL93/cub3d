@@ -2,7 +2,9 @@
 
 int	main(int argc, char **argv)
 {	
-	t_vars	vars;
+	t_vars	*vars;
+
+	vars = get_data();
 
 	if (argc != 2)
 	{
