@@ -5,10 +5,12 @@
 NAME	= cub3d
 EXECUTION = ./$(NAME) map.cub
 
-SRC =   map_validation.c \
-		game.c \
-		print.c \
-		free.c \
+SRC =   map_validation.c 	\
+		game.c 				\
+		print.c 			\
+		map_info.c 			\
+		map.c 				\
+		free.c 				\
 		main.c
 
 LIBFT = inc/libft

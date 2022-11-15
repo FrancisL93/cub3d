@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:02:25 by flahoud           #+#    #+#             */
-/*   Updated: 2022/11/15 10:28:07 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/11/15 11:28:32 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ library (-lm man man 3 math)
 # include <mlx.h>
 # include <math.h>
 # include <stdio.h>
+# include <stdbool.h>
 # include "libft/inc/libft.h"
 
 # define ESC 	53
@@ -68,6 +69,12 @@ void	launch_game(t_vars *vars);
 //main.c
 void	build_imgs(t_vars *vars);
 void	init_data(t_vars *vars);
+
+//map.c
+bool	set_map(void);
+
+//map_info.c
+bool	set_map_info(void);
 
 //map_validation.c
 int		validate_map(t_vars *vars, char *mapfile);

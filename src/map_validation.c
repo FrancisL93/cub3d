@@ -25,15 +25,25 @@ int	check_file(char *map)
 	return (fd);
 }
 
-int	readMap()
+bool	readMap()
 {
 	t_vars *vars;
 
 	vars = get_data();
-	
+	if (set_map_info() == false)
+	{
+		printf("Error: Map is strange...\n");
+		return (false);
+	}
+	if(set_map() == false)
+	{
+		printf("Error: Map is strange...\n");
+		return (false);
+	}
+	return (true);
 }
 
-int	validate_map(t_vars *vars, char *mapfile)
+bool	validate_map(t_vars *vars, char *mapfile)
 {
 	t_vars	*vars = get_data();
 	int	fd;
@@ -43,15 +53,8 @@ int	validate_map(t_vars *vars, char *mapfile)
 	j = -1;
 	fd = check_file(mapfile);
 	if (fd < 0)
-		return (1);
-	if (readMap(mapfile, fd))
-	{
-		printf("Error: Map is strange...\n");
-		return (1);
-	}
-	else
-	{
-
-	}
-	return (0);
+		return (false);
+	if (readMap(mapfile, fd) == false)
+		return (false);
+	return (true);
 }

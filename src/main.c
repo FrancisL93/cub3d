@@ -9,7 +9,7 @@ int	main(int argc, char **argv)
 		printf("Error: Execute as ./cub3d map.cub...\n");
 		return (1);
 	}
-	if (validate_map(&vars, argv[1]))
+	if (validate_map(&vars, argv[1]) == false)
 		return (1);
 	build_imgs(&vars);
 	init_data(&vars);
