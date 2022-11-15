@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42quebec.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:02:25 by flahoud           #+#    #+#             */
-/*   Updated: 2022/11/15 11:08:10 by malord           ###   ########.fr       */
+/*   Updated: 2022/11/15 11:10:27 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_img {
 	void	*south;
 	void	*east;
 	void	*west;
-	
+
 }t_img;
 
 typedef struct s_vars {
