@@ -17,12 +17,18 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
+//TODO Une texture par direction (NORTH, SOUTH, EAST, WEST)
 void	build_imgs(t_vars *vars)
 {
 	vars->img = malloc(sizeof(*vars->img));
 	vars->imgsize = 64;
-	vars->img->tile = mlx_xpm_file_to_image(vars->mlx, "./img/tile.xpm", \
+	vars->img->floor = mlx_xpm_file_to_image(vars->mlx, "./img/tile.xpm", \
 	&vars->imgsize, &vars->imgsize);
+	if (!vars->img->floor)
+	{
+		printf("Error\nCouldn't open floor asset\n");
+		exit(1);
+	}
 }
 
 void	init_data(t_vars *vars)

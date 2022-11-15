@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:02:25 by flahoud           #+#    #+#             */
-/*   Updated: 2022/11/08 13:38:11 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/11/15 10:28:07 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ library (-lm man man 3 math)
 # include <mlx.h>
 # include <math.h>
 # include <stdio.h>
-# include <fcntl.h>
-# include <unistd.h>
 # include "libft/inc/libft.h"
 
 # define ESC 	53
@@ -37,7 +35,13 @@ library (-lm man man 3 math)
 # define RIGHTA 124
 
 typedef struct s_img {
-	void	*tile;
+	void	*floor;
+	void	*ceiling;
+	void	*north;
+	void	*south;
+	void	*east;
+	void	*west;
+	
 }t_img;
 
 typedef struct s_vars {
@@ -48,6 +52,7 @@ typedef struct s_vars {
 	char	f_color[3];
 	char	c_color[3];
 	int		height;
+	int		width;
 	int		imgsize;
 	int		x;
 	int		y;
