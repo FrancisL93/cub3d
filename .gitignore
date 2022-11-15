@@ -3,3 +3,4 @@ obj/
 cub3d.dSYM
 .DS_STORE
 .vscode/
+testmap.cub
