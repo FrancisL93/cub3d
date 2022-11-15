@@ -1,8 +1,37 @@
 #include "../inc/cub3d.h"
 
-void	print_result(t_vars *vars)
+void	print_floor()
 {
+	int	x;
+	int	y;
+	int		color;
+	t_vars	*vars;
+
+	y = 9;
+	vars = get_data();
+	while (vars->full_config[y])
+	{
+		x = 0;
+		while (vars->full_config[y][x])
+		{
+			if (vars->full_config[y][x] == '0')
+				color = 111000;
+			else
+				color = 434324;
+			mlx_pixel_put(vars->mlx, vars->win, x, y, color);
+			x++;
+		}
+		y++;
+	}
+	return ;
+}
+
+void	print_result()
+{
+	t_vars	*vars;
+
+	vars = get_data();
 	mlx_clear_window(vars->mlx, vars->win);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->floor, 64, 64);
-	mlx_pixel_put(vars->mlx, vars->win, vars->x, vars->y, 111111);
+	print_floor();
+	mlx_pixel_put(vars->mlx, vars->win, vars->posx, vars->posy, 111000);
 }

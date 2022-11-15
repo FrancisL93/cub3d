@@ -1,39 +1,41 @@
 #include "../inc/cub3d.h"
 #include <mlx.h>
 
-int	playgame(int keycode, t_vars *vars)
+void	playgame(int keycode)
 {
-	if (keycode == UP && vars->y > 0)
-		vars->y -= 1;
-	else if (keycode == DOWN && vars->y < 1080)
-		vars->y += 1;
-	else if (keycode == LEFT && vars->x > 0)
-		vars->x -= 1;
-	else if (keycode == RIGHT && vars->x < 1920)
-		vars->x += 1;
-	print_result(vars);
-	return (0);
+	t_vars	*vars;
+	int	move_size;
+
+	move_size = 5;
+	vars = get_data();
+	if (keycode == UP && vars->posy > 0)
+		vars->posy -= move_size;
+	else if (keycode == DOWN && vars->posy < 1080)
+		vars->posy += move_size;
+	else if (keycode == LEFT && vars->posx > 0)
+		vars->posx -= move_size;
+	else if (keycode == RIGHT && vars->posx < 1920)
+		vars->posx += move_size;
+	print_result();
 }
 
-int	key_hook(int keycode, t_vars *vars)
+int	key_hook(int keycode)
 {
-	static int	restart;
-
-	if (restart == 1)
-	{
-		return (1);
-	}
 	if (keycode == ESC)
-		quit_game(vars);
+		quit_game();
 	else
-		restart = playgame(keycode, vars);
+		playgame(keycode);
 	return (0);
 }
 
-void	launch_game(t_vars *vars)
+void	launch_game()
 {
-	vars->mlx = mlx_init();
-	vars->win = mlx_new_window(vars->mlx, 1920, 1080, "cub3d");
+	t_vars	*vars;
+	
+	vars = get_data();
+	vars->win_width = 1920;
+	vars->win_height = 1080;
+	vars->win = mlx_new_window(vars->mlx, vars->win_width, vars->win_height, "cub3d");
 	mlx_hook(vars->win, 2, 1L << 0, key_hook, vars);
 	mlx_hook(vars->win, 17, 0, quit_game, vars);
 	mlx_loop(vars->mlx);

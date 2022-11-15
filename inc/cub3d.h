@@ -42,22 +42,28 @@ typedef struct s_vars {
 	char	**map;
 	char	f_color[3];
 	char	c_color[3];
-	int		height;
-	int		width;
+	int		win_width;
+	int		win_height;
 	int		imgsize;
-	int		x;
-	int		y;
+	float	posx;
+	float	posy;
 	t_img	*img;
 }t_vars;
 
+//assets.c
+void	build_imgs(void);
+
+//data.c
+t_vars	*get_data(void);
+void	init_data(void);
+
 //free.c
-int		quit_game(t_vars *vars);
+int		quit_game(void);
 
 //game.c
-void	launch_game(t_vars *vars);
+void	launch_game(void);
 
 //main.c
-void	build_imgs(t_vars *vars);
 
 //map.c
 bool	set_map(void);
@@ -70,10 +76,6 @@ bool	validate_map(char *mapfile);
 bool	read_map(int fd);
 
 //print.c
-void	print_result(t_vars *vars);
-
-//data.c
-t_vars	*get_data(void);
-void	init_data(void);
+void	print_result(void);
 
 #endif

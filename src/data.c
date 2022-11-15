@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42quebec.com>       +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:03:33 by malord            #+#    #+#             */
-/*   Updated: 2022/11/15 11:10:02 by malord           ###   ########.fr       */
+/*   Updated: 2022/11/15 15:31:42 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	init_data(void)
 	t_vars	*vars;
 
 	vars = get_data();
-	vars->x = 0;
-	vars->y = 0;
+	vars->posx = 0;
+	vars->posy = 0;
 }
