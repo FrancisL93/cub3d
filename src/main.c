@@ -24,7 +24,7 @@ void	build_imgs(t_vars *vars)
 	vars->imgsize = 64;
 	vars->img->floor = mlx_xpm_file_to_image(vars->mlx, "./img/tile.xpm", \
 	&vars->imgsize, &vars->imgsize);
-	if (!vars->img->floor)
+	if (!vars->img->floor) 
 	{
 		printf("Error\nCouldn't open floor asset\n");
 		exit(1);
