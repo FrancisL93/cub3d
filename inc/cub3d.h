@@ -24,6 +24,8 @@ library (-lm man man 3 math)
 # define LEFTA	123
 # define RIGHTA 124
 
+# define PI		3.14159265
+
 typedef struct s_img {
 	void	*floor;
 	void	*ceiling;
