@@ -15,12 +15,19 @@ int	main(int argc, char **argv)
 		return (1);
 	while (vars->full_config[i])
 	{
-		printf("full_config[%d] = %s", i, vars->full_config[i]);
+		printf("%s", vars->full_config[i]);
 		i++;
 	}
-	vars->mlx = mlx_init();
-	build_imgs();
-	init_data();
-	launch_game();
+	get_mapdata();
+	i = 0;
+	while (vars->mapdata[i])
+	{
+		printf("mapdata[i] = %s", vars->mapdata[i]);
+		i++;
+	}
+	//vars->mlx = mlx_init();
+	//build_imgs();
+	//init_data();
+	//launch_game();
 	return (0);
 }
