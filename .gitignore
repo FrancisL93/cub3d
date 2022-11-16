@@ -6,8 +6,3 @@ cub3d.dSYM
 testmap.cub
 inc/libft/libft.a
 include/libft/libft.a
-maps/good_map.cub
-maps/good_map.cub
-*.cub
-maps/good_map.cub
-maps/*.cub
