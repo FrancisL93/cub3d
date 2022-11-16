@@ -9,3 +9,5 @@ include/libft/libft.a
 maps/good_map.cub
 maps/good_map.cub
 *.cub
+maps/good_map.cub
+maps/*.cub
