@@ -14,7 +14,7 @@ library (-lm man man 3 math)
 # include <math.h>
 # include <stdio.h>
 # include <stdbool.h>
-# include "libft/inc/libft.h"
+# include "libft/include/libft.h"
 
 # define ESC 	53
 # define UP		13
@@ -38,7 +38,7 @@ typedef struct s_vars {
 	void	*mlx;
 	void	*win;
 	char	**full_config;
-	char	**mapdata;
+	char	*mapdata[7];
 	char	**map;
 	char	f_color[3];
 	char	c_color[3];
@@ -74,6 +74,7 @@ bool	set_map_info(void);
 //map_validation.c
 bool	validate_map(char *mapfile);
 bool	read_map(int fd);
+void	get_mapdata(void);
 
 //print.c
 void	print_result(void);
