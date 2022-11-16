@@ -15,8 +15,8 @@ SRC =   map_validation.c 	\
 		free.c 				\
 		main.c
 
-LIBFT = inc/libft
-LIBFTA = inc/libft/libft.a
+LIBFT = include/libft
+LIBFTA = include/libft/libft.a
 
 O = obj/
 S = src/
