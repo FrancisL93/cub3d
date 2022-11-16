@@ -94,9 +94,10 @@ exe: $(NAME) #Execute program
 	@./$(NAME) $(MAP)
 
 exe-leak: $(NAME)
-	@valgrind --leak-check=full --track-origins=yes \
+	@valgrind --leak-check=full
+	--track-origins=yes \
+	--show-leak-kinds=all \
 	./$(NAME) $(MAP)
-#	--show-leak-kinds=all
 #	--trace-children=yes
 
 segfault: $(LIBFTA) $(OBJ)

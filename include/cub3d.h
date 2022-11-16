@@ -34,6 +34,12 @@ typedef struct s_img {
 	void	*east;
 	void	*west;
 
+	void	*screen_view;
+	char	*screen_data;
+	int		*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }t_img;
 
 typedef struct s_vars {
@@ -42,6 +48,7 @@ typedef struct s_vars {
 	char	**full_config;
 	char	*mapdata[7];
 	char	**map;
+	void	*screenview;
 	char	f_color[3];
 	char	c_color[3];
 	int		win_width;
