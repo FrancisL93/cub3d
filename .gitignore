@@ -5,3 +5,4 @@ cub3d.dSYM
 .vscode/
 testmap.cub
 inc/libft/libft.a
+include/libft/libft.a
