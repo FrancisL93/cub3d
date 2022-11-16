@@ -1,4 +1,4 @@
-#include "../inc/cub3d.h"
+#include "../include/cub3d.h"
 
 bool	set_map_info(void)
 {

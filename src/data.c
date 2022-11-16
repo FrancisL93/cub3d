@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:03:33 by malord            #+#    #+#             */
-/*   Updated: 2022/11/15 15:31:42 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/11/16 13:35:55 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../include/cub3d.h"
 
 t_vars	*get_data(void)
 {

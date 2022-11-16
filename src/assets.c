@@ -1,4 +1,4 @@
-#include "../inc/cub3d.h"
+#include "../include/cub3d.h"
 
 //TODO Une texture par direction (NORTH, SOUTH, EAST, WEST)
 void	set_asset_color(void *asset, char *element)

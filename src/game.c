@@ -1,4 +1,4 @@
-#include "../inc/cub3d.h"
+#include "../include/cub3d.h"
 #include <mlx.h>
 
 void	playgame(int keycode)
