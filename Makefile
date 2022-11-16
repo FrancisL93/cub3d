@@ -23,7 +23,7 @@ S = src/
 I = inc/
 
 CC = gcc
-CFLAGS += -Wall -Wextra -Werror
+CFLAGS += -g -Wall -Wextra -Werror
 CFLAGS += -I$I
 
 OBJ = $(SRC:%=$O%.o)

@@ -34,13 +34,13 @@ typedef struct s_img {
 	void	*east;
 	void	*west;
 
-}t_img;
+}	t_img;
 
 typedef struct s_vars {
 	void	*mlx;
 	void	*win;
 	char	**full_config;
-	char	*mapdata[7];
+	char	*mapdata[6];
 	char	**map;
 	char	f_color[3];
 	char	c_color[3];
@@ -50,7 +50,7 @@ typedef struct s_vars {
 	float	posx;
 	float	posy;
 	t_img	*img;
-}t_vars;
+}	t_vars;
 
 //assets.c
 void	build_imgs(void);
@@ -76,7 +76,10 @@ bool	set_map_info(void);
 //map_validation.c
 bool	validate_map(char *mapfile);
 bool	read_map(int fd);
-void	get_mapdata(void);
+bool	get_mapdata(void);
+char	*get_element_name(int *i);
+int		get_element_index(char *element);
+bool	check_line(char *line);
 
 //print.c
 void	print_result(void);

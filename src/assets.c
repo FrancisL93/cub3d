@@ -1,7 +1,7 @@
 #include "../include/cub3d.h"
 
 //TODO Une texture par direction (NORTH, SOUTH, EAST, WEST)
-void	set_asset_color(void *asset, char *element)
+/*void	set_asset_color(void *asset, char *element)
 {
 	
 }
@@ -43,4 +43,4 @@ void	build_imgs()
 		free_double_array((void **) vars->mapdata);
 		exit(1);
 	}
-}
+}*/

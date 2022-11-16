@@ -13,11 +13,11 @@ int	main(int argc, char **argv)
 	}
 	if (validate_map(argv[1]) == false)
 		return (1);
-	while (vars->full_config[i])
+	/*while (vars->full_config[i])
 	{
 		printf("%s", vars->full_config[i]);
 		i++;
-	}
+	}*/
 	get_mapdata();
 	i = 0;
 	while (vars->mapdata[i])
