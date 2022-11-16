@@ -38,7 +38,7 @@ bool	read_map(int fd)
 		free_double_array((void **)vars->full_config);
 		close (fd);
 		printf("Error: File is empty\n");
-		exit (1);
+		return (false);
 	}
 	while (vars->full_config[i])
 	{
@@ -81,10 +81,8 @@ bool	validate_map(char *mapfile)
 int	get_element_index(char *element)
 {
 	char	*elem_list[6];
-	int		index;
 	int		i;
 
-	index = 0;
 	i = 0;
 	elem_list[0] = "NO";
 	elem_list[1] = "SO";
@@ -95,61 +93,84 @@ int	get_element_index(char *element)
 
 	while (i < 6)
 	{
-		if (ft_strncmp(element, elem_list[i], ft_strlen(element)) == 0)
-			return (index = i);
+		if (ft_strncmp(element, elem_list[i], ft_strlen(elem_list[i])) == 0)
+			return (i);
 		i++;
 	}
 	return (-1);
 }
 
-char	*get_element_name(void)
+char	*get_element_name(int *i)
 {
 	t_vars	*vars;
 	char	**temp;
-	int		i;
 	char	*element_name;
 
 	vars = get_data();
-	i = 0;
-	while (vars->full_config[i])
+	while (check_line(vars->full_config[*i]) == false)
+		(*i)++;
+	printf("Valeur de i = %d\n", *i);
+	temp = ft_split(vars->full_config[*i], ' ');
+	if (temp[0] && temp[0][0] == '1')
+		return (NULL);
+	if (get_element_index(temp[0]) == -1 || !temp[1])
 	{
-		temp = ft_split(vars->full_config[i], ' ');
-		if (get_element_index(temp[0] == -1 || !temp[1])
-		{
-			free_double_array((void **)temp);
-			i++;
-		}
-		else
-		{
-			element_name = ft_strdup(temp[0]);
-			free_double_array((void **)temp);
-			return (element_name);
-		}
+		free_double_array((void **)temp);
+		return (NULL);
+	}
+	else
+	{
+		element_name = ft_strdup(temp[0]);
+		free_double_array((void **)temp);
+		return (element_name);
 	}
 	free_double_array((void **)temp);
 	return (NULL);
 }
 
-void	get_mapdata(void)
+bool	check_line(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && ft_isalpha(line[i]) == 0)
+		i++;
+	if (get_element_index(&line[i]) == -1)
+		return (false);
+	return (true);
+}
+
+bool	get_mapdata(void)
 {
 	t_vars	*vars;
 	int		i;
 	int		j;
+	int		index;
+	char	*elem_name;
 
 	vars = get_data();
 	i = 0;
-	if (!(vars->full_config))
-		return ;
-	while (i < 7)
+	j = 0;
+	index = -1;
+	elem_name = get_element_name(&i);
+	while (elem_name != NULL)
 	{
-		j = 0;
-		while (vars->full_config[j])
-		{
-			if (ft_strncmp("NO", vars->full_config[j], 2) == 0)
-				vars->mapdata[i] = ft_strdup(vars->full_config[j]);
-			else if (ft_strncmp("SO", vars->full_config[j], 2) == 0)
-			j++;
-		}
+		index = get_element_index(elem_name);
+		if (index != -1 && vars->mapdata[index] == NULL)
+			vars->mapdata[index] = vars->full_config[i];
+
+		// TODO if (index == -1 || vars->mapdata[index] != NULL)
+				 //print error
+		free(elem_name);
 		i++;
+		j = 0;
+		while (vars->mapdata[j++])
+		{
+			if (j >= 6)
+				return (true);
+		}
+		elem_name = get_element_name(&i);
 	}
+	free(elem_name);
+	return (false);
 }
