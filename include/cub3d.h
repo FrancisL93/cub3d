@@ -59,6 +59,7 @@ typedef struct s_vars {
 	int		win_width;
 	int		win_height;
 	int		imgsize;
+	int		map_start;
 	t_game	*game;
 	t_img	*img;
 }	t_vars;
@@ -80,6 +81,7 @@ void	launch_game(void);
 
 //map.c
 bool	get_map(void);
+int	find_map(char **fullconfig);
 
 //map_info.c
 char	*get_element_name(int *i);
@@ -92,6 +94,7 @@ bool	check_full_config(t_vars *vars);
 bool	validate_map(char *mapfile);
 bool	read_map_file(int fd);
 bool	get_mapdata(void);
+bool	gap_til_map(t_vars *vars, int i);
 
 //print.c
 void	print_result(void);

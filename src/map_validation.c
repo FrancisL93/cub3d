@@ -1,8 +1,27 @@
 #include "../include/cub3d.h"
-//REFACTOR remove functions for Norminette
+
+bool	gap_til_map(t_vars *vars, int i)
+{
+	//TODO Autres tests sur fichiers config a faire
+	int	j;
+
+	while (i < vars->map_start)
+	{
+		j = 0;
+		while (j < (int)ft_strlen(vars->full_config[i])
+			&& ft_strchr(" \n", vars->full_config[i][j]))
+		{
+			printf("%d\n", vars->full_config[i][j]);
+			j++;
+		}
+		if (vars->full_config[i][j])
+			return (false);
+		i++;
+	}
+	return (true);
+}
 
 bool	get_mapdata(void)
-//REFACTOR for norminette
 {
 	t_vars	*vars;
 	int		i;
@@ -10,6 +29,7 @@ bool	get_mapdata(void)
 	char	*elem_name;
 
 	vars = get_data();
+	vars->map_start = find_map(vars->full_config);
 	i = 0;
 	index = -1;
 	elem_name = get_element_name(&i);
@@ -20,10 +40,11 @@ bool	get_mapdata(void)
 		free(elem_name);
 		i++;
 		if (check_full_config(vars) == true)
-			return (true);
+			return (gap_til_map(vars, i));
 		elem_name = get_element_name(&i);
+		if (elem_name == NULL)
+			break ;
 	}
-	vars->mapdata[i] = NULL;
 	free(elem_name);
 	return (false);
 }

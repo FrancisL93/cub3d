@@ -23,7 +23,7 @@ S = src/
 I = inc/
 
 CC = gcc
-CFLAGS += -Wall -Wextra -Werror
+CFLAGS += -g -Wall -Wextra -Werror
 CFLAGS += -I$I
 
 OBJ = $(SRC:%=$O%.o)
@@ -94,10 +94,7 @@ exe: $(NAME) #Execute program
 	@./$(NAME) $(MAP)
 
 exe-leak: $(NAME)
-	@valgrind --leak-check=full
-	--track-origins=yes \
-	--show-leak-kinds=all \
-	./$(NAME) $(MAP)
+	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(MAP)
 #	--trace-children=yes
 
 segfault: $(LIBFTA) $(OBJ)
