@@ -110,7 +110,6 @@ char	*get_element_name(int *i)
 	vars = get_data();
 	while (check_line(vars->full_config[*i]) == false)
 		(*i)++;
-	printf("Valeur de i = %d\n", *i);
 	temp = ft_split(vars->full_config[*i], ' ');
 	if (temp[0] && temp[0][0] == '1')
 		return (NULL);
@@ -141,36 +140,50 @@ bool	check_line(char *line)
 	return (true);
 }
 
-bool	get_mapdata(void) 
+void	fill_mapdata(t_vars *vars, int index, int i)
+{
+	if (index != -1 && vars->mapdata[index] == NULL)
+			vars->mapdata[index] = vars->full_config[i];
+	else
+	{
+		printf("Error and goodbye\n");
+		return ;
+	}
+}
+
+bool	check_full_config(t_vars *vars)
+{
+	int	j;
+
+	j = 0;
+	while (vars->mapdata[j++])
+	{
+		if (j >= 6)
+			return (true);
+	}
+	return (false);
+}
+
+bool	get_mapdata(void)
 //REFACTOR for norminette
 {
 	t_vars	*vars;
 	int		i;
-	int		j;
 	int		index;
 	char	*elem_name;
 
 	vars = get_data();
 	i = 0;
-	j = 0;
 	index = -1;
 	elem_name = get_element_name(&i);
 	while (elem_name != NULL)
 	{
 		index = get_element_index(elem_name);
-		if (index != -1 && vars->mapdata[index] == NULL)
-			vars->mapdata[index] = vars->full_config[i];
-
-		// TODO if (index == -1 || vars->mapdata[index] != NULL)
-				 //print error
+		fill_mapdata(vars, index, i);
 		free(elem_name);
 		i++;
-		j = 0;
-		while (vars->mapdata[j++])
-		{
-			if (j >= 6)
-				return (true);
-		}
+		if (check_full_config(vars) == true)
+			return (true);
 		elem_name = get_element_name(&i);
 	}
 	free(elem_name);

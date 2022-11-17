@@ -80,6 +80,8 @@ bool	get_mapdata(void);
 char	*get_element_name(int *i);
 int		get_element_index(char *element);
 bool	check_line(char *line);
+void	fill_mapdata(t_vars *vars, int index, int i);
+bool	check_full_config(t_vars *vars);
 
 //print.c
 void	print_result(void);
