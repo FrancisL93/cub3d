@@ -1,4 +1,5 @@
 #include "../include/cub3d.h"
+//REFACTOR remove functions for Norminette
 
 int	check_file(char *map)
 {
@@ -140,7 +141,8 @@ bool	check_line(char *line)
 	return (true);
 }
 
-bool	get_mapdata(void)
+bool	get_mapdata(void) 
+//REFACTOR for norminette
 {
 	t_vars	*vars;
 	int		i;
