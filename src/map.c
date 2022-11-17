@@ -4,7 +4,7 @@ bool	is_valid_char(char c)
 {
 	static int	one_start;
 
-	if (c != ' ' || c != '1' || c != '0' || !ft_strchr("NSEW", c))
+	if (c != ' ' && c != '1' && c != '0' && !ft_strchr("NSEW", c))
 		return (false);
 	if (ft_strchr("NSEW", c))
 	{
@@ -59,7 +59,7 @@ int	is_map(char **fullconfig)
 	mapstart = find_map(fullconfig);
 	if (mapstart == -1)
 		return (-1);
-	i = 0;
+	i = mapstart;
 	while (fullconfig[i])
 	{
 		tmp = ft_strtrim(fullconfig[i], "\n");
@@ -68,10 +68,10 @@ int	is_map(char **fullconfig)
 		{
 			if (is_valid_char(tmp[j]) == false)
 			{
-				printf("%csalut", tmp[j]);
 				free(tmp);
 				return (-1);
 			}
+			j++;
 		}
 		free(tmp);
 		i++;
@@ -87,7 +87,6 @@ bool	get_map(void)
 
 	vars = get_data();
 	index = is_map(vars->full_config);
-	printf("%d", index);
 	if (index == -1)
 		return (false);
 	i = index;

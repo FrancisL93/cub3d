@@ -24,12 +24,13 @@ int	main(int argc, char **argv)
 		printf("mapdata[i] = %s", vars->mapdata[i]);
 		i++;
 	}
+	printf("\n");
 	i = 0;
-	// while (vars->map[i])
-	// {
-	// 	printf("map[i] = %s", vars->mapdata[i]);
-	// 	i++;
-	// }
+	while (vars->map[i])
+	{
+		printf("map[i] = %s", vars->map[i]);
+		i++;
+	}
 	free_double_array((void **)vars->full_config);
 	//vars->mlx = mlx_init();
 	//build_imgs();

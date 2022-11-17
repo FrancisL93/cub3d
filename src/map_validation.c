@@ -23,6 +23,7 @@ bool	get_mapdata(void)
 			return (true);
 		elem_name = get_element_name(&i);
 	}
+	vars->mapdata[i] = NULL;
 	free(elem_name);
 	return (false);
 }
