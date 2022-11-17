@@ -7,7 +7,7 @@ int	key_hook(int keycode)
 
 	vars = get_data();
 	if (keycode == ESC)
-		quit_game();
+		quit_game(10);
 	else
 	{
 		//update vars->img->screen_view before reprinting
