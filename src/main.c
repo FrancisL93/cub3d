@@ -13,18 +13,24 @@ int	main(int argc, char **argv)
 	}
 	if (validate_map(argv[1]) == false)
 		return (1);
-	while (vars->full_config[i])
-	{
-		printf("%s", vars->full_config[i]);
-		i++;
-	}
 	get_mapdata();
+	if (get_map() == false)
+	{
+		return (1);
+	}
 	i = 0;
 	while (vars->mapdata[i])
 	{
 		printf("mapdata[i] = %s", vars->mapdata[i]);
 		i++;
 	}
+	i = 0;
+	// while (vars->map[i])
+	// {
+	// 	printf("map[i] = %s", vars->mapdata[i]);
+	// 	i++;
+	// }
+	free_double_array((void **)vars->full_config);
 	//vars->mlx = mlx_init();
 	//build_imgs();
 	//init_data();

@@ -25,8 +25,8 @@ void	launch_game(void)
 	vars->win_height = 1080;
 	vars->win = mlx_new_window(vars->mlx, vars->win_width, vars->win_height, "Cub3d");
 	vars->img->screen_view = mlx_new_image(vars->mlx, vars->win_width, vars->win_height);
-	vars->img->screen_data = mlx_get_data_addr(vars->img->screen_view, vars->img->bits_per_pixel, 
-		vars->img->line_length, vars->img->endian);
+	vars->img->screen_data = mlx_get_data_addr(vars->img->screen_view, &vars->img->bits_per_pixel, 
+		&vars->img->line_length, &vars->img->endian);
 	mlx_hook(vars->win, 2, 1L << 0, key_hook, vars);
 	mlx_hook(vars->win, 17, 0, quit_game, vars);
 	mlx_loop(vars->mlx);

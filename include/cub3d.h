@@ -42,6 +42,11 @@ typedef struct s_img {
 	int		endian;
 }t_img;
 
+typedef struct s_game {
+	int	posx;
+	int	posy;
+}	t_game;
+
 typedef struct s_vars {
 	void	*mlx;
 	void	*win;
@@ -54,8 +59,7 @@ typedef struct s_vars {
 	int		win_width;
 	int		win_height;
 	int		imgsize;
-	float	posx;
-	float	posy;
+	t_game	*game;
 	t_img	*img;
 }	t_vars;
 
@@ -75,20 +79,19 @@ void	launch_game(void);
 //main.c
 
 //map.c
-bool	set_map(void);
+bool	get_map(void);
 
 //map_info.c
-bool	set_map_info(void);
-
-//map_validation.c
-bool	validate_map(char *mapfile);
-bool	read_map(int fd);
-bool	get_mapdata(void);
 char	*get_element_name(int *i);
 int		get_element_index(char *element);
 bool	check_line(char *line);
 void	fill_mapdata(t_vars *vars, int index, int i);
 bool	check_full_config(t_vars *vars);
+
+//map_validation.c
+bool	validate_map(char *mapfile);
+bool	read_map_file(int fd);
+bool	get_mapdata(void);
 
 //print.c
 void	print_result(void);

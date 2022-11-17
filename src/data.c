@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:03:33 by malord            #+#    #+#             */
-/*   Updated: 2022/11/16 13:35:55 by malord           ###   ########.fr       */
+/*   Updated: 2022/11/17 11:40:36 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ void	init_data(void)
 	t_vars	*vars;
 
 	vars = get_data();
-	vars->posx = 0;
-	vars->posy = 0;
+	vars->game = malloc(sizeof(vars->game));
+	if (!vars->game)
+	{
+		free_double_array((void **)vars->mapdata);
+		free_double_array((void **)vars->map);
+		exit(1);
+	}
 }
