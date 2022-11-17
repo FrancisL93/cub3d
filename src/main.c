@@ -10,7 +10,7 @@ int	main(int argc, char **argv)
 		quit_game(0);
 	validate_map(argv[1]);
 	get_mapdata();
-	if (get_map() == false)
+	if (get_map() == false || get_mapdata() == false)
 	{
 		printf("Error fucker\n");
 		return (1);
