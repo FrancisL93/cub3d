@@ -27,7 +27,6 @@ int	main(int argc, char **argv)
 		printf("map[i] = %s", vars->map[i]);
 		i++;
 	}
-	free_double_array((void **)vars->full_config);
 	//vars->mlx = mlx_init();
 	//build_imgs();
 	//init_data();
