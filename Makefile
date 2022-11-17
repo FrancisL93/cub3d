@@ -22,8 +22,13 @@ O = obj/
 S = src/
 I = inc/
 
+<<<<<<< HEAD
 CC = gcc
 CFLAGS += -g -Wall -Wextra -Werror
+=======
+CC = gcc -g
+CFLAGS += -Wall -Wextra -Werror
+>>>>>>> d5c39e35f367e10308cb983850b6ffb3073b1678
 CFLAGS += -I$I
 
 OBJ = $(SRC:%=$O%.o)

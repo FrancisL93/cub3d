@@ -72,7 +72,7 @@ t_vars	*get_data(void);
 void	init_data(void);
 
 //free.c
-int		quit_game(void);
+int		quit_game(int exit_num);
 
 //game.c
 void	launch_game(void);
@@ -91,8 +91,8 @@ void	fill_mapdata(t_vars *vars, int index, int i);
 bool	check_full_config(t_vars *vars);
 
 //map_validation.c
-bool	validate_map(char *mapfile);
-bool	read_map_file(int fd);
+void	validate_map(char *mapfile);
+void	read_map_file(int fd);
 bool	get_mapdata(void);
 bool	gap_til_map(t_vars *vars, int i);
 
