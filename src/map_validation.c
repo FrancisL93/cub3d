@@ -10,15 +10,11 @@ bool	gap_til_map(t_vars *vars, int i)
 		j = 0;
 		while (j < (int)ft_strlen(vars->full_config[i])
 			&& ft_strchr(" \n", vars->full_config[i][j]))
-			j++;
 		if (vars->full_config[i][j])
-			return (false);
 		i++;
-	}
 	return (true);
 }
 
-bool	get_mapdata(void)
 {
 	t_vars	*vars;
 	int		i;
