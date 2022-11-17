@@ -22,7 +22,7 @@ O = obj/
 S = src/
 I = inc/
 
-CC = gcc
+CC = gcc -g
 CFLAGS += -Wall -Wextra -Werror
 CFLAGS += -I$I
 

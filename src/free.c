@@ -1,23 +1,24 @@
 #include "../include/cub3d.h"
 
-void	free_map()
+void	print_error(error)
 {
-	t_vars	*vars;
+	if (error == 0)
+		printf("Error: Execute as ./cub3d map.cub...\n");
 
-	vars = get_data();
-	int	x;
-
-	x = 0;
-	while (vars->map[x])
-		free(vars->map[x++]);
-	free(vars->map);
 }
 
-int	quit_game()
+int	quit_game(int exit_num)
 {
 	t_vars	*vars;
 
 	vars = get_data();
-	mlx_destroy_window(vars->mlx, vars->win);
-	exit(0);
+	print_error(exit_num);
+	if (exit_num > 1)
+		free(vars->full_config);
+	//mlx_destroy_window(vars->mlx, vars->win);
+	free(vars);
+	if (exit_num > 10)
+		exit(0);
+	else
+		exit(exit_num);
 }
