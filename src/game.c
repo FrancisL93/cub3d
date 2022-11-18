@@ -1,5 +1,4 @@
 #include "../include/cub3d.h"
-#include <mlx.h>
 
 void	play_game(void)
 {
@@ -17,9 +16,9 @@ void	play_game(void)
 
 int	key_hook(int keycode)
 {
-	t_vars	*vars;
+	//t_vars	*vars;
 
-	vars = get_data();
+	//vars = get_data();
 	if (keycode == ESC)
 		quit_game(10);
 	else
@@ -36,7 +35,7 @@ void	init_data(void)
 	if (!vars->game)
 		quit_game(7);
 	set_up_start();
-	printf("Start: x=%d et y=%d\n", vars->game->posx, vars->game->posy);
+	printf("Start: x=%f et y=%f\n", vars->game->posx, vars->game->posy);
 }
 
 void	launch_game(void)
