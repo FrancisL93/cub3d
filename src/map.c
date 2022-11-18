@@ -2,8 +2,10 @@
 
 bool	is_valid_char(char c)
 {
+	t_vars		*vars;
 	static int	one_start;
 
+	vars = get_data();
 	if (c != ' ' && c != '1' && c != '0' && !ft_strchr("NSEW", c))
 		return (false);
 	if (ft_strchr("NSEW", c))

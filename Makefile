@@ -6,12 +6,11 @@ NAME	= cub3d
 EXECUTION = ./$(NAME) map.cub
 
 SRC =   map_validation.c 	\
+		map.c 				\
+		map_info.c 			\
 		assets.c			\
 		game.c 				\
 		print.c 			\
-		map_info.c 			\
-		map.c 				\
-		data.c 				\
 		free.c 				\
 		main.c
 

@@ -20,11 +20,22 @@ int	key_hook(int keycode)
 	return (0);
 }
 
+void	init_data(void)
+{
+	t_vars	*vars;
+
+	vars = get_data();
+	vars->game = malloc(sizeof(vars->game));
+	if (!vars->game)
+		quit_game(7);
+}
+
 void	launch_game(void)
 {
 	t_vars	*vars;
 	
 	vars = get_data();
+	init_data();
 	vars->win_width = 1920;
 	vars->win_height = 1080;
 	vars->win = mlx_new_window(vars->mlx, vars->win_width, vars->win_height, "Cub3d");

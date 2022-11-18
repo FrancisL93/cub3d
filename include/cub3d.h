@@ -67,10 +67,6 @@ typedef struct s_vars {
 //assets.c
 void	build_imgs(void);
 
-//data.c
-t_vars	*get_data(void);
-void	init_data(void);
-
 //free.c
 int		quit_game(int exit_num);
 
@@ -78,6 +74,7 @@ int		quit_game(int exit_num);
 void	launch_game(void);
 
 //main.c
+t_vars	*get_data(void);
 
 //map.c
 void	get_map(void);

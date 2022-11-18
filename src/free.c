@@ -12,7 +12,10 @@ void	print_error(error)
 		printf("Error: Not enough memory for map allocation\n");
 	else if (error == 5)
 		printf("Error: Bad map configuration settings\n");
-
+	else if (error == 6)
+		printf("Error: Not enough memory for assets\n");
+	else if (error == 7)
+		printf("Error: Not enough memory for game data\n");
 }
 
 int	quit_game(int exit_num)
@@ -25,9 +28,10 @@ int	quit_game(int exit_num)
 	if (exit_num > 10)
 	{
 		free(vars->game);
-		free(vars->img);
 		mlx_destroy_window(vars->mlx, vars->win);
 	}
+	if (exit_num > 6)
+		free(vars->img);
 	if (exit_num > 3)
 		free(vars->map);
 	if (exit_num > 2)

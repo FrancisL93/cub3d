@@ -29,6 +29,14 @@ void	print_map(char **map)
 	printf("\n");
 }
 
+t_vars	*get_data(void)
+{
+	static t_vars	*data = NULL;
+
+	if (data == NULL)
+		data = (t_vars *)ft_calloc(sizeof(t_vars), 1);
+	return (data);
+}
 
 int	main(int argc, char **argv)
 {	
@@ -44,7 +52,6 @@ int	main(int argc, char **argv)
 	print_map_data(vars->mapdata);
 	vars->mlx = mlx_init();
 	build_imgs();
-	init_data();
 	launch_game();
 	quit_game(10);
 }
