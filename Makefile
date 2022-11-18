@@ -57,7 +57,7 @@ $(LIBFTA):
 	@echo "\033[0;32mLibft compiled!\n\033[0m"
 
 $(NAME): $(LIBFTA) $(OBJ)
-	@$(CC) $(CFLAGS) $(LIBFTA) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@$(CC) $(CFLAGS) $(LIBFTA) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 	@echo "\033[0;32mCompiled! Execute as: $(EXECUTION)\033[0m"
 
 ## ************************************************************************** ##
