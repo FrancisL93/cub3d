@@ -3,11 +3,9 @@
 int	get_element_index(char *element)
 {
 	char	*elem_list[6];
-	t_vars	*vars;
 	int		i;
 
 	i = 0;
-	vars = get_data();
 	elem_list[0] = "NO";
 	elem_list[1] = "SO";
 	elem_list[2] = "WE";
