@@ -10,8 +10,12 @@ int	key_hook(int keycode)
 		quit_game(10);
 	else
 	{
+		vars->img->screen_view = mlx_new_image(vars->mlx, vars->win_width, vars->win_height);
+		vars->img->screen_data = mlx_get_data_addr(vars->img->screen_view, &vars->img->bits_per_pixel, 
+			&vars->img->line_length, &vars->img->endian);
 		//update vars->img->screen_view before reprinting
 		print_result();
+		mlx_destroy_image(vars->mlx, vars->img->screen_view);
 	}
 	return (0);
 }

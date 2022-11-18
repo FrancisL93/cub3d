@@ -12,23 +12,21 @@ bool	gap_til_map(t_vars *vars, int i)
 			&& ft_strchr(" \n", vars->full_config[i][j]))
 			j++;
 		if (vars->full_config[i][j])
-			return (false);
+			quit_game(5);
 		i++;
 	}
 	return (true);
 }
 
-bool	get_mapdata(void)
+void	get_mapdata(void)
 {
 	t_vars	*vars;
 	int		i;
 	int		index;
 	char	*elem_name;
 
-	vars = get_data();
-	vars->map_start = find_map(vars->full_config);
 	i = 0;
-	index = -1;
+	vars = get_data();
 	elem_name = get_element_name(&i);
 	while (elem_name != NULL)
 	{
@@ -36,14 +34,14 @@ bool	get_mapdata(void)
 		fill_mapdata(vars, index, i);
 		free(elem_name);
 		i++;
-		if (check_full_config(vars) == true)
-			return (gap_til_map(vars, i));
+		if (check_full_config(vars) == true && gap_til_map(vars, i) == true)
+			return ;
 		elem_name = get_element_name(&i);
 		if (elem_name == NULL)
 			break ;
 	}
 	free(elem_name);
-	return (false);
+	quit_game(5);
 }
 
 int	check_file(char *map)

@@ -78,7 +78,7 @@ bool	check_full_config(t_vars *vars)
 	j = 0;
 	while (vars->mapdata[j++])
 	{
-		if (j >= 6)
+		if (j == 6)
 			return (true);
 	}
 	return (false);

@@ -51,20 +51,21 @@ int	find_map(char **fullconfig)
 }
 
 //REFACTOR for Norminette
-int	is_map(char **fullconfig)
+int	is_map()
 {
+	t_vars	*vars;
 	int		i;
 	int		j;
-	int		mapstart;
 	char	*tmp;
 
-	mapstart = find_map(fullconfig);
-	if (mapstart == -1)
+	vars = get_data();
+	vars->map_start = find_map(vars->full_config);
+	if (vars->map_start == -1)
 		return (-1);
-	i = mapstart;
-	while (fullconfig[i])
+	i = vars->map_start;
+	while (vars->full_config[i])
 	{
-		tmp = ft_strtrim(fullconfig[i], "\n");
+		tmp = ft_strtrim(vars->full_config[i], "\n");
 		j = 0;
 		while (tmp[j] != '\0')
 		{
@@ -78,28 +79,27 @@ int	is_map(char **fullconfig)
 		free(tmp);
 		i++;
 	}
-	return (mapstart);
+	return (vars->map_start);
 }
 
-bool	get_map(void)
+void	get_map(void)
 {
 	int		index;
 	int		i;
 	t_vars	*vars;
 
 	vars = get_data();
-	index = is_map(vars->full_config);
+	index = is_map();
 	if (index == -1)
-		return (false);
+		quit_game(3);
 	i = index;
 	while (vars->full_config[i])
 		i++;
 	vars->map = ft_calloc(sizeof(char *), i - index + 1);
 	if (!vars->map)
-		return (false);
+		quit_game(4);
 	i = 0;
 	while (vars->full_config[index])
 		vars->map[i++] = vars->full_config[index++];
 	vars->map[i] = NULL;
-	return (true);
 }

@@ -80,8 +80,8 @@ void	launch_game(void);
 //main.c
 
 //map.c
-bool	get_map(void);
-int	find_map(char **fullconfig);
+void	get_map(void);
+int		find_map(char **fullconfig);
 
 //map_info.c
 char	*get_element_name(int *i);
@@ -93,7 +93,7 @@ bool	check_full_config(t_vars *vars);
 //map_validation.c
 void	validate_map(char *mapfile);
 void	read_map_file(int fd);
-bool	get_mapdata(void);
+void	get_mapdata(void);
 bool	gap_til_map(t_vars *vars, int i);
 
 //print.c
