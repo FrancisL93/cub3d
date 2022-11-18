@@ -39,7 +39,10 @@ int	quit_game(int exit_num)
 		free(vars->full_config);
 	free(vars);
 	if (exit_num >= 10)
+	{
+		free_double_array((void **) vars->full_config);
 		exit(0);
+	}
 	else
 		exit(exit_num);
 }
