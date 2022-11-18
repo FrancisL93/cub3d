@@ -19,6 +19,7 @@ bool	is_valid_char(char c)
 	return (true);
 }
 
+//REFACTOR for Norminette
 int	find_map(char **fullconfig)
 {
 	int		i;
@@ -49,6 +50,7 @@ int	find_map(char **fullconfig)
 	return (-1);
 }
 
+//REFACTOR for Norminette
 int	is_map(char **fullconfig)
 {
 	int		i;
@@ -64,7 +66,7 @@ int	is_map(char **fullconfig)
 	{
 		tmp = ft_strtrim(fullconfig[i], "\n");
 		j = 0;
-		while(tmp[j] != '\0')
+		while (tmp[j] != '\0')
 		{
 			if (is_valid_char(tmp[j]) == false)
 			{
