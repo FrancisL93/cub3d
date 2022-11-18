@@ -1,5 +1,32 @@
 #include "../include/cub3d.h"
 
+void	set_direction(char dir)
+{
+	t_vars	*vars;
+
+	vars = get_data();
+	if (dir == 'N')
+	{
+		vars->game->dirx = 0;
+		vars->game->diry = 0;
+	}
+	else if (dir == 'E')
+	{
+		vars->game->dirx = 1;
+		vars->game->diry = 0;
+	}
+	else if (dir == 'S')
+	{
+		vars->game->dirx = 0;
+		vars->game->diry = -1;
+	}
+	else if (dir == 'W')
+	{
+		vars->game->dirx = -1;
+		vars->game->diry = -1;
+	}
+}
+
 void	set_up_start(void)
 {
 	int		i;
@@ -17,6 +44,7 @@ void	set_up_start(void)
 			{
 				vars->game->posx = j;
 				vars->game->posy = i;
+				set_direction(vars->map[i][j]);
 				return ;
 			}
 			j++;

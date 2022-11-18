@@ -43,8 +43,10 @@ typedef struct s_img {
 }t_img;
 
 typedef struct s_game {
-	int	posx;
-	int	posy;
+	double	posx;
+	double	posy;
+	double	dirx;
+	double	diry;
 }	t_game;
 
 typedef struct s_vars {

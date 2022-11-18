@@ -36,6 +36,7 @@ void	init_data(void)
 	if (!vars->game)
 		quit_game(7);
 	set_up_start();
+	printf("Start: x=%d et y=%d\n", vars->game->posx, vars->game->posy);
 }
 
 void	launch_game(void)
