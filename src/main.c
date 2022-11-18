@@ -1,5 +1,8 @@
 #include "../include/cub3d.h"
 
+//TODO Parsing de la map qui accepte les espaces
+//? Est-ce qu'on implemente un floodfill pour justement combler ces espaces et que ca cree une map "carree"?
+
 int	main(int argc, char **argv)
 {	
 	t_vars	*vars;
