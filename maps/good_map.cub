@@ -15,7 +15,7 @@ EA ./path_to_the_east_texture
 F 220,100,0
 C 225,30,0
 
-    
+         SO ./path_to_the_south_texture 
 
 111111111111111111111111111
 1100000000000000000000011111

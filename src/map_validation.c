@@ -3,11 +3,7 @@
 bool	gap_til_map(t_vars *vars, int i)
 {
 	//TODO Autres tests sur fichiers config a faire
-	//FIXME Les commits ont chié, on est de retour au problème précédent, ca donne Error en tout temps. 
-	//BUG Ca entre 2 fois dans cette fonction. POURQUOI? 
 	int	j;
-	printf("i vaut %d\n", i);
-	printf("mapstart = %d\n", vars->map_start);
 	while (i < vars->map_start)
 	{
 		j = 0;

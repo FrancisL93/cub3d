@@ -81,9 +81,9 @@ int	is_map(char **fullconfig)
 
 bool	get_map(void)
 {
-	int	index;
-	int	i;
-	t_vars *vars;
+	int		index;
+	int		i;
+	t_vars	*vars;
 
 	vars = get_data();
 	index = is_map(vars->full_config);
