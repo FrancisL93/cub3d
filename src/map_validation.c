@@ -1,9 +1,10 @@
 #include "../include/cub3d.h"
 
+//? Pas trouvé de edge cases qui font failer ce parsing. Qui dit mieux ? 
 bool	gap_til_map(t_vars *vars, int i)
 {
-	//TODO Autres tests sur fichiers config a faire
 	int	j;
+
 	while (i < vars->map_start)
 	{
 		j = 0;
