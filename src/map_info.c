@@ -14,7 +14,6 @@ int	get_element_index(char *element)
 	elem_list[3] = "EA";
 	elem_list[4] = "F";
 	elem_list[5] = "C";
-
 	while (element && i < 6)
 	{
 		if (ft_strncmp(element, elem_list[i], ft_strlen(elem_list[i])) == 0)

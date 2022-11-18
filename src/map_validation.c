@@ -105,7 +105,7 @@ void	validate_map(char *mapfile)
 	}
 	close (fd);
 	vars->full_config = ft_calloc(sizeof(char *), size + 1);
-	if(!vars->full_config)
+	if (!vars->full_config)
 		quit_game(1);
 	fd = open(mapfile, O_RDONLY);
 	read_map_file(fd);

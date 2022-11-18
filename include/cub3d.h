@@ -87,6 +87,9 @@ bool	check_line(char *line);
 void	fill_mapdata(t_vars *vars, int index, int i);
 bool	check_full_config(t_vars *vars);
 
+//map_tools.c
+void	set_up_start(void);
+
 //map_validation.c
 void	validate_map(char *mapfile);
 void	read_map_file(int fd);

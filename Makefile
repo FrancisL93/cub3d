@@ -9,6 +9,7 @@ SRC =   map_validation.c 	\
 		map.c 				\
 		map_info.c 			\
 		assets.c			\
+		map_tools.c			\
 		game.c 				\
 		print.c 			\
 		free.c 				\

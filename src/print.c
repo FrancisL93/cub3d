@@ -1,6 +1,6 @@
 #include "../include/cub3d.h"
 
-void	print_result()
+void	print_result(void)
 {
 	t_vars	*vars;
 

@@ -29,8 +29,8 @@ int	find_map(char **fullconfig)
 	int		wall;
 	char	*tmp;
 
-	i = 0;
-	while (fullconfig[i])
+	i = -1;
+	while (fullconfig[++i])
 	{
 		tmp = ft_strtrim(fullconfig[i], "\n");
 		j = 0;
@@ -39,21 +39,19 @@ int	find_map(char **fullconfig)
 		{
 			if (tmp[j] && tmp[j] == '1')
 				wall = 1;
-			if (tmp[j + 1] == '\0' && wall == 1)
+			if (tmp[j++ + 1] == '\0' && wall == 1)
 			{
 				free(tmp);
 				return (i);
 			}
-			j++;
 		}
 		free(tmp);
-		i++;
 	}
 	return (-1);
 }
 
 //REFACTOR for Norminette
-int	is_map()
+int	is_map(void)
 {
 	t_vars	*vars;
 	int		i;
@@ -62,24 +60,22 @@ int	is_map()
 
 	vars = get_data();
 	vars->map_start = find_map(vars->full_config);
-	if (vars->map_start == -1)
+	if (vars->map_start < 5)
 		return (-1);
-	i = vars->map_start;
-	while (vars->full_config[i])
+	i = vars->map_start - 1;
+	while (vars->full_config[++i])
 	{
 		tmp = ft_strtrim(vars->full_config[i], "\n");
 		j = 0;
 		while (tmp[j] != '\0')
 		{
-			if (is_valid_char(tmp[j]) == false)
+			if (is_valid_char(tmp[j++]) == false)
 			{
 				free(tmp);
 				return (-1);
 			}
-			j++;
 		}
 		free(tmp);
-		i++;
 	}
 	return (vars->map_start);
 }

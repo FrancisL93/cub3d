@@ -1,6 +1,6 @@
 #include "../include/cub3d.h"
 
-void	print_error(error)
+void	print_error(int error)
 {
 	if (error == 0)
 		printf("Error: Execute as ./cub3d map.cub\n");
@@ -24,7 +24,6 @@ int	quit_game(int exit_num)
 
 	vars = get_data();
 	print_error(exit_num);
-
 	if (exit_num > 10)
 	{
 		free(vars->game);

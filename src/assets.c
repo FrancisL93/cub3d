@@ -1,7 +1,7 @@
 #include "../include/cub3d.h"
 
 //TODO Une texture par direction (NORTH, SOUTH, EAST, WEST)
-void	build_imgs()
+void	build_imgs(void)
 {
 	t_vars	*vars;
 
