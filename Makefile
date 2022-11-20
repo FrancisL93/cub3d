@@ -18,6 +18,9 @@ SRC =   map_validation.c 	\
 LIBFT = include/libft
 LIBFTA = include/libft/libft.a
 
+MLX = include/minilibx
+MLXA = include/minilibx/libmlx.a
+
 O = obj/
 S = src/
 I = inc/
@@ -56,8 +59,14 @@ $(LIBFTA):
 	@make clean -C $(LIBFT)
 	@echo "\033[0;32mLibft compiled!\n\033[0m"
 
-$(NAME): $(LIBFTA) $(OBJ)
-	@$(CC) $(CFLAGS) $(LIBFTA) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+$(MLXA):
+	@echo "\033[0;32mCompiling mlx...\033[0m"
+	@make -C $(MLX)
+	@make clean -C $(MLX)
+	@echo "\033[0;32mMlx compiled!\n\033[0m"
+
+$(NAME): $(MLXA) $(LIBFTA) $(OBJ)
+	@$(CC) $(CFLAGS) $(MLXA) $(LIBFTA) $(OBJ) -framework OpenGL -framework AppKit -o $(NAME)
 	@echo "\033[0;32mCompiled! Execute as: $(EXECUTION)\033[0m"
 
 ## ************************************************************************** ##

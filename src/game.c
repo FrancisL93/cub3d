@@ -35,7 +35,8 @@ void	init_data(void)
 	if (!vars->game)
 		quit_game(7);
 	set_up_start();
-	printf("Start: x=%f et y=%f\n", vars->game->posx, vars->game->posy);
+	vars->win_width = 720;
+	vars->win_height = 480;
 }
 
 void	launch_game(void)
@@ -46,8 +47,6 @@ void	launch_game(void)
 	vars->mlx = mlx_init();
 	build_imgs();
 	init_data();
-	vars->win_width = 1920;
-	vars->win_height = 1080;
 	vars->win = mlx_new_window(vars->mlx, vars->win_width, \
 	vars->win_height, "Cub3d");
 	vars->img->screen_view = mlx_new_image(vars->mlx, vars->win_width, \

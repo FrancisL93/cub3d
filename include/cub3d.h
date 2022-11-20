@@ -10,7 +10,7 @@ library (-lm man man 3 math)
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <mlx.h>
+# include "minilibx/mlx.h"
 # include <math.h>
 # include <stdio.h>
 # include <stdbool.h>
@@ -47,6 +47,7 @@ typedef struct s_game {
 	double	posy;
 	double	dirx;
 	double	diry;
+	float	focal_length;
 }	t_game;
 
 typedef struct s_vars {
@@ -55,9 +56,7 @@ typedef struct s_vars {
 	char	**full_config;
 	char	*mapdata[6];
 	char	**map;
-	void	*screenview;
-	char	f_color[3];
-	char	c_color[3];
+	float	resolution;
 	int		win_width;
 	int		win_height;
 	int		imgsize;
