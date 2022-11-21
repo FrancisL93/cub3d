@@ -16,6 +16,10 @@ void	print_error(int error)
 		printf("Error: Not enough memory for assets\n");
 	else if (error == 7)
 		printf("Error: Not enough memory for game data\n");
+	else if (error == 8)
+		printf("Error: Mlx couldn't create new image\n");
+	else if (error == 9)
+		printf("Error: Mlx couldn't retrieve image address\n");
 }
 
 int	quit_game(int exit_num)
@@ -24,7 +28,7 @@ int	quit_game(int exit_num)
 
 	vars = get_data();
 	print_error(exit_num);
-	if (exit_num > 10)
+	if (exit_num > 8)
 	{
 		free(vars->game);
 		mlx_destroy_window(vars->mlx, vars->win);
@@ -39,10 +43,7 @@ int	quit_game(int exit_num)
 		free(vars->full_config);
 	free(vars);
 	if (exit_num >= 10)
-	{
-		free_double_array((void **) vars->full_config);
 		exit(0);
-	}
 	else
 		exit(exit_num);
 }

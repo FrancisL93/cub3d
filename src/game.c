@@ -1,28 +1,36 @@
 #include "../include/cub3d.h"
 
-void	play_game(void)
+int	direction_hook(int keycode)
 {
 	t_vars	*vars;
-
+	
 	vars = get_data();
-	vars->img->screen_view = mlx_new_image(vars->mlx, vars->win_width, \
-	vars->win_height);
-	vars->img->screen_data = mlx_get_data_addr(vars->img->screen_view, \
-	&vars->img->bits_per_pixel, &vars->img->line_length, &vars->img->endian);
-	//update vars->img->screen_view before reprinting
-	print_result();
-	mlx_destroy_image(vars->mlx, vars->img->screen_view);
+	if (keycode == LEFTA)
+		vars->game->dirx -= 0.1;
+	else if (keycode == RIGHTA)
+		vars->game->dirx += 0.1;
+	return (0);
 }
 
 int	key_hook(int keycode)
 {
-	//t_vars	*vars;
-
-	//vars = get_data();
+	t_vars	*vars;
+	
+	vars = get_data();
 	if (keycode == ESC)
 		quit_game(10);
 	else
-		play_game();
+	{
+		if (keycode == UP)
+			vars->game->posy -= 1;
+		else if (keycode == DOWN)
+			vars->game->posy += 1;
+		else if (keycode == LEFT)
+			vars->game->posx -= 1;
+		else if (keycode == RIGHT)
+			vars->game->posx += 1;
+		generate_img();
+	}
 	return (0);
 }
 
@@ -35,6 +43,7 @@ void	init_data(void)
 	if (!vars->game)
 		quit_game(7);
 	set_up_start();
+	set_colors();
 	vars->win_width = 720;
 	vars->win_height = 480;
 }
@@ -49,10 +58,8 @@ void	launch_game(void)
 	init_data();
 	vars->win = mlx_new_window(vars->mlx, vars->win_width, \
 	vars->win_height, "Cub3d");
-	vars->img->screen_view = mlx_new_image(vars->mlx, vars->win_width, \
-	vars->win_height);
-	vars->img->screen_data = mlx_get_data_addr(vars->img->screen_view, \
-	&vars->img->bits_per_pixel, &vars->img->line_length, &vars->img->endian);
+	generate_img();
+	mlx_hook(vars->win, 2, 1L << 0, direction_hook, vars);
 	mlx_hook(vars->win, 2, 1L << 0, key_hook, vars);
 	mlx_hook(vars->win, 17, 0, quit_game, vars);
 	mlx_loop(vars->mlx);

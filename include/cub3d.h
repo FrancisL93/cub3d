@@ -24,22 +24,17 @@ library (-lm man man 3 math)
 # define LEFTA	123
 # define RIGHTA 124
 
+# define BYTE_SIZE 4
 # define PI		3.14159265
 
 typedef struct s_img {
-	void	*floor;
-	void	*ceiling;
-	void	*north;
-	void	*south;
-	void	*east;
-	void	*west;
-
 	void	*screen_view;
-	char	*screen_data;
-	int		*addr;
-	int		bits_per_pixel;
+	char	*screen_addr;
+	char	*addr;
+	int		bpp;
 	int		line_length;
 	int		endian;
+	int		floor_color;
 }t_img;
 
 typedef struct s_game {
@@ -98,6 +93,9 @@ void	get_mapdata(void);
 bool	gap_til_map(t_vars *vars, int i);
 
 //print.c
-void	print_result(void);
+void	generate_img(void);
+
+//print_tools.c
+void	set_colors(void);
 
 #endif

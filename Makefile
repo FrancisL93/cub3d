@@ -12,6 +12,7 @@ SRC =   map_validation.c 	\
 		map_tools.c			\
 		game.c 				\
 		print.c 			\
+		print_tools.c		\
 		free.c 				\
 		main.c
 
@@ -62,7 +63,6 @@ $(LIBFTA):
 $(MLXA):
 	@echo "\033[0;32mCompiling mlx...\033[0m"
 	@make -C $(MLX)
-	@make clean -C $(MLX)
 	@echo "\033[0;32mMlx compiled!\n\033[0m"
 
 $(NAME): $(MLXA) $(LIBFTA) $(OBJ)
@@ -72,6 +72,9 @@ $(NAME): $(MLXA) $(LIBFTA) $(OBJ)
 ## ************************************************************************** ##
 ##                                 Cleaning                                   ##
 ## ************************************************************************** ##
+
+cleanmlx:
+	@$(RM) $(MLXA)
 
 cleanobj: #Delete .o files in obj directory
 	@$(RM) $(wildcard $(OBJ))
@@ -107,8 +110,8 @@ exe-leak: $(NAME)
 #	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(MAP)
 #	--trace-children=yes
 
-segfault: $(LIBFTA) $(OBJ)
-	@$(CC) $(CFLAGS) $(LIBFTA) -fsanitize=address -lmlx -framework OpenGL -framework AppKit $(OBJ) -o $(NAME)
+segfault: $(MLXA) $(LIBFTA) $(OBJ)
+	@$(CC) $(CFLAGS) $(MLXA) $(LIBFTA) -fsanitize=address -framework OpenGL -framework AppKit $(OBJ) -o $(NAME)
 	@echo "\033[0;32mCompiled with segfault flag! Execute as: $(EXECUTION)\033[0m"
 #-fsanitize=threads (compiler les objets aussi avec)
 
