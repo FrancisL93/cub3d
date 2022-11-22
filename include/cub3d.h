@@ -75,6 +75,7 @@ t_vars	*get_data(void);
 //map.c
 void	get_map(void);
 int		find_map(char **fullconfig);
+void	is_valid_char(char c, char *str);
 
 //map_info.c
 char	*get_element_name(int *i);
