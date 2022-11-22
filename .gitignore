@@ -34,3 +34,4 @@ mlx/mlx_xpm.c
 mlx/mlx_xpm.o
 mlx/mlx.h
 include/minilibx/libmlx.a
+maps/map_space.cub
