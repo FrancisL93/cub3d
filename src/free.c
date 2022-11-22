@@ -38,9 +38,9 @@ int	quit_game(int exit_num)
 	if (exit_num > 3)
 		free(vars->map);
 	if (exit_num > 2)
-		free_double_array((void **) vars->full_config);
+		free_double_array((void **)vars->full_config);
 	if (exit_num == 2)
-		free(vars->full_config);
+		free_double_array((void **)vars->full_config);
 	free(vars);
 	if (exit_num >= 10)
 		exit(0);

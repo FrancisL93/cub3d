@@ -16,4 +16,6 @@ void	set_colors(void)
 	vars->img->floor_color = ft_atoi(rgb[0]) << 24 | ft_atoi(rgb[1]) << 16 | \
 	ft_atoi(rgb[2]) << 8;
 	printf("%d", vars->img->floor_color);
+	free_double_array((void **)color_line);
+	free_double_array((void **)rgb);
 }

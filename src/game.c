@@ -3,7 +3,7 @@
 int	direction_hook(int keycode)
 {
 	t_vars	*vars;
-	
+
 	vars = get_data();
 	if (keycode == LEFTA)
 		vars->game->dirx -= 0.1;
@@ -15,7 +15,7 @@ int	direction_hook(int keycode)
 int	key_hook(int keycode)
 {
 	t_vars	*vars;
-	
+
 	vars = get_data();
 	if (keycode == ESC)
 		quit_game(10);
