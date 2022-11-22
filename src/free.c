@@ -5,7 +5,7 @@ void	print_error(int error)
 	if (error == 0)
 		printf("Error: Execute as ./cub3d map.cub\n");
 	else if (error == 2)
-		printf("Error: File is empt.\n");
+		printf("Error: File is empty.\n");
 	else if (error == 3)
 		printf("Error: No map in file\n");
 	else if (error == 4)
@@ -20,6 +20,10 @@ void	print_error(int error)
 		printf("Error: Mlx couldn't create new image\n");
 	else if (error == 9)
 		printf("Error: Mlx couldn't retrieve image address\n");
+	else if (error == 10)
+		printf("Error: Invalid characters in map\n");
+	else if (error == 11)
+		printf("Error: More than one start position\n");
 }
 
 int	quit_game(int exit_num)
@@ -28,7 +32,7 @@ int	quit_game(int exit_num)
 
 	vars = get_data();
 	print_error(exit_num);
-	if (exit_num > 8)
+	if (exit_num == 8 || exit_num == 9)
 	{
 		free(vars->game);
 		mlx_destroy_window(vars->mlx, vars->win);
