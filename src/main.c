@@ -2,6 +2,8 @@
 
 //TODO Parsing de la map qui accepte les espaces
 //? Est-ce qu'on implemente un floodfill pour justement combler ces espaces et que ca cree une map "carree"?
+//TODO Faire une fonction pour quand sort avec la croix (x rouge)
+
 
 void	print_map_data(char **mapdata)
 {

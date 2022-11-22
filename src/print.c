@@ -25,11 +25,18 @@ void	render_floor(void)
 
 	y = 0;
 	vars = get_data();
-	while (y < vars->win_height)
+	while (y < vars->win_height / 2)
 	{
 		x = 0;
 		while (x < vars->win_width)
 			my_mlx_pixel_put(vars->img, x++, y, vars->img->floor_color);
+		y++;
+	}
+	while (y < vars->win_height)
+	{
+		x = 0;
+		while (x < vars->win_width)
+			my_mlx_pixel_put(vars->img, x++, y, vars->img->ceiling_color);
 		y++;
 	}
 }
