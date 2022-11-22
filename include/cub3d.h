@@ -35,6 +35,7 @@ typedef struct s_img {
 	int		line_length;
 	int		endian;
 	int		floor_color;
+	int		ceiling_color;
 }t_img;
 
 typedef struct s_game {
