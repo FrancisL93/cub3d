@@ -1,25 +1,26 @@
 #include "../include/cub3d.h"
 
-bool	is_valid_char(char c)
+void	is_valid_char(char c, char *str)
 {
-	static int	one_start;
+	static int	one_start = 0;
 
-	if (c != ' ' && c != '1' && c != '0' && !ft_strchr("NSEW", c))
-		return (false);
+	if (!ft_strchr("0 1NSEW", c))
+	{
+		free(str);
+		quit_game(10);
+	}
 	if (ft_strchr("NSEW", c))
 	{
 		if (one_start == 0)
 			one_start = 1;
 		else
 		{
-			printf("Error: More than one start position");
-			return (false);
+			free(str);
+			quit_game(11);
 		}
 	}
-	return (true);
 }
 
-//REFACTOR for Norminette
 int	find_map(char **fullconfig)
 {
 	int		i;
@@ -48,7 +49,6 @@ int	find_map(char **fullconfig)
 	return (-1);
 }
 
-//REFACTOR for Norminette
 int	is_map(void)
 {
 	t_vars	*vars;
@@ -66,13 +66,7 @@ int	is_map(void)
 		tmp = ft_strtrim(vars->full_config[i], "\n");
 		j = 0;
 		while (tmp[j] != '\0')
-		{
-			if (is_valid_char(tmp[j++]) == false)
-			{
-				free(tmp);
-				return (-1);
-			}
-		}
+			is_valid_char(tmp[j++], tmp);
 		free(tmp);
 	}
 	return (vars->map_start);
