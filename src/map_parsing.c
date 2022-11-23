@@ -115,5 +115,5 @@ void	spaces_handling(void)
 	j = 0;
 	printf("NOUVELLE MAP ------------------\n");
 	print_new_map(i, j);
-	check_walls();
+	//check_walls();
 }

@@ -3,12 +3,18 @@
 int	direction_hook(int keycode)
 {
 	t_vars	*vars;
+	int		increment;
 
+	increment = 1;
 	vars = get_data();
 	if (keycode == LEFTA)
-		vars->game->dirx -= 0.1;
+		vars->game->dirx -= increment;
 	else if (keycode == RIGHTA)
-		vars->game->dirx += 0.1;
+		vars->game->dirx += increment;
+	if (vars->game->dirx > 360)
+		vars->game->dirx = increment;
+	else if (vars->game->dirx < 0)
+		vars->game->dirx = 360 - increment;
 	return (0);
 }
 

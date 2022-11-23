@@ -4,6 +4,7 @@
 //? Est-ce qu'on implemente un floodfill pour justement combler ces espaces et que ca cree une map "carree"?
 //TODO Faire une fonction pour quand sort avec la croix (x rouge)
 //TODO Modifier les erreurs pour : "Error:\nRaison de l'erreur\n"
+//TODO Check_walls map_parsing donne erreur en tout temps
 
 
 void	print_map_data(char **mapdata)
@@ -50,9 +51,9 @@ int	main(int argc, char **argv)
 		quit_game(0);
 	validate_map(argv[1]);
 	get_map();
-	print_map(vars->map);
+	//print_map(vars->map);
 	get_mapdata();
-	print_map_data(vars->mapdata);
+	//print_map_data(vars->mapdata);
 	spaces_handling();
 	launch_game();
 	quit_game(10);

@@ -17,30 +17,6 @@ void	my_mlx_pixel_put(t_img	*data, int x, int y, int color)
 	}
 }
 
-void	render_floor(void)
-{
-	int		x;
-	int		y;
-	t_vars	*vars;
-
-	y = 0;
-	vars = get_data();
-	while (y < vars->win_height / 2)
-	{
-		x = 0;
-		while (x < vars->win_width)
-			my_mlx_pixel_put(vars->img, x++, y, vars->img->floor_color);
-		y++;
-	}
-	while (y < vars->win_height)
-	{
-		x = 0;
-		while (x < vars->win_width)
-			my_mlx_pixel_put(vars->img, x++, y, vars->img->ceiling_color);
-		y++;
-	}
-}
-
 void	draw_ray(int x, int wall_height)
 {
 	int	i;
@@ -49,11 +25,11 @@ void	draw_ray(int x, int wall_height)
 	i = 0;
 	vars = get_data();
 	while (i < (vars->win_height / 2 - wall_height))
-		my_mlx_pixel_put(vars->img, x, i, vars->img->ceiling_color);
+		my_mlx_pixel_put(vars->img, x, i++, vars->img->floor_color);
 	while (i < (vars->win_height / 2 + wall_height))
-		my_mlx_pixel_put(vars->img, x, i, vars->img->wall_color);
+		my_mlx_pixel_put(vars->img, x, i++, vars->img->wall_color);
 	while (i < vars->win_height)
-		my_mlx_pixel_put(vars->img, x, i, vars->img->wall_color);
+		my_mlx_pixel_put(vars->img, x, i++, vars->img->ceiling_color);
 }
 
 void	generate_img(void)
