@@ -14,7 +14,8 @@ SRC =   map_validation.c 	\
 		print.c 			\
 		print_tools.c		\
 		free.c 				\
-		main.c
+		main.c				\
+		map_parsing.c
 
 LIBFT = include/libft
 LIBFTA = include/libft/libft.a
