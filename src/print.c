@@ -41,6 +41,21 @@ void	render_floor(void)
 	}
 }
 
+void	draw_ray(int x, int wall_height)
+{
+	int	i;
+	t_vars	*vars;
+
+	i = 0;
+	vars = get_data();
+	while (i < (vars->win_height / 2 - wall_height))
+		my_mlx_pixel_put(vars->img, x, i, vars->img->ceiling_color);
+	while (i < (vars->win_height / 2 + wall_height))
+		my_mlx_pixel_put(vars->img, x, i, vars->img->wall_color);
+	while (i < vars->win_height)
+		my_mlx_pixel_put(vars->img, x, i, vars->img->wall_color);
+}
+
 void	generate_img(void)
 {
 	t_vars	*vars;
@@ -55,8 +70,8 @@ void	generate_img(void)
 	&vars->img->bpp, &vars->img->line_length, &vars->img->endian);
 	if (!vars->img->screen_addr)
 		quit_game(9);
-	render_floor();
+	//render_floor();
+	raycasting();
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->screen_view, 0, 0);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->south_text,0, 0);
 	mlx_destroy_image(vars->mlx, vars->img->screen_view);
 }

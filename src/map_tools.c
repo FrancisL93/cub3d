@@ -8,22 +8,19 @@ void	set_direction(char dir)
 	if (dir == 'N')
 	{
 		vars->game->dirx = 0;
-		vars->game->diry = 0;
 	}
 	else if (dir == 'E')
 	{
-		vars->game->dirx = 1;
-		vars->game->diry = 0;
+		vars->game->dirx = 90;
+
 	}
 	else if (dir == 'S')
 	{
-		vars->game->dirx = 0;
-		vars->game->diry = -1;
+		vars->game->dirx = 180;
 	}
 	else if (dir == 'W')
 	{
-		vars->game->dirx = -1;
-		vars->game->diry = -1;
+		vars->game->dirx = 270;
 	}
 }
 

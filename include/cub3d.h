@@ -40,6 +40,7 @@ typedef struct s_img {
 	int		endian;
 	int		floor_color;
 	int		ceiling_color;
+	int		wall_color;
 }t_img;
 
 typedef struct s_game {
@@ -47,7 +48,10 @@ typedef struct s_game {
 	double	posy;
 	double	dirx;
 	double	diry;
-	float	focal_length;
+	double	ray_x;
+	double	ray_y;
+	double	raycos;
+	double	raysin;
 }	t_game;
 
 typedef struct s_vars {
@@ -56,7 +60,9 @@ typedef struct s_vars {
 	char	**full_config;
 	char	*mapdata[6];
 	char	**map;
-	float	resolution;
+	double	focal_length;
+	double	increment_angle;
+	double	ray_precision;
 	int		win_width;
 	int		win_height;
 	int		imgsize;
@@ -103,8 +109,12 @@ bool	gap_til_map(t_vars *vars, int i);
 
 //print.c
 void	generate_img(void);
+void	draw_ray(int x, int wall_height);
 
 //print_tools.c
 void	set_colors(void);
+
+//raycasting.c
+void	raycasting(void);
 
 #endif
