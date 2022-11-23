@@ -44,7 +44,6 @@ int	retrieve_color(char **color_line)
 	color = (ft_atoi(rgb[0]) << 16 | ft_atoi(rgb[1]) << 8 | \
 	ft_atoi(rgb[2]));
 	free_double_array((void **)rgb);
-	printf("%d\n", color);
 	return (color);
 }
 

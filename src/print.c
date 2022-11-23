@@ -57,5 +57,6 @@ void	generate_img(void)
 		quit_game(9);
 	render_floor();
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->screen_view, 0, 0);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->south_text,0, 0);
 	mlx_destroy_image(vars->mlx, vars->img->screen_view);
 }
