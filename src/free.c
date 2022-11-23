@@ -24,6 +24,8 @@ void	print_error(int error)
 		printf("Error: Invalid characters in map\n");
 	else if (error == 11)
 		printf("Error: More than one start position\n");
+	else if (error == 13)
+		printf("Error: Map do not respect rules of a valid map.\n");
 }
 
 int	quit_game(int exit_num)

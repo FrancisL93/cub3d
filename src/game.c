@@ -18,7 +18,7 @@ int	key_hook(int keycode)
 
 	vars = get_data();
 	if (keycode == ESC)
-		quit_game(10);
+		quit_game(12);
 	else
 	{
 		if (keycode == UP)
