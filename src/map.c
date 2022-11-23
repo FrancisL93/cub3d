@@ -2,8 +2,9 @@
 
 void	is_valid_char(char c, char *str)
 {
-	static int	one_start = 0;
+	t_vars	*vars;
 
+	vars = get_data();
 	if (!ft_strchr("0 1NSEW", c))
 	{
 		free(str);
@@ -11,8 +12,8 @@ void	is_valid_char(char c, char *str)
 	}
 	if (ft_strchr("NSEW", c))
 	{
-		if (one_start == 0)
-			one_start = 1;
+		if (vars->one_start == 0)
+			vars->one_start = 1;
 		else
 		{
 			free(str);
@@ -69,6 +70,8 @@ int	is_map(void)
 			is_valid_char(tmp[j++], tmp);
 		free(tmp);
 	}
+	if (vars->one_start == 0)
+		quit_game(13);
 	return (vars->map_start);
 }
 

@@ -79,23 +79,15 @@ static void	print_new_map(int i, int j)
 	}
 }
 
-//TODO Verifier ce qui est tout autour des zeros
 void	check_zeros(int line, int column)
 {
 	t_vars	*vars;
 
 	vars = get_data();
-	if ((column >= 0 && vars->map[line][column + 1]
-		&& vars->map[line][column + 1] == '0')
-		|| (column >= 0 && vars->map[line][column - 1]
-		&& vars->map[line][column - 1] == '0')
-			|| (line >= 0 && vars->map[line + 1]
-			&& vars->map[line + 1][column] == '0')
-				|| (line > 0 && vars->map[line - 1][column]
-				&& vars->map[line - 1][column] == '0'))
+	if (!vars->map[line + 1][column] || !(vars->map[line - 1][column])
+		|| vars->map[line - 1][column] == '\n'
+		|| vars->map[line + 1][column] == '\n')
 		quit_game(13);
-	else
-		vars->map[line][column] = '1';
 }
 
 void	spaces_handling(void)
@@ -113,6 +105,8 @@ void	spaces_handling(void)
 		{
 			if (vars->map[i][j] == ' ')
 				check_spaces(i, j);
+			if (vars->map[i][j] == '0')
+				check_zeros(i, j);
 			j++;
 		}
 		i++;

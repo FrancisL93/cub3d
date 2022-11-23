@@ -67,6 +67,7 @@ typedef struct s_vars {
 	int		win_height;
 	int		imgsize;
 	int		map_start;
+	int		one_start;
 	t_game	*game;
 	t_img	*img;
 }	t_vars;
