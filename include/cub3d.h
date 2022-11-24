@@ -91,7 +91,7 @@ int		find_map(char **fullconfig);
 void	is_valid_char(char c, char *str);
 
 //map_info.c
-char	*get_element_name(int *i);
+char	*get_element_name(int *i, t_vars *vars);
 int		get_element_index(char *element);
 bool	check_line(char *line);
 void	fill_mapdata(t_vars *vars, int index, int i);

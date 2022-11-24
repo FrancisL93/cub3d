@@ -21,13 +21,13 @@ int	get_element_index(char *element)
 	return (-1);
 }
 
-char	*get_element_name(int *i)
+char	*get_element_name(int *i, t_vars *vars)
 {
-	t_vars	*vars;
+	//t_vars	*vars;
 	char	**temp;
 	char	*element_name;
 
-	vars = get_data();
+	//vars = get_data();
 	while (*i < vars->map_start && check_line(vars->full_config[*i]) == false)
 		(*i)++;
 	temp = ft_split(vars->full_config[*i], ' ');
