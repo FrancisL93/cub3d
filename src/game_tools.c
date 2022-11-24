@@ -17,12 +17,12 @@ void	set_movement(int keycode)
 	}
 	else if (keycode == LEFT)
 	{	
-		vars->game->posx -= cos(vars->game->dirx * (PI / 180)) / vars->game->movement;
-		vars->game->posy += sin(vars->game->dirx * (PI / 180)) / vars->game->movement;
+		vars->game->posx += cos((vars->game->dirx - 90) * (PI / 180)) / vars->game->movement;
+		vars->game->posy += sin((vars->game->dirx - 90) * (PI / 180)) / vars->game->movement;
 	}
 	else if (keycode == RIGHT)
 	{	
-		vars->game->posx += cos(vars->game->dirx * (PI / 180)) / vars->game->movement;
-		vars->game->posy -= sin(vars->game->dirx * (PI / 180)) / vars->game->movement;
+		vars->game->posx += cos((vars->game->dirx + 90)* (PI / 180)) / vars->game->movement;
+		vars->game->posy += sin((vars->game->dirx + 90)* (PI / 180)) / vars->game->movement;
 	}
 }
