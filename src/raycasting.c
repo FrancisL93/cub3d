@@ -25,7 +25,7 @@ void	ray(double angle, int i)
 	draw_ray(i, wall_height);
 }
 
-void	ray_loop(void)
+void	raycasting(void)
 {
 	int		i;
 	float	angle;
@@ -36,19 +36,9 @@ void	ray_loop(void)
 	angle = vars->game->dirx - (vars->focal_length / 2);
 	while (i < vars->win_width)
 	{
-		if (angle < 0)
-			ray(360 + angle, i);
-		else
-			ray(angle, i);
+		ray(angle, i);
 		angle += vars->increment_angle;
 		i++;
 	}
 }
 
-void	raycasting(void)
-{
-	//t_vars	*vars;
-
-	//vars = get_data();
-	ray_loop();
-}

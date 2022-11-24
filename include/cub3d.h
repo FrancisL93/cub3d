@@ -86,15 +86,13 @@ void	launch_game(void);
 t_vars	*get_data(void);
 
 //map.c
-void	get_map(void);
 int		find_map(char **fullconfig);
+void	get_map(void);
 void	is_valid_char(char c, char *str);
 
 //map_info.c
-char	*get_element_name(int *i, t_vars *vars);
 int		get_element_index(char *element);
-bool	check_line(char *line);
-void	fill_mapdata(t_vars *vars, int index, int i);
+void	get_mapdata(void);
 bool	check_full_config(t_vars *vars);
 
 //map_parsing.c
@@ -106,8 +104,6 @@ void	set_up_start(void);
 //map_validation.c
 void	validate_map(char *mapfile);
 void	read_map_file(int fd);
-void	get_mapdata(void);
-bool	gap_til_map(t_vars *vars, int i);
 
 //print.c
 void	generate_img(void);
