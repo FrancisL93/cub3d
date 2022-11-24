@@ -17,17 +17,40 @@ void	my_mlx_pixel_put(t_img	*data, int x, int y, int color)
 	}
 }
 
-void	draw_ray(int x, int wall_height)
+char	*get_texture_pixel(void	*text, int x, int y)
 {
-	int	i;
-	t_vars	*vars;
+	int		bpp;
+	int		line_size;
+	int		endian;
+	char	*pixel;
+
+	pixel = mlx_get_data_addr(text, &bpp, &line_size, &endian);
+	pixel += (y * line_size + x * (bpp / 8));
+	return (pixel);
+}
+
+void	draw_ray(int x, int wall_height, int text_pos)
+{
+	int			i;
+	double		j;
+	double		text_increment;
+	char		*tmp;
+	t_vars		*vars;
 
 	i = 0;
 	vars = get_data();
+	text_increment = (wall_height / 2) / 64;
 	while (i < (vars->win_height / 2 - wall_height))
 		my_mlx_pixel_put(vars->img, x, i++, vars->img->ceiling_color);
+	// while (i < vars->win_height && i < (vars->win_height / 2 + wall_height))
+	// 	my_mlx_pixel_put(vars->img, x, i++, vars->img->wall_color);
+	j = 0;
 	while (i < vars->win_height && i < (vars->win_height / 2 + wall_height))
-		my_mlx_pixel_put(vars->img, x, i++, vars->img->wall_color);
+	{
+		tmp = vars->img->screen_addr + (i++ * vars->img->line_length + x * (vars->img->bpp / 8));
+		*tmp = *get_texture_pixel(vars->img->north_text, text_pos, (int) floor(j));
+		j += text_increment;
+	}
 	while (i < vars->win_height)
 		my_mlx_pixel_put(vars->img, x, i++, vars->img->floor_color);
 }

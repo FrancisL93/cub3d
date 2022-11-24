@@ -111,7 +111,7 @@ void	read_map_file(int fd);
 
 //print.c
 void	generate_img(void);
-void	draw_ray(int x, int wall_height);
+void	draw_ray(int x, int wall_height, int text_pos);
 
 //print_tools.c
 void	set_colors(void);

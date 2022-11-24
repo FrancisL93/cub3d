@@ -1,6 +1,7 @@
 #include "../include/cub3d.h"
 
 
+
 void	validate_rgb(char **color_line, char **rgb)
 {
 	int	i;

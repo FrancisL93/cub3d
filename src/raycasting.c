@@ -19,7 +19,7 @@ void	ray(double angle, int i)
 	distance = sqrt(pow(vars->game->posx - vars->game->ray_x, 2) + \
 	pow(vars->game->posy - vars->game->ray_y, 2));
 	wall_height = floor((vars->win_height / 2) / distance);
-	draw_ray(i, wall_height);
+	draw_ray(i, wall_height, floor((int)(64 * (vars->game->ray_x + vars->game->ray_y)) % 64));
 }
 
 void	raycasting(void)
