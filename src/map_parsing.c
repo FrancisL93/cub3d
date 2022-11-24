@@ -105,7 +105,7 @@ void	spaces_handling(void)
 		{
 			if (vars->map[i][j] == ' ')
 				check_spaces(i, j);
-			if (vars->map[i][j] == '0')
+			if (vars->map[i][j] == '0' && vars->map[i + 1])
 				check_zeros(i, j);
 			j++;
 		}
@@ -115,5 +115,5 @@ void	spaces_handling(void)
 	j = 0;
 	printf("NOUVELLE MAP ------------------\n");
 	print_new_map(i, j);
-	//check_walls();
+	check_walls();
 }
