@@ -44,9 +44,9 @@ t_vars	*get_data(void)
 
 int	main(int argc, char **argv)
 {	
-	t_vars	*vars;
+	//t_vars	*vars;
 
-	vars = get_data();
+	//vars = get_data();
 	if (argc != 2)
 		quit_game(0);
 	validate_map(argv[1]);

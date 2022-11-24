@@ -47,8 +47,8 @@ void	ray_loop(void)
 
 void	raycasting(void)
 {
-	t_vars	*vars;
+	//t_vars	*vars;
 
-	vars = get_data();
+	//vars = get_data();
 	ray_loop();
 }
