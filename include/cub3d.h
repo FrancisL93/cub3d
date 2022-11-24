@@ -11,6 +11,7 @@ library (-lm man man 3 math)
 # define CUB3D_H
 
 # include "minilibx/mlx.h"
+//# include "../mlx/mlx.h"    //M1 Mac @home
 # include <math.h>
 # include <stdio.h>
 # include <stdbool.h>

@@ -23,6 +23,8 @@ LIBFTA = include/libft/libft.a
 
 MLX = include/minilibx
 MLXA = include/minilibx/libmlx.a
+#MLX = mlx/ (M1 Mac @home)
+#MLXA = mlx/libmlx.a (M1 Mac @home)
 
 O = obj/
 S = src/
