@@ -48,7 +48,7 @@ void	init_data(void)
 	vars->win_height = 1080;
 	vars->increment_angle = vars->focal_length / vars->win_width;
 	vars->ray_precision = 64;
-	vars->img->wall_color = 255;
+	vars->img->wall_color = 25;
 }
 
 void	launch_game(void)
