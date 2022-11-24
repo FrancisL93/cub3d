@@ -10,9 +10,9 @@ void	my_mlx_pixel_put(t_img	*data, int x, int y, int color)
 	while (i >= 0)
 	{
 		if (data->endian != 0)
-			*pixel++ = (color >> i) & 0xFF;
+			*pixel++ = (color >> i);
 		else
-			*pixel++ = (color >> (data->bpp -8 - i)) & 0xFF;
+			*pixel++ = (color >> (data->bpp -8 - i));
 		i -=8;
 	}
 }
@@ -25,8 +25,8 @@ void	draw_ray(int x, int wall_height)
 	i = 0;
 	vars = get_data();
 	while (i < (vars->win_height / 2 - wall_height))
-		my_mlx_pixel_put(vars->img, x, i++, vars->img->ceiling_color);
-	while (i < (vars->win_height / 2 + wall_height))
+		my_mlx_pixel_put(vars->img, x, i++, vars->img->floor_color);
+	while (i < vars->win_height && i < (vars->win_height / 2 + wall_height))
 		my_mlx_pixel_put(vars->img, x, i++, vars->img->wall_color);
 	while (i < vars->win_height)
 		my_mlx_pixel_put(vars->img, x, i++, vars->img->floor_color);
@@ -38,6 +38,8 @@ void	generate_img(void)
 
 	vars = get_data();
 	mlx_clear_window(vars->mlx, vars->win);
+	if (vars->img->screen_view)
+		mlx_destroy_image(vars->mlx, vars->img->screen_view);
 	vars->img->screen_view = mlx_new_image(vars->mlx, vars->win_width, \
 	vars->win_height);
 	if (!vars->img->screen_view)
@@ -49,5 +51,4 @@ void	generate_img(void)
 	//render_floor();
 	raycasting();
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->screen_view, 0, 0);
-	mlx_destroy_image(vars->mlx, vars->img->screen_view);
 }

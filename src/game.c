@@ -43,6 +43,7 @@ void	init_data(void)
 		quit_game(7);
 	set_up_start();
 	set_colors();
+	vars->img->screen_view = NULL;
 	vars->focal_length = 60;
 	vars->win_width = 1920;
 	vars->win_height = 1080;
