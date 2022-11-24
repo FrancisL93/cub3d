@@ -1,10 +1,8 @@
 #include "../include/cub3d.h"
 
-//TODO Parsing de la map qui accepte les espaces
-//? Est-ce qu'on implemente un floodfill pour justement combler ces espaces et que ca cree une map "carree"?
-//TODO Faire une fonction pour quand sort avec la croix (x rouge)
+//LEAKS Faire une fonction pour quand sort avec la croix (x rouge)
 //TODO Modifier les erreurs pour : "Error:\nRaison de l'erreur\n"
-//TODO retest check_walls pour assurer le fix
+//TODO S'assurer qu'un zero ne peut pas voir un espace vide en diagonale entre 2 '1'
 
 
 void	print_map_data(char **mapdata)
