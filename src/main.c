@@ -4,7 +4,7 @@
 //? Est-ce qu'on implemente un floodfill pour justement combler ces espaces et que ca cree une map "carree"?
 //TODO Faire une fonction pour quand sort avec la croix (x rouge)
 //TODO Modifier les erreurs pour : "Error:\nRaison de l'erreur\n"
-//TODO Check_walls map_parsing donne erreur en tout temps
+//TODO retest check_walls pour assurer le fix
 
 
 void	print_map_data(char **mapdata)
