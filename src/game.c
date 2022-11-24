@@ -28,13 +28,13 @@ int	key_hook(int keycode)
 	else
 	{
 		if (keycode == UP)
-			vars->game->posy -= 1;
+			vars->game->posy -= 0.25;
 		else if (keycode == DOWN)
-			vars->game->posy += 1;
+			vars->game->posy += 0.25;
 		else if (keycode == LEFT)
-			vars->game->posx -= 1;
+			vars->game->posx -= 0.25;
 		else if (keycode == RIGHT)
-			vars->game->posx += 1;
+			vars->game->posx += 0.25;
 		generate_img();
 	}
 	return (0);

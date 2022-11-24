@@ -21,53 +21,6 @@ int	get_element_index(char *element)
 	return (-1);
 }
 
-char	*get_element_name(int *i, t_vars *vars)
-{
-	//t_vars	*vars;
-	char	**temp;
-	char	*element_name;
-
-	//vars = get_data();
-	while (*i < vars->map_start && check_line(vars->full_config[*i]) == false)
-		(*i)++;
-	temp = ft_split(vars->full_config[*i], ' ');
-	if (temp[0] && temp[0][0] == '1')
-		return (NULL);
-	if (get_element_index(temp[0]) == -1 || temp[1] == NULL)
-	{
-		free_double_array((void **)temp);
-		return (NULL);
-	}
-	else
-	{
-		element_name = ft_strdup(temp[0]);
-		free_double_array((void **)temp);
-		return (element_name);
-	}
-	free_double_array((void **)temp);
-	return (NULL);
-}
-
-bool	check_line(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line && line[i] && ft_isalpha(line[i]) == 0)
-		i++;
-	if (get_element_index(&line[i]) == -1)
-		return (false);
-	return (true);
-}
-
-void	fill_mapdata(t_vars *vars, int index, int i)
-{
-	if (index != -1 && vars->mapdata[index] == NULL)
-			vars->mapdata[index] = vars->full_config[i];
-	else
-		return ;
-}
-
 bool	check_full_config(t_vars *vars)
 {
 	int	j;
@@ -79,4 +32,32 @@ bool	check_full_config(t_vars *vars)
 			return (true);
 	}
 	return (false);
+}
+
+void	get_mapdata(void)
+{
+	int		i;
+	int		index;
+	char	**tmp;
+	t_vars	*vars;
+
+	i = 0;
+	vars = get_data();
+	while (i < vars->map_start)
+	{
+		tmp = ft_split(vars->full_config[i], ' ');
+		if (tmp[0][0] != '\n')
+		{
+			index = get_element_index(tmp[0]);
+			if (tmp[1] && index >= 0 && check_full_config(vars) == false)
+				vars->mapdata[index] = vars->full_config[i];
+			else
+			{
+				free_double_array((void **) tmp);
+				quit_game(4);
+			}
+		}
+		free_double_array((void **) tmp);
+		i++;
+	}
 }

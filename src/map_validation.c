@@ -1,52 +1,6 @@
 #include "../include/cub3d.h"
 
 //? Pas trouvé de edge cases qui font failer ce parsing. Qui dit mieux ? 
-bool	gap_til_map(t_vars *vars, int i)
-{
-	int	j;
-
-	while (i < vars->map_start)
-	{
-		j = 0;
-		while (j < (int)ft_strlen(vars->full_config[i])
-			&& ft_strchr(" \n", vars->full_config[i][j]))
-			j++;
-		if (vars->full_config[i][j])
-		{
-			printf("gap_til_map\n");
-			quit_game(5);
-		}
-		i++;
-	}
-	return (true);
-}
-
-void	get_mapdata(void)
-{
-	t_vars	*vars;
-	int		i;
-	int		index;
-	char	*elem_name;
-
-	i = 0;
-	vars = get_data();
-	elem_name = get_element_name(&i, vars);
-	while (elem_name != NULL)
-	{
-		index = get_element_index(elem_name);
-		fill_mapdata(vars, index, i);
-		free(elem_name);
-		i++;
-		if (check_full_config(vars) == true && gap_til_map(vars, i) == true)
-			return ;
-		elem_name = get_element_name(&i, vars);
-		if (elem_name == NULL)
-			break ;
-	}
-	free(elem_name);
-	printf("get_mapdata\n");
-	quit_game(5);
-}
 
 int	check_file(char *map)
 {
