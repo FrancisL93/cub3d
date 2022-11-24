@@ -11,6 +11,7 @@ SRC =   map_validation.c 	\
 		assets.c			\
 		map_tools.c			\
 		game.c 				\
+		game_tools.c		\
 		print.c 			\
 		print_tools.c		\
 		free.c 				\

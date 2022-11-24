@@ -53,6 +53,7 @@ typedef struct s_game {
 	double	ray_y;
 	double	raycos;
 	double	raysin;
+	double	movement;
 }	t_game;
 
 typedef struct s_vars {
@@ -81,6 +82,9 @@ int		quit_game(int exit_num);
 
 //game.c
 void	launch_game(void);
+
+//game_tools.c
+void	set_movement(int keycode);
 
 //main.c
 t_vars	*get_data(void);

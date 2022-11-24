@@ -5,22 +5,23 @@ int	key_hook(int keycode)
 	t_vars	*vars;
 	int		increment;
 
-	increment = 1;
+	increment = 5;
 
 	vars = get_data();
 	if (keycode == ESC)
 		quit_game(12);
 	else
 	{
-		if (keycode == UP)
-			vars->game->posy -= 0.25;
-		else if (keycode == DOWN)
-			vars->game->posy += 0.25;
-		else if (keycode == LEFT)
-			vars->game->posx -= 0.25;
-		else if (keycode == RIGHT)
-			vars->game->posx += 0.25;
-		else if (keycode == LEFTA)
+		// if (keycode == UP)
+		// 	vars->game->posy -= 0.25;
+		// else if (keycode == DOWN)
+		// 	vars->game->posy += 0.25;
+		// else if (keycode == LEFT)
+		// 	vars->game->posx -= 0.25;
+		// else if (keycode == RIGHT)
+		// 	vars->game->posx += 0.25;
+		set_movement(keycode);
+		if (keycode == LEFTA)
 			vars->game->dirx -= increment;
 		else if (keycode == RIGHTA)
 			vars->game->dirx += increment;
@@ -48,8 +49,9 @@ void	init_data(void)
 	vars->win_width = 1920;
 	vars->win_height = 1080;
 	vars->increment_angle = vars->focal_length / vars->win_width;
-	vars->ray_precision = 64;
+	vars->ray_precision = 256;
 	vars->img->wall_color = 25;
+	vars->game->movement = 5;
 }
 
 void	launch_game(void)
