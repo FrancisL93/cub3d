@@ -25,11 +25,11 @@ void	draw_ray(int x, int wall_height)
 	i = 0;
 	vars = get_data();
 	while (i < (vars->win_height / 2 - wall_height))
-		my_mlx_pixel_put(vars->img, x, i++, vars->img->floor_color);
+		my_mlx_pixel_put(vars->img, x, i++, vars->img->ceiling_color);
 	while (i < (vars->win_height / 2 + wall_height))
 		my_mlx_pixel_put(vars->img, x, i++, vars->img->wall_color);
 	while (i < vars->win_height)
-		my_mlx_pixel_put(vars->img, x, i++, vars->img->ceiling_color);
+		my_mlx_pixel_put(vars->img, x, i++, vars->img->floor_color);
 }
 
 void	generate_img(void)
