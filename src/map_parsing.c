@@ -42,7 +42,7 @@ void	check_walls(void)
 			{
 				if (vars->map[line][column] != '1')
 				{
-					printf("check_walls 3\n");
+					printf("%c, check_walls 3\n", vars->map[line][column]);
 					quit_game(13);
 				}
 				column++;
