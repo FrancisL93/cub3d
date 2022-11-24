@@ -42,6 +42,7 @@ void	set_up_start(void)
 				vars->game->posx = j;
 				vars->game->posy = i;
 				set_direction(vars->map[i][j]);
+				vars->map[i][j] = '0';
 				return ;
 			}
 			j++;

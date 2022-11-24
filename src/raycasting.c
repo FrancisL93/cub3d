@@ -2,22 +2,19 @@
 
 void	ray(double angle, int i)
 {
-	t_vars	*vars;
-	int		wall;
-	double	distance;
 	int		wall_height;
+	double	distance;
+	t_vars	*vars;
 
-	wall = 0;
 	vars = get_data();
 	vars->game->ray_x = vars->game->posx;
 	vars->game->ray_y = vars->game->posy;
-	vars->game->raycos = cos((angle * (PI / 180)) / vars->ray_precision);
-	vars->game->raysin = sin((angle * (PI / 180)) / vars->ray_precision);
-	while (!wall)
+	vars->game->raycos = cos(angle * (PI / 180)) / vars->ray_precision;
+	vars->game->raysin = sin(angle * (PI / 180)) / vars->ray_precision;
+	while (vars->map[(int) floor(vars->game->ray_y)][(int) floor(vars->game->ray_x)] != '1')
 	{
 		vars->game->ray_x += vars->game->raycos;
 		vars->game->ray_y += vars->game->raysin;
-		wall = vars->map[(int) floor(vars->game->ray_y)][(int) floor(vars->game->ray_x)];
 	}
 	distance = sqrt(pow(vars->game->posx - vars->game->ray_x, 2) + \
 	pow(vars->game->posy - vars->game->ray_y, 2));
