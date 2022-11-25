@@ -29,9 +29,9 @@ void	build_imgs(void)
 	vars->img = malloc(sizeof(*vars->img));
 	if (!vars->img)
 		quit_game(6);
-	vars->img->north_text = get_text(vars->mlx, vars->mapdata[0]);
-	vars->img->south_text = get_text(vars->mlx, vars->mapdata[1]);
-	vars->img->west_text = get_text(vars->mlx, vars->mapdata[2]);
-	vars->img->east_text = get_text(vars->mlx, vars->mapdata[3]);
+	vars->img->text[0] = get_text(vars->mlx, vars->mapdata[0]);
+	vars->img->text[1] = get_text(vars->mlx, vars->mapdata[1]);
+	vars->img->text[2] = get_text(vars->mlx, vars->mapdata[2]);
+	vars->img->text[3] = get_text(vars->mlx, vars->mapdata[3]);
 	return ;
 }

@@ -29,26 +29,28 @@ char	*get_texture_pixel(void	*text, int x, int y)
 	return (pixel);
 }
 
-void	draw_ray(int x, int wall_height, int text_pos)
+void	draw_ray(int x, int wall_height, int text_pos, int texture)
 {
 	int			i;
 	double		j;
 	double		text_increment;
 	char		*tmp;
+	char		*text_tmp;
 	t_vars		*vars;
 
 	i = 0;
 	vars = get_data();
-	text_increment = (wall_height / 2) / 64;
+	text_increment = (double) 64 / (wall_height) / 2;
 	while (i < (vars->win_height / 2 - wall_height))
 		my_mlx_pixel_put(vars->img, x, i++, vars->img->ceiling_color);
-	// while (i < vars->win_height && i < (vars->win_height / 2 + wall_height))
-	// 	my_mlx_pixel_put(vars->img, x, i++, vars->img->wall_color);
 	j = 0;
 	while (i < vars->win_height && i < (vars->win_height / 2 + wall_height))
 	{
 		tmp = vars->img->screen_addr + (i++ * vars->img->line_length + x * (vars->img->bpp / 8));
-		*tmp = *get_texture_pixel(vars->img->north_text, text_pos, (int) floor(j));
+		text_tmp = get_texture_pixel(vars->img->text[texture], text_pos, (int) floor(j));
+		*tmp++ = *text_tmp++;
+		*tmp++ = *text_tmp++;
+		*tmp++ = *text_tmp++;
 		j += text_increment;
 	}
 	while (i < vars->win_height)
@@ -61,8 +63,8 @@ void	generate_img(void)
 
 	vars = get_data();
 	mlx_clear_window(vars->mlx, vars->win);
-	if (vars->img->screen_view)
-		mlx_destroy_image(vars->mlx, vars->img->screen_view);
+	// if (vars->img->screen_view)
+	// 	mlx_destroy_image(vars->mlx, vars->img->screen_view);
 	vars->img->screen_view = mlx_new_image(vars->mlx, vars->win_width, \
 	vars->win_height);
 	if (!vars->img->screen_view)

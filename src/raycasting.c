@@ -1,8 +1,33 @@
 #include "../include/cub3d.h"
 
+int	get_texture(int wall_x, int wall_y)
+{
+	int		x;
+	int		y;
+	double	ray_x;
+	double	ray_y;
+	t_vars	*vars;
+
+	vars = get_data();
+	ray_x = vars->game->ray_x - vars->game->raycos;
+	ray_y = vars->game->ray_y - vars->game->raysin;
+	x = (int) floor(ray_y);
+	y = (int) floor(ray_x);
+	if (x < wall_x)
+		return (3);
+	else if (x > wall_x)
+		return (2);
+	else if (y < wall_y)
+		return (1);
+	else if (y > wall_y)
+		return (0);
+	return (-1);
+}
+
 void	ray(double angle, int i)
 {
 	int		wall_height;
+	int		texture;
 	double	distance;
 	t_vars	*vars;
 
@@ -16,10 +41,14 @@ void	ray(double angle, int i)
 		vars->game->ray_x += vars->game->raycos;
 		vars->game->ray_y += vars->game->raysin;
 	}
+	texture = get_texture((int) floor(vars->game->ray_y), (int) floor(vars->game->ray_x));
+	if (texture < 0)
+		quit_game(1); //TODO Set le bon exit code
 	distance = sqrt(pow(vars->game->posx - vars->game->ray_x, 2) + \
 	pow(vars->game->posy - vars->game->ray_y, 2));
 	wall_height = floor((vars->win_height / 2) / distance);
-	draw_ray(i, wall_height, floor((int)(64 * (vars->game->ray_x + vars->game->ray_y)) % 64));
+	draw_ray(i, wall_height, floor((int)(64 * \
+	(vars->game->ray_x + vars->game->ray_y)) % 64), texture);
 }
 
 void	raycasting(void)

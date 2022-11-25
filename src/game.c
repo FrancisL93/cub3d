@@ -12,14 +12,6 @@ int	key_hook(int keycode)
 		quit_game(12);
 	else
 	{
-		// if (keycode == UP)
-		// 	vars->game->posy -= 0.25;
-		// else if (keycode == DOWN)
-		// 	vars->game->posy += 0.25;
-		// else if (keycode == LEFT)
-		// 	vars->game->posx -= 0.25;
-		// else if (keycode == RIGHT)
-		// 	vars->game->posx += 0.25;
 		set_movement(keycode);
 		if (keycode == LEFTA)
 			vars->game->dirx -= increment;

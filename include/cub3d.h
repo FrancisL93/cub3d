@@ -30,10 +30,7 @@ library (-lm man man 3 math)
 
 typedef struct s_img {
 	void	*screen_view;
-	void	*north_text;
-	void	*south_text;
-	void	*east_text;
-	void	*west_text;
+	void	*text[4];
 	char	*screen_addr;
 	char	*addr;
 	int		bpp;
@@ -111,7 +108,7 @@ void	read_map_file(int fd);
 
 //print.c
 void	generate_img(void);
-void	draw_ray(int x, int wall_height, int text_pos);
+void	draw_ray(int x, int wall_height, int text_pos, int texture);
 
 //print_tools.c
 void	set_colors(void);
