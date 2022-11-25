@@ -27,7 +27,7 @@ void	print_error(int error)
 	else if (error == 13)
 		printf("Error: Map do not respect rules of a valid map.\n");
 }
-
+//TODO Verifier tous les free en plus d'ordonner les erreurs pour eviter les double free
 int	quit_game(int exit_num)
 {
 	t_vars	*vars;
@@ -39,6 +39,8 @@ int	quit_game(int exit_num)
 		free(vars->game);
 		mlx_destroy_window(vars->mlx, vars->win);
 	}
+	if (exit_num >= 10)
+		exit(0);
 	if (exit_num > 6)
 		free(vars->img);
 	if (exit_num > 3)
@@ -48,8 +50,7 @@ int	quit_game(int exit_num)
 	if (exit_num == 2)
 		free(vars->full_config);
 	free(vars);
-	if (exit_num >= 10)
-		exit(0);
-	else
+
+	//else
 		exit(exit_num);
 }
