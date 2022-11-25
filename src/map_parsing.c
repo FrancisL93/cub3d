@@ -68,7 +68,7 @@ void	check_spaces(int line, int column)
 		vars->map[line][column] = '1';
 }
 
-static void	print_new_map(int i, int j)
+/*static void	print_new_map(int i, int j)
 {
 	t_vars	*vars;
 
@@ -83,7 +83,7 @@ static void	print_new_map(int i, int j)
 		}
 		i++;
 	}
-}
+}*/
 
 void	check_zeros(int line, int column)
 {
