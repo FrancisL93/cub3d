@@ -130,4 +130,60 @@ void	spaces_handling(void)
 	printf("NOUVELLE MAP ------------------\n");
 	print_new_map(i, j);
 	check_walls();
+	map_square();
+	printf("MAP CARRE ----------------------\n");
+	int k = 0;
+	int l = 0;
+	while (vars->map[k])
+	{
+		l = 0;
+		while (vars->map[k][l])
+		{
+			printf("%c", vars->map[k][l]);
+			l++;
+		}
+		//printf("\n");
+		k++;
+	}
+}
+
+void	map_square(void)
+{
+	int		i;
+	int		j;
+	int		max_len;
+	char	*temp;
+	t_vars	*vars;
+
+	i = 0;
+	vars = get_data();
+	max_len = ft_strlen(vars->map[0]);
+	while (vars->map[i])
+	{
+		if ((int)ft_strlen(vars->map[i]) > max_len)
+			max_len = ft_strlen(vars->map[i]);
+		i++;
+	}
+	i = 0;
+	while (vars->map[i])
+	{
+		vars->map[i] = strpop(vars->map[i], ft_strlen(vars->map[i]) - 1);
+		j = 0;
+		temp = ft_strdup(vars->map[i]);
+		free(vars->map[i]);
+		vars->map[i] = ft_calloc(sizeof(char), max_len + 1);
+		vars->map[i] = temp;
+		while (vars->map[i][j])
+			j++;
+		while (j < max_len)
+		{
+			vars->map[i][j] = '1';
+			j++;
+		}
+		vars->map[i][j] = '\n';
+		vars->map[i] = ft_strdup(vars->map[i]);
+		//printf("vars_map[%d] = %s\n", i, vars->map[i]);
+		free(temp);
+		i++;
+	}
 }

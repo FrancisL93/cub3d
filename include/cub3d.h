@@ -101,6 +101,7 @@ bool	check_full_config(t_vars *vars);
 
 //map_parsing.c
 void	spaces_handling(void);
+void	map_square(void);
 
 //map_tools.c
 void	set_up_start(void);
