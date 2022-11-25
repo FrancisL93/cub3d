@@ -30,7 +30,10 @@ void	print_error(int error)
 //TODO Verifier tous les free en plus d'ordonner les erreurs pour eviter les double free
 //0-9 wrong execution & validate_map
 //10-19 get_map errors
-//20-29 spaces_handling
+//20-29 format_map
+//30-39 build_imgs
+//40-49 init_data
+//50+ others
 int	quit_game(int exit_num)
 {
 	t_vars	*vars;

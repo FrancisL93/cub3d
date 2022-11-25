@@ -55,6 +55,6 @@ int	main(int argc, char **argv)
 	// print_map(vars->map);
 	get_mapdata();
 	// print_map_data(vars->mapdata);
-	spaces_handling();
+	format_map();
 	launch_game();
 }

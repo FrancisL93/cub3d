@@ -97,7 +97,7 @@ void	get_mapdata(void);
 bool	check_full_config(t_vars *vars);
 
 //map_parsing.c
-void	spaces_handling(void);
+void	format_map(void);
 void	map_square(void);
 
 //map_tools.c

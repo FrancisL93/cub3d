@@ -83,7 +83,7 @@ void	check_zeros(int line, int column)
 	}
 }
 
-void	spaces_handling(void)
+void	format_map(void)
 {
 	t_vars	*vars;
 	int		i;
