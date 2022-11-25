@@ -3,29 +3,29 @@
 void	print_error(int error)
 {
 	if (error == 0)
-		printf("Error: Execute as ./cub3d map.cub\n");
+		printf("Error\nExecute as ./cub3d map.cub\n");
 	else if (error == 2)
-		printf("Error: File is empty.\n");
+		printf("Error\nFile is empty.\n");
 	else if (error == 3)
-		printf("Error: No map in file\n");
+		printf("Error\nNo map in file\n");
 	else if (error == 4)
-		printf("Error: Not enough memory for map allocation\n");
+		printf("Error\nNot enough memory for map allocation\n");
 	else if (error == 5)
-		printf("Error: Bad map configuration settings\n");
+		printf("Error\nBad map configuration settings\n");
 	else if (error == 6)
-		printf("Error: Not enough memory for assets\n");
+		printf("Error\nNot enough memory for assets\n");
 	else if (error == 7)
-		printf("Error: Not enough memory for game data\n");
+		printf("Error\nNot enough memory for game data\n");
 	else if (error == 8)
-		printf("Error: Mlx couldn't create new image\n");
+		printf("Error\nMlx couldn't create new image\n");
 	else if (error == 9)
-		printf("Error: Mlx couldn't retrieve image address\n");
+		printf("Error\nMlx couldn't retrieve image address\n");
 	else if (error == 10)
-		printf("Error: Invalid characters in map\n");
+		printf("Error\nInvalid characters in map\n");
 	else if (error == 11)
-		printf("Error: More than one start position\n");
+		printf("Error\nMore than one start position\n");
 	else if (error == 13)
-		printf("Error: Map do not respect rules of a valid map.\n");
+		printf("Error\nMap do not respect rules of a valid map.\n");
 }
 //TODO Verifier tous les free en plus d'ordonner les erreurs pour eviter les double free
 int	quit_game(int exit_num)
