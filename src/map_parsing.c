@@ -1,8 +1,5 @@
 #include "../include/cub3d.h"
 
-//TODO Verifier les contours 
-//TODO Fonction check_walls un coup nouvelle carte générée
-
 void	check_walls(void)
 {
 	//REFACTOR for Norminette
@@ -41,9 +38,7 @@ void	check_walls(void)
 			while (vars->map[line][column] && column < (int)ft_strlen(vars->map[line]))
 			{
 				if (vars->map[line][column] != '1')
-				{
 					quit_game(13);
-				}
 				column++;
 			}
 		}
@@ -125,26 +120,8 @@ void	spaces_handling(void)
 		}
 		i++;
 	}
-	i = 0;
-	j = 0;
-	printf("NOUVELLE MAP ------------------\n");
-	print_new_map(i, j);
 	check_walls();
 	map_square();
-	printf("MAP CARRE ----------------------\n");
-	int k = 0;
-	int l = 0;
-	while (vars->map[k])
-	{
-		l = 0;
-		while (vars->map[k][l])
-		{
-			printf("%c", vars->map[k][l]);
-			l++;
-		}
-		//printf("\n");
-		k++;
-	}
 }
 
 void	map_square(void)
@@ -152,38 +129,25 @@ void	map_square(void)
 	int		i;
 	int		j;
 	int		max_len;
-	char	*temp;
 	t_vars	*vars;
 
-	i = 0;
+	i = -1;
 	vars = get_data();
 	max_len = ft_strlen(vars->map[0]);
-	while (vars->map[i])
+	while (vars->map[++i])
 	{
 		if ((int)ft_strlen(vars->map[i]) > max_len)
 			max_len = ft_strlen(vars->map[i]);
-		i++;
 	}
-	i = 0;
-	while (vars->map[i])
+	i = -1;
+	while (vars->map[++i])
 	{
 		vars->map[i] = strpop(vars->map[i], ft_strlen(vars->map[i]) - 1);
 		j = 0;
-		temp = ft_strdup(vars->map[i]);
-		free(vars->map[i]);
-		vars->map[i] = ft_calloc(sizeof(char), max_len + 1);
-		vars->map[i] = temp;
 		while (vars->map[i][j])
 			j++;
-		while (j < max_len)
-		{
-			vars->map[i][j] = '1';
-			j++;
-		}
-		vars->map[i][j] = '\n';
-		vars->map[i] = ft_strdup(vars->map[i]);
-		//printf("vars_map[%d] = %s\n", i, vars->map[i]);
-		free(temp);
-		i++;
+		while (j++ < max_len)
+			vars->map[i] = add_string_last('1', vars->map[i]);
+		vars->map[i] = add_string_last('\n', vars->map[i]);
 	}
 }
