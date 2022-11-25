@@ -42,6 +42,7 @@ void	read_map_file(int fd)
 	close(fd);
 	if (i == 1)
 	{
+		ft_putstr_fd("Error\nMapfile is empty\n", STDERR_FILENO);
 		free(vars->full_config);
 		quit_game(6);
 	}

@@ -44,7 +44,6 @@ void	check_walls(void)
 		}
 		line++;
 	}
-	printf("MAP EST OK\n");
 }
 
 void	check_spaces(int line, int column)
@@ -83,6 +82,34 @@ void	check_zeros(int line, int column)
 	}
 }
 
+void	map_square(void)
+{
+	int		i;
+	int		j;
+	int		max_len;
+	t_vars	*vars;
+
+	i = -1;
+	vars = get_data();
+	max_len = ft_strlen(vars->map[0]);
+	while (vars->map[++i])
+	{
+		if ((int)ft_strlen(vars->map[i]) > max_len)
+			max_len = ft_strlen(vars->map[i]);
+	}
+	i = -1;
+	while (vars->map[++i])
+	{
+		vars->map[i][ft_strlen(vars->map[i])- 1] = '\0';
+		j = 0;
+		while (vars->map[i][j])
+			j++;
+		while (j++ < max_len)
+			vars->map[i] = add_string_last('1', ft_strdup(vars->map[i]));
+		vars->map[i] = add_string_last('\n', ft_strdup(vars->map[i]));
+	}
+}
+
 void	format_map(void)
 {
 	t_vars	*vars;
@@ -106,32 +133,4 @@ void	format_map(void)
 	}
 	check_walls();
 	map_square();
-}
-
-void	map_square(void)
-{
-	int		i;
-	int		j;
-	int		max_len;
-	t_vars	*vars;
-
-	i = -1;
-	vars = get_data();
-	max_len = ft_strlen(vars->map[0]);
-	while (vars->map[++i])
-	{
-		if ((int)ft_strlen(vars->map[i]) > max_len)
-			max_len = ft_strlen(vars->map[i]);
-	}
-	i = -1;
-	while (vars->map[++i])
-	{
-		vars->map[i] = strpop(vars->map[i], ft_strlen(vars->map[i]) - 1);
-		j = 0;
-		while (vars->map[i][j])
-			j++;
-		while (j++ < max_len)
-			vars->map[i] = add_string_last('1', vars->map[i]);
-		vars->map[i] = add_string_last('\n', vars->map[i]);
-	}
 }

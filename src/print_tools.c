@@ -12,8 +12,8 @@ void	validate_rgb(char **color_line, char **rgb)
 	{
 		free_double_array((void **)color_line);
 		free_double_array((void **)rgb);
-		printf("Error: Color settings not valid\n");
-		quit_game(7); //TODO mettre le bon code de sortie
+		ft_putstr_fd("Error\nColor settings not valid\n", STDERR_FILENO);
+		quit_game(34);
 	}
 	while (rgb[i])
 	{
@@ -22,8 +22,10 @@ void	validate_rgb(char **color_line, char **rgb)
 			tmp = ft_atoi(rgb[i]);
 			if (tmp < 0 || tmp > 255)
 			{
-				printf("Error: Color settings not valid\n");
-				quit_game(7);
+				free_double_array((void **)color_line);
+				free_double_array((void **)rgb);
+				ft_putstr_fd("Error\nColor value not valid\n", STDERR_FILENO);
+				quit_game(35);
 			}
 		}
 		i++;

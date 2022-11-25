@@ -1,9 +1,8 @@
 #include "../include/cub3d.h"
 
 //LEAKS Faire une fonction pour quand sort avec la croix (x rouge)
-//TODO Modifier les erreurs pour : "Error:\nRaison de l'erreur\n"
-//TODO S'assurer qu'un zero ne peut pas voir un espace vide en diagonale entre 2 '1'
 //TODO Réparer la start position
+//TODO regarder si les int de raycasting aux limites son en dehors window à cause de floor
 
 void	print_map_data(char **mapdata)
 {

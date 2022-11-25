@@ -43,7 +43,7 @@ void	ray(double angle, int i)
 	}
 	texture = get_texture((int) floor(vars->game->ray_y), (int) floor(vars->game->ray_x));
 	if (texture < 0)
-		quit_game(1); //TODO Set le bon exit code
+		quit_game(43);
 	distance = sqrt(pow(vars->game->posx - vars->game->ray_x, 2) + \
 	pow(vars->game->posy - vars->game->ray_y, 2));
 	wall_height = floor((vars->win_height / 2) / distance);

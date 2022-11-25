@@ -38,7 +38,6 @@ typedef struct s_img {
 	int		endian;
 	int		floor_color;
 	int		ceiling_color;
-	int		wall_color;
 }t_img;
 
 typedef struct s_game {
@@ -73,6 +72,7 @@ typedef struct s_vars {
 
 //assets.c
 void	build_imgs(void);
+void	destroy_images(int num);
 
 //free.c
 int		quit_game(int exit_num);
@@ -108,7 +108,7 @@ void	validate_map(char *mapfile);
 void	read_map_file(int fd);
 
 //print.c
-void	generate_img(void);
+void	generate_img(int win);
 void	draw_ray(int x, int wall_height, int text_pos, int texture);
 
 //print_tools.c

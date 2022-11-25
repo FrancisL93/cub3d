@@ -9,7 +9,7 @@ int	key_hook(int keycode)
 
 	vars = get_data();
 	if (keycode == ESC)
-		quit_game(12);
+		quit_game(50);
 	else
 	{
 		set_movement(keycode);
@@ -21,7 +21,7 @@ int	key_hook(int keycode)
 			vars->game->dirx = increment;
 		else if (vars->game->dirx < 0)
 			vars->game->dirx = 360 - increment;
-		generate_img();
+		generate_img(1);
 	}
 	return (0);
 }
@@ -33,17 +33,16 @@ void	init_data(void)
 	vars = get_data();
 	vars->game = malloc(sizeof(vars->game));
 	if (!vars->game)
-		quit_game(6);
+		quit_game(33);
 	set_up_start();
 	set_colors();
 	vars->img->screen_view = NULL;
-	vars->focal_length = 60;
+	vars->focal_length = 66;
 	vars->win_width = 1920;
 	vars->win_height = 1080;
 	vars->increment_angle = vars->focal_length / vars->win_width;
-	vars->ray_precision = 256;
-	vars->img->wall_color = 25;
-	vars->game->movement = 5;
+	vars->ray_precision = vars->win_width / 2;
+	vars->game->movement = 3;
 }
 
 void	launch_game(void)
@@ -52,12 +51,22 @@ void	launch_game(void)
 
 	vars = get_data();
 	vars->mlx = mlx_init();
+	if (!vars->mlx)
+	{
+		ft_putstr_fd("Error\nMlx init failure\n", STDERR_FILENO);
+		quit_game(30);
+	}
 	build_imgs();
 	init_data();
 	vars->win = mlx_new_window(vars->mlx, vars->win_width, \
 	vars->win_height, "Cub3d");
-	generate_img();
-	mlx_hook(vars->win, 2, 1L << 0, key_hook, vars);
-	mlx_hook(vars->win, 17, 0, quit_game, vars);
+	if (!vars->win)
+	{
+		ft_putstr_fd("Error\nMlx window creation failure\n", STDERR_FILENO);
+		quit_game(40);
+	}
+	generate_img(0);
+	mlx_hook(vars->win, 2, 1L << 0, key_hook, 0);
+	mlx_hook(vars->win, 17, 50, quit_game, 0);
 	mlx_loop(vars->mlx);
 }

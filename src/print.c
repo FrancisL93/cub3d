@@ -57,23 +57,21 @@ void	draw_ray(int x, int wall_height, int text_pos, int texture)
 		my_mlx_pixel_put(vars->img, x, i++, vars->img->floor_color);
 }
 
-void	generate_img(void)
+void	generate_img(int win)
 {
 	t_vars	*vars;
 
 	vars = get_data();
-	mlx_clear_window(vars->mlx, vars->win);
-	// if (vars->img->screen_view)
-	// 	mlx_destroy_image(vars->mlx, vars->img->screen_view);
+	if (win)
+		mlx_clear_window(vars->mlx, vars->win);
 	vars->img->screen_view = mlx_new_image(vars->mlx, vars->win_width, \
 	vars->win_height);
 	if (!vars->img->screen_view)
-		quit_game(8);
+		quit_game(41);
 	vars->img->screen_addr = mlx_get_data_addr(vars->img->screen_view, \
 	&vars->img->bpp, &vars->img->line_length, &vars->img->endian);
 	if (!vars->img->screen_addr)
-		quit_game(9);
-	//render_floor();
+		quit_game(42);
 	raycasting();
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->screen_view, 0, 0);
 }
