@@ -33,7 +33,7 @@ void	init_data(void)
 	vars = get_data();
 	vars->game = malloc(sizeof(vars->game));
 	if (!vars->game)
-		quit_game(7);
+		quit_game(6);
 	set_up_start();
 	set_colors();
 	vars->img->screen_view = NULL;

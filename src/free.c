@@ -13,9 +13,9 @@ void	print_error(int error)
 	else if (error == 5)
 		printf("Error\nBad map configuration settings\n");
 	else if (error == 6)
-		printf("Error\nNot enough memory for assets\n");
+		printf("Error\nNot enough memory to start the game\n");
 	else if (error == 7)
-		printf("Error\nNot enough memory for game data\n");
+		printf("Error\nCouldn't find textures or images\n");
 	else if (error == 8)
 		printf("Error\nMlx couldn't create new image\n");
 	else if (error == 9)
