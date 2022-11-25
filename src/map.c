@@ -8,7 +8,8 @@ void	is_valid_char(char c, char *str)
 	if (!ft_strchr("0 1NSEW", c))
 	{
 		free(str);
-		quit_game(10);
+		ft_putstr_fd("Error\nInvalid character in map\n", STDERR_FILENO);
+		quit_game(11);
 	}
 	if (ft_strchr("NSEW", c))
 	{
@@ -17,7 +18,8 @@ void	is_valid_char(char c, char *str)
 		else
 		{
 			free(str);
-			quit_game(11);
+			ft_putstr_fd("Error\nMore than one start position\n", STDERR_FILENO);
+			quit_game(12);
 		}
 	}
 }
@@ -71,7 +73,10 @@ int	is_map(void)
 		free(tmp);
 	}
 	if (vars->one_start == 0)
+	{
+		ft_putstr_fd("Error\nNo start position in map\n", STDERR_FILENO);
 		quit_game(13);
+	}
 	return (vars->map_start);
 }
 
@@ -84,13 +89,16 @@ void	get_map(void)
 	vars = get_data();
 	index = is_map();
 	if (index == -1)
-		quit_game(3);
+	{
+		ft_putstr_fd("Error\nBad map file content\n", STDERR_FILENO);
+		quit_game(10);
+	}
 	i = index;
 	while (vars->full_config[i])
 		i++;
 	vars->map = ft_calloc(sizeof(char *), i - index + 1);
 	if (!vars->map)
-		quit_game(4);
+		quit_game(14);
 	i = 0;
 	while (vars->full_config[index])
 		vars->map[i++] = vars->full_config[index++];

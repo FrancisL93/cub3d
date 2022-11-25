@@ -54,7 +54,8 @@ void	get_mapdata(void)
 			else
 			{
 				free_double_array((void **) tmp);
-				quit_game(4);
+				ft_putstr_fd("Error\nBad configurations\n", STDERR_FILENO);
+				quit_game(15);
 			}
 		}
 		free_double_array((void **) tmp);

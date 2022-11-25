@@ -28,6 +28,9 @@ void	print_error(int error)
 		printf("Error\nMap do not respect rules of a valid map.\n");
 }
 //TODO Verifier tous les free en plus d'ordonner les erreurs pour eviter les double free
+//0-9 wrong execution & validate_map
+//10-19 get_map errors
+//20-29 spaces_handling
 int	quit_game(int exit_num)
 {
 	t_vars	*vars;
@@ -49,6 +52,12 @@ int	quit_game(int exit_num)
 		free_double_array((void **)vars->full_config);
 	if (exit_num == 2)
 		free(vars->full_config);
+	//20-29
+
+	//10-19
+	if (exit_num >= 10)
+		free_double_array((void **) vars->full_config);
+	// 0 - 9
 	free(vars);
 
 	//else

@@ -3,7 +3,7 @@
 //LEAKS Faire une fonction pour quand sort avec la croix (x rouge)
 //TODO Modifier les erreurs pour : "Error:\nRaison de l'erreur\n"
 //TODO S'assurer qu'un zero ne peut pas voir un espace vide en diagonale entre 2 '1'
-
+//TODO Réparer la start position
 
 void	print_map_data(char **mapdata)
 {
@@ -46,12 +46,15 @@ int	main(int argc, char **argv)
 
 	vars = get_data();
 	if (argc != 2)
-		quit_game(0);
+	{
+		ft_putstr_fd("Error\nExecute as ./cub3d map.cub\n", STDERR_FILENO);
+		quit_game(1);
+	}
 	validate_map(argv[1]);
 	get_map();
-	print_map(vars->map);
+	// print_map(vars->map);
 	get_mapdata();
-	print_map_data(vars->mapdata);
+	// print_map_data(vars->mapdata);
 	spaces_handling();
 	launch_game();
 	quit_game(10);

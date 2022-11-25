@@ -61,29 +61,12 @@ void	check_spaces(int line, int column)
 				|| (line > 0 && vars->map[line - 1][column]
 				&& vars->map[line - 1][column] == '0'))
 	{
-		printf("check_spaces\n");
-		quit_game(13);
+		ft_putstr_fd("Error\nInvalid space in map\n", STDERR_FILENO);
+		quit_game(20);
 	}
 	else
 		vars->map[line][column] = '1';
 }
-
-/*static void	print_new_map(int i, int j)
-{
-	t_vars	*vars;
-
-	vars = get_data();
-	while (vars->map[i])
-	{
-		j = 0;
-		while (vars->map[i][j])
-		{
-			printf("%c", vars->map[i][j]);
-			j++;
-		}
-		i++;
-	}
-}*/
 
 void	check_zeros(int line, int column)
 {
@@ -94,8 +77,9 @@ void	check_zeros(int line, int column)
 		|| vars->map[line - 1][column] == '\n'
 		|| vars->map[line + 1][column] == '\n')
 	{
-		printf("check_zeros\n");
-		quit_game(13);
+		
+		ft_putstr_fd("Error\nMap is not properly closed everywhere\n", STDERR_FILENO);
+		quit_game(21);
 	}
 }
 

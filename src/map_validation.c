@@ -5,24 +5,26 @@
 int	check_file(char *map)
 {
 	int	fd;
+	int	len;
 
-	if (ft_strncmp(&map[ft_strlen(map) - 4], ".cub", 4))
+	len = ft_strlen(map);
+	if (len < 5 || ft_strncmp(&map[len - 4], ".cub", 4))
 	{
-		printf("Error: Map not a .cub file...\n");
-		quit_game(1);
+		ft_putstr_fd("Error\nMapfile is not a .cub\n", STDERR_FILENO);
+		quit_game(2);
 	}
 	fd = open(map, O_DIRECTORY);
 	if (fd > -1)
 	{
-		printf("Error: Map is a directory...\n");
+		ft_putstr_fd("Error\nMapfile is a directory\n", STDERR_FILENO);
 		close(fd);
-		quit_game(1);
+		quit_game(3);
 	}
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
 	{
-		printf("Error: Couldn't read map...\n");
-		quit_game(1);
+		ft_putstr_fd("Error\nCouldn't read mapfile\n", STDERR_FILENO);
+		quit_game(4);
 	}
 	return (fd);
 }
@@ -39,7 +41,10 @@ void	read_map_file(int fd)
 		vars->full_config[i] = get_next_line(fd);
 	close(fd);
 	if (i == 1)
-		quit_game(2);
+	{
+		free(vars->full_config);
+		quit_game(6);
+	}
 }
 
 //TODO Check if init_struct a des malloc pour ajouter free en cas d'erreur si applicable
@@ -64,7 +69,10 @@ void	validate_map(char *mapfile)
 	close (fd);
 	vars->full_config = ft_calloc(sizeof(char *), size + 1);
 	if (!vars->full_config)
-		quit_game(1);
+	{
+		ft_putstr_fd("Error\nNot enough memory for map allocation\n", STDERR_FILENO);
+		quit_game(5);
+	}
 	fd = open(mapfile, O_RDONLY);
 	read_map_file(fd);
 }
