@@ -37,11 +37,11 @@ void	init_data(void)
 	set_up_start();
 	set_colors();
 	vars->img->screen_view = NULL;
-	vars->focal_length = 66;
+	vars->focal_length = 60;
 	vars->win_width = 1920;
 	vars->win_height = 1080;
 	vars->increment_angle = vars->focal_length / vars->win_width;
-	vars->ray_precision = vars->win_width / 2;
+	vars->ray_precision = vars->win_width / 4;
 	vars->game->movement = 3;
 }
 

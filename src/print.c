@@ -43,7 +43,9 @@ void	draw_ray(int x, int wall_height, int text_pos, int texture)
 	text_increment = (double) 64 / (wall_height) / 2;
 	while (i < (vars->win_height / 2 - wall_height))
 		my_mlx_pixel_put(vars->img, x, i++, vars->img->ceiling_color);
-	j = 0;
+	j = 0; 
+	if (wall_height > vars->win_height / 2)
+		j += text_increment * (wall_height - (vars->win_height / 2));
 	while (i < vars->win_height && i < (vars->win_height / 2 + wall_height))
 	{
 		tmp = vars->img->screen_addr + (i++ * vars->img->line_length + x * (vars->img->bpp / 8));
@@ -64,8 +66,14 @@ void	generate_img(int win)
 	vars = get_data();
 	if (win)
 		mlx_clear_window(vars->mlx, vars->win);
-	vars->img->screen_view = mlx_new_image(vars->mlx, vars->win_width, \
-	vars->win_height);
+	// if (vars->img->screen_view)
+	// {
+	// 	free(vars->img->screen_view);
+	// 	free(vars->img->screen_addr);
+	// }
+	if (!vars->img->screen_view)
+		vars->img->screen_view = mlx_new_image(vars->mlx, vars->win_width, \
+		vars->win_height);
 	if (!vars->img->screen_view)
 		quit_game(41);
 	vars->img->screen_addr = mlx_get_data_addr(vars->img->screen_view, \

@@ -71,7 +71,7 @@ $(MLXA):
 	@echo "\033[0;32mMlx compiled!\n\033[0m"
 
 $(NAME): $(MLXA) $(LIBFTA) $(OBJ)
-	@$(CC) $(CFLAGS) $(MLXA) $(LIBFTA) -framework OpenGL -framework AppKit $(OBJ) -o $(NAME)
+	@$(CC) $(CFLAGS) $(MLXA) -framework OpenGL -framework AppKit $(LIBFTA) $(OBJ) -o $(NAME)
 	@echo "\033[0;32mCompiled! Execute as: $(EXECUTION)\033[0m"
 
 ## ************************************************************************** ##
