@@ -1,5 +1,18 @@
 #include "../include/cub3d.h"
 
+// TODO Comprendre le degree setter au start
+void	intersection_correction(int *x, int *y)
+{
+	t_vars	*vars;
+
+	vars = get_data();
+	printf("%f", vars->game->dirx);
+	if (vars->game->dirx >= 0 && vars->game->dirx < 90)
+		*x -= 1;
+	else if (vars->game->dirx >= 0 && vars->game->dirx < 90)
+		*y -= 1;
+}
+
 int	get_texture(int wall_x, int wall_y)
 {
 	int		x;
@@ -13,6 +26,8 @@ int	get_texture(int wall_x, int wall_y)
 	ray_y = vars->game->ray_y - vars->game->raysin;
 	x = (int) floor(ray_y);
 	y = (int) floor(ray_x);
+	if (x != wall_x && y != wall_y)
+	 	intersection_correction(&x, &y);
 	if (x < wall_x)
 		return (3);
 	else if (x > wall_x)

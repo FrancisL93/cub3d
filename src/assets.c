@@ -27,7 +27,7 @@ void	*get_text(void *mlx, char *texture, int num)
 	tmp = ft_strtrim(texture_split[1], "\n");
 	img = mlx_xpm_file_to_image(mlx, tmp, &img_size, &img_size);
 	free(tmp);
-	free(texture_split);
+	free_double_array((void **) texture_split);
 	if (!img)
 	{
 		ft_putstr_fd("Error\nXPM to image failure on textures\n", STDERR_FILENO);

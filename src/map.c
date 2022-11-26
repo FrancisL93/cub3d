@@ -101,6 +101,6 @@ void	get_map(void)
 		quit_game(14);
 	i = 0;
 	while (vars->full_config[index])
-		vars->map[i++] = vars->full_config[index++];
+		vars->map[i++] = ft_strdup(vars->full_config[index++]);
 	vars->map[i] = NULL;
 }

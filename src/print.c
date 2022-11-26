@@ -43,7 +43,8 @@ void	draw_ray(int x, int wall_height, int text_pos, int texture)
 	text_increment = (double) 64 / (wall_height) / 2;
 	while (i < (vars->win_height / 2 - wall_height))
 		my_mlx_pixel_put(vars->img, x, i++, vars->img->ceiling_color);
-	j = 0; 
+	j = 0;
+	//Si le mur est plus grand que l'écran il ne faut pas commencer la texture à 0
 	if (wall_height > vars->win_height / 2)
 		j += text_increment * (wall_height - (vars->win_height / 2));
 	while (i < vars->win_height && i < (vars->win_height / 2 + wall_height))

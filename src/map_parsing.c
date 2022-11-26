@@ -105,8 +105,8 @@ void	map_square(void)
 		while (vars->map[i][j])
 			j++;
 		while (j++ < max_len)
-			vars->map[i] = add_string_last('1', ft_strdup(vars->map[i]));
-		vars->map[i] = add_string_last('\n', ft_strdup(vars->map[i]));
+			vars->map[i] = add_string_last('1', vars->map[i]);
+		vars->map[i] = add_string_last('\n', vars->map[i]);
 	}
 }
 

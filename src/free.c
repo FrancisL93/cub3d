@@ -24,7 +24,7 @@ int	quit_game(int exit_num)
 	//20-29
 	//10-19
 	if (exit_num > 14)
-		free(vars->map);
+		free_double_array((void **) vars->map);
 	if (exit_num >= 10)
 		free_double_array((void **) vars->full_config);
 	// 0 - 9
