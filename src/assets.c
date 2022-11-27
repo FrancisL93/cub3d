@@ -17,15 +17,16 @@ void	destroy_images(int num)
 
 void	*get_text(void *mlx, char *texture, int num)
 {
-	int		img_size;
+	t_vars	*vars;
 	void	*img;
 	char	**texture_split;
 	char	*tmp;
 
-	img_size = 64;
+	vars = get_data();
 	texture_split = ft_split(texture, ' ');
 	tmp = ft_strtrim(texture_split[1], "\n");
-	img = mlx_xpm_file_to_image(mlx, tmp, &img_size, &img_size);
+	img = mlx_xpm_file_to_image(mlx, tmp, &vars->img->text_width[num], \
+		&vars->img->text_height[num]);
 	free(tmp);
 	free_double_array((void **) texture_split);
 	if (!img)

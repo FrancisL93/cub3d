@@ -40,7 +40,7 @@ void	draw_ray(int x, int wall_height, int text_pos, int texture)
 
 	i = 0;
 	vars = get_data();
-	text_increment = (double) 64 / (wall_height) / 2;
+	text_increment = (double) vars->img->text_height[texture]/ (wall_height) / 2;
 	while (i < (vars->win_height / 2 - wall_height))
 		my_mlx_pixel_put(vars->img, x, i++, vars->img->ceiling_color);
 	j = 0;

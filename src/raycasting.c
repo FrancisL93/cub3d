@@ -6,7 +6,6 @@ void	intersection_correction(int *x, int *y)
 	t_vars	*vars;
 
 	vars = get_data();
-	printf("%f", vars->game->dirx);
 	if (vars->game->dirx >= 0 && vars->game->dirx < 90)
 		*x -= 1;
 	else if (vars->game->dirx >= 0 && vars->game->dirx < 90)
@@ -63,8 +62,8 @@ void	ray(double angle, int i)
 	pow(vars->game->posy - vars->game->ray_y, 2));
 	distance = distance * cos(angle * (PI / 180) - vars->game->dirx * (PI / 180));
 	wall_height = floor((vars->win_height / 2) / distance);
-	draw_ray(i, wall_height, floor((int)((int)64 * \
-	(vars->game->ray_x + vars->game->ray_y)) % 64), texture);
+	draw_ray(i, wall_height, floor((int)((int) vars->img->text_height[texture] * \
+	(vars->game->ray_x + vars->game->ray_y)) % vars->img->text_width[texture]), texture);
 }
 
 void	raycasting(void)

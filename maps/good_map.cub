@@ -2,15 +2,15 @@
 
 
 
-         NO ./img/bluestone.xpm
-         SO ./img/greystone.xpm
+         NO ./img/brick-wall-hd.xpm
+         SO ./img/brick-wall-grey-hd.xpm
 
 
 
 
 
-         WE ./img/purplestone.xpm
-EA ./img/redbrick.xpm
+         WE ./img/brick-wall-red-hd.xpm
+EA ./img/brick-wall-brown-hd.xpm
 
 F 186,172,124
 C 18,60,158

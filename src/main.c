@@ -3,6 +3,7 @@
 //LEAKS Faire une fonction pour quand sort avec la croix (x rouge)
 //TODO Réparer la start position
 //TODO regarder si les int de raycasting aux limites son en dehors window à cause de floor
+//TODO vérifier la validité des double, est-ce que des floats serait mieux?
 
 void	print_map_data(char **mapdata)
 {
