@@ -6,13 +6,13 @@ void	set_direction(char dir)
 
 	vars = get_data();
 	if (dir == 'N')
-		vars->game->dirx = 180;
-	else if (dir == 'E')
-		vars->game->dirx = 90;
-	else if (dir == 'S')
-		vars->game->dirx = 0;
-	else if (dir == 'W')
 		vars->game->dirx = 270;
+	else if (dir == 'E')
+		vars->game->dirx = 0;
+	else if (dir == 'S')
+		vars->game->dirx = 90;
+	else if (dir == 'W')
+		vars->game->dirx = 180;
 }
 
 void	set_up_start(void)
