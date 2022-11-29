@@ -67,11 +67,6 @@ void	generate_img(int win)
 	vars = get_data();
 	if (win)
 		mlx_clear_window(vars->mlx, vars->win);
-	// if (vars->img->screen_view)
-	// {
-	// 	free(vars->img->screen_view);
-	// 	free(vars->img->screen_addr);
-	// }
 	if (!vars->img->screen_view)
 		vars->img->screen_view = mlx_new_image(vars->mlx, vars->win_width, \
 		vars->win_height);
@@ -83,4 +78,5 @@ void	generate_img(int win)
 		quit_game(42);
 	raycasting();
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->screen_view, 0, 0);
+	//mlx_put_image_to_window(vars->mlx, vars->win, vars->img->character, 50, 50);
 }
