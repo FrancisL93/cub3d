@@ -13,6 +13,7 @@ void	destroy_images(int num)
 		mlx_destroy_image(vars->mlx, vars->img->text[2]);
 	if (num > 3)
 		mlx_destroy_image(vars->mlx, vars->img->text[3]);
+	mlx_destroy_image(vars->mlx, vars->img->character);
 }
 
 void	*get_text(void *mlx, char *texture, int num)

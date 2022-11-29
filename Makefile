@@ -31,7 +31,7 @@ O = obj/
 S = src/
 I = inc/
 
-CC = gcc -g
+CC = gcc
 CFLAGS += -Wall -Wextra -Werror
 CFLAGS += -I$I
 

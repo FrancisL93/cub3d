@@ -58,7 +58,8 @@ void	launch_game(void)
 	}
 	build_imgs();
 	init_data();
-	vars->win = mlx_new_window(vars->mlx, vars->win_width, \
+	if (vars->mlx != NULL)
+		vars->win = mlx_new_window(vars->mlx, vars->win_width, \
 	vars->win_height, "Cub3d");
 	if (!vars->win)
 	{

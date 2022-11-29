@@ -17,7 +17,7 @@ int	quit_game(int exit_num)
 	//30-39
 	if (exit_num > 33)
 		free(vars->game);
-	if (exit_num > 33)
+	if (exit_num > 32)
 		destroy_images(5);
 	if (exit_num > 31)
 		free(vars->img);
