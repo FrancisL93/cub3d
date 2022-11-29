@@ -67,7 +67,7 @@ void	launch_game(void)
 		quit_game(40);
 	}
 	generate_img(0);
-	mlx_hook(vars->win, 2, 1L << 0, key_hook, 0);
-	mlx_hook(vars->win, 17, 50, quit_game, 0);
+	mlx_hook(vars->win, 2, 0, key_hook, 0);
+	mlx_hook(vars->win, 17, 0, quit_game, 0);
 	mlx_loop(vars->mlx);
 }
