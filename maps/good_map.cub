@@ -3,14 +3,14 @@
 
 
          NO ./img/red-wall-uhd.xpm
-         SO ./img/space-uhd.xpm
+         SO ./img/cashier.xpm
 
 
 
 
 
-         WE ./img/brick-wall-red-hd.xpm
-EA ./img/brick-wall-brown-hd.xpm
+         WE ./img/red-bulls.xpm
+EA ./img/supermarket.xpm
 
 F 186,172,124
 C 18,60,158

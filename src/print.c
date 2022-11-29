@@ -78,5 +78,7 @@ void	generate_img(int win)
 		quit_game(42);
 	raycasting();
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->screen_view, 0, 0);
-	//mlx_put_image_to_window(vars->mlx, vars->win, vars->img->character, 50, 50);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->character, \
+	(vars->win_width / 2) - (vars->img->character_pos[0] / 2), \
+	vars->win_height - vars->img->character_pos[1]);
 }

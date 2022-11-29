@@ -41,6 +41,7 @@ void	*get_text(void *mlx, char *texture, int num)
 void	build_imgs(void)
 {
 	t_vars	*vars;
+	int		size[2];
 
 	vars = get_data();
 	vars->img = malloc(sizeof(*vars->img));
@@ -50,8 +51,10 @@ void	build_imgs(void)
 	vars->img->text[1] = get_text(vars->mlx, vars->mapdata[1], 1);
 	vars->img->text[2] = get_text(vars->mlx, vars->mapdata[2], 2);
 	vars->img->text[3] = get_text(vars->mlx, vars->mapdata[3], 3);
-	// vars->img->character = mlx_xpm_file_to_image(vars->mlx, "./img/panier.xpm", &size, &size);
-	// if (!vars->img->character)
-	// 	quit_game(37);
+	vars->img->character = mlx_xpm_file_to_image(vars->mlx, "./img/panier.xpm", &size[0], &size[1]);
+	if (!vars->img->character)
+		quit_game(37);
+	vars->img->character_pos[0] = size[0];
+	vars->img->character_pos[1] = size[1];
 	return ;
 }

@@ -31,6 +31,8 @@ library (-lm man man 3 math)
 typedef struct s_img {
 	void	*screen_view;
 	void	*character;
+	char	*character_file;
+	int		character_pos[2];
 	void	*text[4];
 	int		text_height[4];
 	int		text_width[4];
