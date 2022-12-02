@@ -8,14 +8,14 @@ double	set_direction(char dir)
 	if (dir == 'N')
 	{
 		//printf("ICI\n");
-		vars->game->dirx = 180;
+		vars->game->dirx = 270;
 	}
 	else if (dir == 'E')
 		vars->game->dirx = 0;
 	else if (dir == 'S')
 		vars->game->dirx = 90;
 	else if (dir == 'W')
-		vars->game->dirx = 270;
+		vars->game->dirx = 180;
 	return (vars->game->dirx);
 }
 
@@ -34,8 +34,8 @@ void	set_up_start(void)
 		{
 			if (ft_strchr("NSEW", vars->map[i][j]))
 			{
-				vars->game->posx = j;
-				vars->game->posy = i;
+				vars->game->posx = j + 0.5;
+				vars->game->posy = i + 0.5;
 				vars->game->dirx = set_direction(vars->map[i][j]);
 				printf("%f\n", vars->game->dirx);
 				vars->map[i][j] = '0';
