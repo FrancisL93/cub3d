@@ -11,9 +11,9 @@ double	set_direction(char dir)
 		vars->game->dirx = 180;
 	}
 	else if (dir == 'E')
-		vars->game->dirx = 90;
-	else if (dir == 'S')
 		vars->game->dirx = 0;
+	else if (dir == 'S')
+		vars->game->dirx = 90;
 	else if (dir == 'W')
 		vars->game->dirx = 270;
 	return (vars->game->dirx);

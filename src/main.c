@@ -42,9 +42,9 @@ t_vars	*get_data(void)
 
 int	main(int argc, char **argv)
 {	
-	t_vars	*vars;
+	//t_vars	*vars;
 
-	vars = get_data();
+	//vars = get_data();
 	if (argc != 2)
 	{
 		ft_putstr_fd("Error\nExecute as ./cub3d map.cub\n", STDERR_FILENO);

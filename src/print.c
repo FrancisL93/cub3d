@@ -50,7 +50,7 @@ void	draw_ray(int x, int wall_height, int text_pos, int texture)
 	while (i < vars->win_height && i < (vars->win_height / 2 + wall_height))
 	{
 		tmp = vars->img->screen_addr + (i++ * vars->img->line_length + x * (vars->img->bpp / 8));
-		text_tmp = get_texture_pixel(vars->img->text[texture], text_pos, (int) floor(j));
+		text_tmp = get_texture_pixel(vars->img->text[texture], vars->img->text_width[texture] - text_pos, (int) floor(j));
 		*tmp++ = *text_tmp++;
 		*tmp++ = *text_tmp++;
 		*tmp++ = *text_tmp++;

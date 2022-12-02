@@ -42,6 +42,7 @@ void	ray(double angle, int i)
 {
 	int		wall_height;
 	int		texture;
+	int		text_pos;
 	double	distance;
 	t_vars	*vars;
 
@@ -62,8 +63,9 @@ void	ray(double angle, int i)
 	pow(vars->game->posy - vars->game->ray_y, 2));
 	distance = distance * cos(angle * (PI / 180) - vars->game->dirx * (PI / 180));
 	wall_height = floor((vars->win_height / 2) / distance);
-	draw_ray(i, wall_height, floor((int)((int) vars->img->text_height[texture] * \
-	(vars->game->ray_x + vars->game->ray_y)) % vars->img->text_width[texture]), texture);
+	text_pos = floor((int)((int) vars->img->text_height[texture] * \
+	(vars->game->ray_x + vars->game->ray_y)) % vars->img->text_width[texture]);
+	draw_ray(i, wall_height, text_pos, texture);
 }
 
 void	raycasting(void)
