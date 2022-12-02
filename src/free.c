@@ -12,7 +12,7 @@ int	quit_game(int exit_num)
 	t_vars	*vars;
 
 	vars = get_data();
-	/*if (exit_num >= 40)
+	if (exit_num >= 40)
 		mlx_destroy_window(vars->mlx, vars->win);
 	//30-39
 	if (exit_num > 33)
@@ -29,22 +29,6 @@ int	quit_game(int exit_num)
 		free_double_array((void **) vars->full_config);
 	// 0 - 9
 	free(vars);
-	if (exit_num >= 50)
-		exit(0);
-	exit(exit_num);*/
-	if (exit_num >= 0 && exit_num <= 9)
-		free(vars);
-	if (exit_num >= 10)
-	{
-		free_double_array((void **)vars->full_config);
-		free_double_array((void **)vars->map);
-	}
-	if (exit_num >= 30)
-	{
-		free(vars->img);
-		free(vars->game);
-		destroy_images(5);
-	}
 	if (exit_num >= 50)
 		exit(0);
 	exit(exit_num);

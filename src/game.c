@@ -30,10 +30,10 @@ void	init_data(void)
 	t_vars	*vars;
 
 	vars = get_data();
-	vars->game = malloc(sizeof(vars->game));
+	vars->game = malloc(sizeof(*vars->game));
 	if (!vars->game)
 		quit_game(33);
-	printf("Pendant init = %f\n", vars->game->dirx);
+	//printf("Pendant init = %f\n", vars->game->dirx);
 	vars->img->screen_view = NULL;
 	vars->focal_length = 60;
 	vars->win_width = 1920;
@@ -43,7 +43,7 @@ void	init_data(void)
 	vars->game->movement = 3;
 	vars->game->posx = 0;
 	vars->game->posy = 0;
-	vars->game->dirx = 0;
+	//vars->game->dirx = 0;
 	vars->game->diry = 0;
 	vars->game->ray_x = 0;
 	vars->game->ray_y = 0;
