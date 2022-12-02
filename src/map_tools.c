@@ -6,17 +6,14 @@ double	set_direction(char dir)
 
 	vars = get_data();
 	if (dir == 'N')
-	{
-		//printf("ICI\n");
-		vars->game->dirx = 270;
-	}
+		return (270);
 	else if (dir == 'E')
-		vars->game->dirx = 0;
+		return (0);
 	else if (dir == 'S')
-		vars->game->dirx = 90;
+		return (90);
 	else if (dir == 'W')
-		vars->game->dirx = 180;
-	return (vars->game->dirx);
+		return (180);
+	return (0);
 }
 
 void	set_up_start(void)
