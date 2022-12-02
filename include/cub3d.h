@@ -69,7 +69,6 @@ typedef struct s_vars {
 	double	ray_precision;
 	int		win_width;
 	int		win_height;
-	int		imgsize;
 	int		map_start;
 	int		one_start;
 	t_game	*game;

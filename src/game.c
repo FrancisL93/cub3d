@@ -33,9 +33,7 @@ void	init_data(void)
 	vars->game = malloc(sizeof(vars->game));
 	if (!vars->game)
 		quit_game(33);
-	set_up_start();
 	printf("Pendant init = %f\n", vars->game->dirx);
-	set_colors();
 	vars->img->screen_view = NULL;
 	vars->focal_length = 60;
 	vars->win_width = 1920;
@@ -43,6 +41,16 @@ void	init_data(void)
 	vars->increment_angle = vars->focal_length / vars->win_width;
 	vars->ray_precision = vars->win_width / 4;
 	vars->game->movement = 3;
+	vars->game->posx = 0;
+	vars->game->posy = 0;
+	vars->game->dirx = 0;
+	vars->game->diry = 0;
+	vars->game->ray_x = 0;
+	vars->game->ray_y = 0;
+	vars->game->raycos = 0;
+	vars->game->raysin = 0;
+	set_up_start();
+	set_colors();
 }
 
 void	launch_game(void)
