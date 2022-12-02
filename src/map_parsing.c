@@ -19,7 +19,7 @@ void	check_walls(void)
 			{
 				if (vars->map[0][column] != '1')
 				{
-					printf("check_walls 1\n");
+					ft_putstr_fd("Error\nMap is not circled by walls.", STDERR_FILENO);
 					quit_game(13);
 				}
 				column++;
@@ -29,7 +29,7 @@ void	check_walls(void)
 		}
 		if (vars->map[line][0] != '1' || vars->map[line][ft_strlen(vars->map[line]) - 2] != '1')
 		{
-			printf("check_walls 2\n");
+			ft_putstr_fd("Error\nMap is not circled by walls.", STDERR_FILENO);
 			quit_game(13);
 		}
 		if (!vars->map[line + 1])
@@ -72,11 +72,15 @@ void	check_zeros(int line, int column)
 	t_vars	*vars;
 
 	vars = get_data();
+	if (line == 0)
+	{
+		ft_putstr_fd("Error\nMap is not properly closed everywhere\n", STDERR_FILENO);
+		quit_game(21);
+	}
 	if (!vars->map[line + 1][column] || !(vars->map[line - 1][column])
 		|| vars->map[line - 1][column] == '\n'
 		|| vars->map[line + 1][column] == '\n')
 	{
-		
 		ft_putstr_fd("Error\nMap is not properly closed everywhere\n", STDERR_FILENO);
 		quit_game(21);
 	}
@@ -100,7 +104,7 @@ void	map_square(void)
 	i = -1;
 	while (vars->map[++i])
 	{
-		vars->map[i][ft_strlen(vars->map[i])- 1] = '\0';
+		vars->map[i][ft_strlen(vars->map[i]) - 1] = '\0';
 		j = 0;
 		while (vars->map[i][j])
 			j++;
