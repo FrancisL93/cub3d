@@ -23,10 +23,10 @@ int	get_texture(int wall_x, int wall_y)
 	vars = get_data();
 	ray_x = vars->game->ray_x - vars->game->raycos;
 	ray_y = vars->game->ray_y - vars->game->raysin;
-	x = (int) floor(ray_y);
-	y = (int) floor(ray_x);
+	x = (int) floor(ray_x);
+	y = (int) floor(ray_y);
 	if (x != wall_x && y != wall_y)
-	 	intersection_correction(&x, &y);
+		intersection_correction(&x, &y);
 	if (x < wall_x)
 		return (1);
 	else if (x > wall_x)
@@ -56,7 +56,7 @@ void	ray(double angle, int i)
 		vars->game->ray_x += vars->game->raycos;
 		vars->game->ray_y += vars->game->raysin;
 	}
-	texture = get_texture((int) floor(vars->game->ray_y), (int) floor(vars->game->ray_x));
+	texture = get_texture((int) floor(vars->game->ray_x), (int) floor(vars->game->ray_y));
 	if (texture < 0)
 		quit_game(43);
 	distance = sqrt(pow(vars->game->posx - vars->game->ray_x, 2) + \
