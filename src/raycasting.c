@@ -28,13 +28,13 @@ int	get_texture(int wall_x, int wall_y)
 	if (x != wall_x && y != wall_y)
 	 	intersection_correction(&x, &y);
 	if (x < wall_x)
-		return (3);
-	else if (x > wall_x)
-		return (2);
-	else if (y < wall_y)
 		return (1);
-	else if (y > wall_y)
+	else if (x > wall_x)
 		return (0);
+	else if (y < wall_y)
+		return (3);
+	else if (y > wall_y)
+		return (2);
 	return (-1);
 }
 
@@ -65,6 +65,8 @@ void	ray(double angle, int i)
 	wall_height = floor((vars->win_height / 2) / distance);
 	text_pos = floor((int)((int) vars->img->text_height[texture] * \
 	(vars->game->ray_x + vars->game->ray_y)) % vars->img->text_width[texture]);
+	if (texture == 1 || texture == 2)
+		text_pos = vars->img->text_width[texture] - text_pos;
 	draw_ray(i, wall_height, text_pos, texture);
 }
 

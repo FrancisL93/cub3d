@@ -3,14 +3,14 @@
 
 
          NO ./img/frigidaire-bière.xpm
-         SO ./img/caisse.xpm
+         SO ./img/frigidaire-bière.xpm
 
 
 
 
 
-         WE ./img/colorstone.xpm
-EA ./img/greenlight.xpm
+         WE ./img/frigidaire-bière.xpm
+EA ./img/frigidaire-bière.xpm
 
 F 186,172,124
 C 18,60,158
