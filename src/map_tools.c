@@ -2,9 +2,6 @@
 
 double	set_direction(char dir)
 {
-	t_vars	*vars;
-
-	vars = get_data();
 	if (dir == 'N')
 		return (270);
 	else if (dir == 'E')

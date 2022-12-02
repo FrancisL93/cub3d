@@ -3,13 +3,13 @@
 
 
          NO ./img/frigidaire-bière.xpm
-         SO ./img/frigidaire-bière.xpm
+         SO ./img/supermarket.xpm
 
 
 
 
 
-         WE ./img/frigidaire-bière.xpm
+         WE ./img/fruits.xpm
 EA ./img/frigidaire-bière.xpm
 
 F 186,172,124
@@ -27,6 +27,6 @@ C 18,60,158
 1000011111110000000000011111
 10000000000000011111111
 100000000000000000000011111
-10000011111110000000W001
+1000001111111000000000W1
 1000000000000000000000011111
 111111111111111111111111

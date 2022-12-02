@@ -13,10 +13,11 @@ void	destroy_images(int num)
 		mlx_destroy_image(vars->mlx, vars->img->text[2]);
 	if (num > 3)
 		mlx_destroy_image(vars->mlx, vars->img->text[3]);
-	mlx_destroy_image(vars->mlx, vars->img->character);
+	if (num > 4)
+		mlx_destroy_image(vars->mlx, vars->img->character);
 }
 
-void	*get_text(void *mlx, char *texture, int num)
+void	*get_text(char *texture, int num)
 {
 	t_vars	*vars;
 	void	*img;
@@ -26,8 +27,7 @@ void	*get_text(void *mlx, char *texture, int num)
 	vars = get_data();
 	texture_split = ft_split(texture, ' ');
 	tmp = ft_strtrim(texture_split[1], "\n");
-	img = mlx_xpm_file_to_image(mlx, tmp, &vars->img->text_width[num], \
-		&vars->img->text_height[num]);
+	img = mlx_xpm_file_to_image(vars->mlx, tmp, &vars->img->text_width[num], &vars->img->text_height[num]);
 	free(tmp);
 	free_double_array((void **) texture_split);
 	if (!img)
@@ -48,13 +48,16 @@ void	build_imgs(void)
 	vars->img = malloc(sizeof(*vars->img));
 	if (!vars->img)
 		quit_game(31);
-	vars->img->text[0] = get_text(vars->mlx, vars->mapdata[0], 0);
-	vars->img->text[1] = get_text(vars->mlx, vars->mapdata[1], 1);
-	vars->img->text[2] = get_text(vars->mlx, vars->mapdata[2], 2);
-	vars->img->text[3] = get_text(vars->mlx, vars->mapdata[3], 3);
+	vars->img->text[0] = get_text(vars->mapdata[0], 0);
+	vars->img->text[1] = get_text(vars->mapdata[1], 1);
+	vars->img->text[2] = get_text(vars->mapdata[2], 2);
+	vars->img->text[3] = get_text(vars->mapdata[3], 3);
 	vars->img->character = mlx_xpm_file_to_image(vars->mlx, "./img/panier.xpm", &size[0], &size[1]);
 	if (!vars->img->character)
-		quit_game(37);
+	{
+		destroy_images(4);
+		quit_game(33);
+	}
 	vars->img->character_pos[0] = size[0];
 	vars->img->character_pos[1] = size[1];
 	return ;

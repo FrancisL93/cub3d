@@ -1,12 +1,10 @@
 #include "../include/cub3d.h"
 
-int	key_hook(int keycode)
+int	key_hook(int keycode, t_vars *vars)
 {
-	t_vars	*vars;
 	int		increment;
 
 	increment = 5;
-	vars = get_data();
 	if (keycode == ESC)
 		quit_game(50);
 	else
@@ -32,13 +30,14 @@ void	init_data(void)
 	vars = get_data();
 	vars->game = malloc(sizeof(*vars->game));
 	if (!vars->game)
-		quit_game(33);
+		quit_game(34);
+	printf("Pendant init = %f\n", vars->game->dirx);
 	vars->img->screen_view = NULL;
 	vars->focal_length = 60;
 	vars->win_width = 1920;
 	vars->win_height = 1080;
 	vars->increment_angle = vars->focal_length / vars->win_width;
-	vars->ray_precision = vars->win_width / 4;
+	vars->ray_precision = vars->win_width / 2;
 	vars->game->movement = 3;
 	vars->game->posx = 0;
 	vars->game->posy = 0;
@@ -74,7 +73,7 @@ void	launch_game(void)
 		quit_game(40);
 	}
 	generate_img(0);
-	mlx_hook(vars->win, 2, 0, key_hook, 0);
-	mlx_hook(vars->win, 17, 0, quit_game, 0);
+	mlx_hook(vars->win, 2, 0, key_hook, vars);
+	mlx_hook(vars->win, 17, 0, quit_game, vars);
 	mlx_loop(vars->mlx);
 }
