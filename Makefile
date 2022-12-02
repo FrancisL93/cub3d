@@ -31,7 +31,7 @@ O = obj/
 S = src/
 I = inc/
 
-CC = gcc
+CC = gcc -g
 CFLAGS += -Wall -Wextra -Werror
 CFLAGS += -I$I
 
@@ -121,7 +121,7 @@ segfault: $(MLXA) $(LIBFTA) $(OBJ)
 #-fsanitize=threads (compiler les objets aussi avec)
 
 debug: $(LIBFTA) $(OBJ) #Compile for debugger
-	@$(CC) -g $(CFLAGS) $(LIBFTA) -lmlx -framework OpenGL -framework AppKit $(OBJ) -o $(NAME)
+	@$(CC) $(CFLAGS) $(LIBFTA) -lmlx -framework OpenGL -framework AppKit $(OBJ) -o $(NAME)
 	@echo "\033[0;32mCompiled with -g for debug! Execute as: $(EXECUTION)\033[0m"
 
 list: 	#Show all make rules

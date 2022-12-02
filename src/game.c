@@ -6,7 +6,6 @@ int	key_hook(int keycode)
 	int		increment;
 
 	increment = 5;
-
 	vars = get_data();
 	if (keycode == ESC)
 		quit_game(50);
@@ -35,6 +34,7 @@ void	init_data(void)
 	if (!vars->game)
 		quit_game(33);
 	set_up_start();
+	printf("Pendant init = %f\n", vars->game->dirx);
 	set_colors();
 	vars->img->screen_view = NULL;
 	vars->focal_length = 60;
@@ -58,9 +58,10 @@ void	launch_game(void)
 	}
 	build_imgs();
 	init_data();
+	printf("Apres init = %f\n", vars->game->dirx);
 	if (vars->mlx != NULL)
-		vars->win = mlx_new_window(vars->mlx, vars->win_width, \
-	vars->win_height, "Cub3d");
+		vars->win = mlx_new_window(vars->mlx, vars->win_width,
+				vars->win_height, "Cub3d");
 	if (!vars->win)
 	{
 		ft_putstr_fd("Error\nMlx window creation failure\n", STDERR_FILENO);

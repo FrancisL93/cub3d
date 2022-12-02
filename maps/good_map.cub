@@ -2,15 +2,15 @@
 
 
 
-         NO ./img/red-wall-uhd.xpm
-         SO ./img/cashier.xpm
+         NO ./img/barrel.xpm
+         SO ./img/bluestone.xpm
 
 
 
 
 
-         WE ./img/red-bulls.xpm
-EA ./img/fruits.xpm
+         WE ./img/colorstone.xpm
+EA ./img/greenlight.xpm
 
 F 186,172,124
 C 18,60,158
@@ -27,6 +27,6 @@ C 18,60,158
 1000011111110000000000011111
 10000000000000011110011
 100000000000000000000011111
-10000011111110000000N001
+10000011111110000000E001
 1000000000000000000000011111
 111111111111111111111111
