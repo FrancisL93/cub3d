@@ -18,13 +18,14 @@ SRC =   map_validation.c 	\
 		main.c				\
 		map_parsing.c		\
 		data.c 				\
+		fuck_norm.c			\
 		raycasting.c
 
 LIBFT = include/libft
 LIBFTA = include/libft/libft.a
 
-MLX = include/minilibx
-MLXA = include/minilibx/libmlx.a
+MLX = include/mlx
+MLXA = include/mlx/libmlx.a
 #MLX = mlx/ (M1 Mac @home)
 #MLXA = mlx/libmlx.a (M1 Mac @home)
 

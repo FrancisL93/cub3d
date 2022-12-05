@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:18 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 15:28:11 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/05 15:39:40 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	get_texture(int wall_x, int wall_y)
 	vars = get_data();
 	x = (int) floor(vars->game->ray_x - vars->game->raycos);
 	y = (int) floor(vars->game->ray_y - vars->game->raysin);
-	if (x < wall_x  && y == wall_y)
+	if (x < wall_x && y == wall_y)
 		texture = 1;
 	else if (x > wall_x && y == wall_y)
 		texture = 0;
@@ -53,27 +53,26 @@ void	init_ray(double angle)
 void	ray(double angle, int i)
 {
 	int		wall_height;
-	int		text_pos;
-	int		texture;
 	double	distance;
 	t_vars	*vars;
 
 	vars = get_data();
 	init_ray(angle);
-	texture = get_texture((int) floor(vars->game->ray_x),
+	vars->texture = get_texture((int) floor(vars->game->ray_x),
 			(int)floor(vars->game->ray_y));
-	if (texture < 0)
+	if (vars->texture < 0)
 		quit_game(43);
 	distance = sqrt(pow(vars->game->posx - vars->game->ray_x, 2) + \
 	pow(vars->game->posy - vars->game->ray_y, 2));
 	distance = distance * cos(angle * (PI / 180) - vars->game->dirx
 			* (PI / 180));
 	wall_height = floor((vars->win_height / 2) / distance);
-	text_pos = floor((int)((int) vars->img->text_height[texture] * \
-	(vars->game->ray_x + vars->game->ray_y)) % vars->img->text_width[texture]);
+	vars->text_pos = floor((int)((int) vars->img->text_height[vars->texture] * \
+	(vars->game->ray_x + vars->game->ray_y))
+			% vars->img->text_width[vars->texture]);
 	if (texture == 3 || texture == 0)
-	 	text_pos = vars->img->text_width[texture] - text_pos;
-	draw_ray(i, wall_height, text_pos, texture);
+		text_pos = vars->img->text_width[vars->texture] - text_pos;
+	draw_ray(i, wall_height, text_pos, vars->texture);
 }
 
 void	raycasting(void)

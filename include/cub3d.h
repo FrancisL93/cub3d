@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 11:14:59 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/05 15:32:15 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ typedef struct s_vars {
 	int		win_height;
 	int		map_start;
 	int		one_start;
+	int		text_pos;
+	int		texture;
 	t_game	*game;
 	t_img	*img;
 }	t_vars;
@@ -96,6 +98,10 @@ t_vars	*get_data(void);
 
 //free.c
 int		quit_game(int exit_num);
+
+//fuck_norm.c
+double	init_increment(int wall_height);
+char	*init_tmp(int x, int *i);
 
 //game_tools.c
 void	move_up(void);
@@ -146,7 +152,7 @@ void	set_colors(void);
 //print.c
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 char	*get_texture_pixel(void *text, int x, int y);
-void	draw_ray(int x, int wall_height, int text_pos, int texture);
+void	draw_ray(int x, int wall_height, t_vars *vars);
 void	generate_img(int win);
 
 //raycasting.c
