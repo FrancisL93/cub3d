@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/05 10:10:11 by malord            #+#    #+#             */
+/*   Updated: 2022/12/05 11:35:27 by malord           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
 void	my_mlx_pixel_put(t_img	*data, int x, int y, int color)
@@ -13,7 +25,7 @@ void	my_mlx_pixel_put(t_img	*data, int x, int y, int color)
 			*pixel++ = (color >> i);
 		else
 			*pixel++ = (color >> (data->bpp -8 - i));
-		i -=8;
+		i -= 8;
 	}
 }
 
@@ -29,6 +41,22 @@ char	*get_texture_pixel(void	*text, int x, int y)
 	return (pixel);
 }
 
+//void	put_texture(int texture, int text_pos, int x, int i, double j)
+//{
+//	char *tmp;
+//	char *text_tmp;
+//	t_vars	*vars;
+//	vars = get_data();
+//
+//	tmp = vars->img->screen_addr + (i++ *vars->img->line_length + x
+//			* (vars->img->bpp / 8));
+//	text_tmp = get_texture_pixel(vars->img->text[texture],text_pos,
+//			(int)floor(j));
+//	*tmp++ = *text_tmp++;
+//	*tmp++ = *text_tmp++;
+//	*tmp++ = *text_tmp++;
+//}
+
 void	draw_ray(int x, int wall_height, int text_pos, int texture)
 {
 	int			i;
@@ -40,17 +68,20 @@ void	draw_ray(int x, int wall_height, int text_pos, int texture)
 
 	i = 0;
 	vars = get_data();
-	text_increment = (double) vars->img->text_height[texture]/ (wall_height) / 2;
+	text_increment = (double) vars->img->text_height[texture]
+		/ (wall_height) / 2;
 	while (i < (vars->win_height / 2 - wall_height))
 		my_mlx_pixel_put(vars->img, x, i++, vars->img->ceiling_color);
 	j = 0;
-	//Si le mur est plus grand que l'écran il ne faut pas commencer la texture à 0
+	//Si le mur est plus grand que l'écran, pas commencer la texture à 0
 	if (wall_height > vars->win_height / 2)
 		j += text_increment * (wall_height - (vars->win_height / 2));
 	while (i < vars->win_height && i < (vars->win_height / 2 + wall_height))
 	{
-		tmp = vars->img->screen_addr + (i++ * vars->img->line_length + x * (vars->img->bpp / 8));
-		text_tmp = get_texture_pixel(vars->img->text[texture],text_pos, (int) floor(j));
+		tmp = vars->img->screen_addr + (i++ *vars->img->line_length + x
+				* (vars->img->bpp / 8));
+		text_tmp = get_texture_pixel(vars->img->text[texture],text_pos,
+				(int)floor(j));
 		*tmp++ = *text_tmp++;
 		*tmp++ = *text_tmp++;
 		*tmp++ = *text_tmp++;

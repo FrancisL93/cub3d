@@ -1,9 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/05 10:09:17 by malord            #+#    #+#             */
+/*   Updated: 2022/12/05 11:15:36 by malord           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
 //LEAKS Faire une fonction pour quand sort avec la croix (x rouge)
-//TODO Réparer la start position
-//TODO regarder si les int de raycasting aux limites son en dehors window à cause de floor
-//TODO vérifier la validité des double, est-ce que des floats serait mieux?
+//TODO raycasting int aux limites sont en dehors window a cause de floor? 
 
 void	print_map_data(char **mapdata)
 {
@@ -42,9 +52,6 @@ t_vars	*get_data(void)
 
 int	main(int argc, char **argv)
 {	
-	//t_vars	*vars;
-
-	//vars = get_data();
 	if (argc != 2)
 	{
 		ft_putstr_fd("Error\nExecute as ./cub3d map.cub\n", STDERR_FILENO);
@@ -52,9 +59,7 @@ int	main(int argc, char **argv)
 	}
 	validate_map(argv[1]);
 	get_map();
-	// print_map(vars->map);
 	get_mapdata();
-	// print_map_data(vars->mapdata);
 	format_map();
 	launch_game();
 }

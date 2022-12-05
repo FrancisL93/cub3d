@@ -1,6 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_tools.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/05 10:09:51 by malord            #+#    #+#             */
+/*   Updated: 2022/12/05 11:14:46 by malord           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
-
+void	free_n_quit(char **color_line, char **rgb)
+{
+	free_double_array((void **)color_line);
+	free_double_array((void **)rgb);
+	ft_putstr_fd("Error\nColor settings not valid\n", STDERR_FILENO);
+	quit_game(34);
+}
 
 void	validate_rgb(char **color_line, char **rgb)
 {
@@ -9,12 +27,7 @@ void	validate_rgb(char **color_line, char **rgb)
 
 	i = 0;
 	if (color_line[2] || rgb[3])
-	{
-		free_double_array((void **)color_line);
-		free_double_array((void **)rgb);
-		ft_putstr_fd("Error\nColor settings not valid\n", STDERR_FILENO);
-		quit_game(34);
-	}
+		free_n_quit(color_line, rgb);
 	while (rgb[i])
 	{
 		if (ft_strlen(rgb[i]) < 4)

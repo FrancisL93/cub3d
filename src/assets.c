@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   assets.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/05 10:08:53 by malord            #+#    #+#             */
+/*   Updated: 2022/12/05 10:12:39 by malord           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
 void	destroy_images(int num)
@@ -27,7 +39,8 @@ void	*get_text(char *texture, int num)
 	vars = get_data();
 	texture_split = ft_split(texture, ' ');
 	tmp = ft_strtrim(texture_split[1], "\n");
-	img = mlx_xpm_file_to_image(vars->mlx, tmp, &vars->img->text_width[num], &vars->img->text_height[num]);
+	img = mlx_xpm_file_to_image(vars->mlx, tmp, &vars->img->text_width[num],
+			&vars->img->text_height[num]);
 	free(tmp);
 	free_double_array((void **) texture_split);
 	if (!img)
@@ -52,7 +65,8 @@ void	build_imgs(void)
 	vars->img->text[1] = get_text(vars->mapdata[1], 1);
 	vars->img->text[2] = get_text(vars->mapdata[2], 2);
 	vars->img->text[3] = get_text(vars->mapdata[3], 3);
-	vars->img->character = mlx_xpm_file_to_image(vars->mlx, "./img/panier.xpm", &size[0], &size[1]);
+	vars->img->character = mlx_xpm_file_to_image(vars->mlx, "./img/panier.xpm",
+			&size[0], &size[1]);
 	if (!vars->img->character)
 	{
 		destroy_images(4);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_tools.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/05 10:09:33 by malord            #+#    #+#             */
+/*   Updated: 2022/12/05 10:09:34 by malord           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
 double	set_direction(char dir)
@@ -39,4 +51,29 @@ void	set_up_start(void)
 		}
 		i++;
 	}
+}
+
+void	format_map(void)
+{
+	t_vars	*vars;
+	int		i;
+	int		j;
+
+	vars = get_data();
+	i = 0;
+	while (vars->map[i])
+	{
+		j = 0;
+		while (vars->map[i][j])
+		{
+			if (vars->map[i][j] == ' ')
+				check_spaces(i, j);
+			if (vars->map[i][j] == '0' && vars->map[i + 1])
+				check_zeros(i, j);
+			j++;
+		}
+		i++;
+	}
+	check_walls();
+	map_square();
 }

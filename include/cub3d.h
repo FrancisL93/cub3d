@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
+/*   Updated: 2022/12/05 11:14:59 by malord           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 /*
  open, close, read, write,
@@ -76,50 +87,72 @@ typedef struct s_vars {
 }	t_vars;
 
 //assets.c
-void	build_imgs(void);
 void	destroy_images(int num);
+void	*get_text(char *texture, int num);
+void	build_imgs(void);
+
+//data.c
+t_vars	*get_data(void);
 
 //free.c
 int		quit_game(int exit_num);
 
-//game.c
-void	launch_game(void);
-
 //game_tools.c
+void	move_up(void);
+void	move_down(void);
+void	move_left(void);
+void	move_right(void);
 void	set_movement(int keycode);
 
-//main.c
-t_vars	*get_data(void);
-
-//map.c
-int		find_map(char **fullconfig);
-void	get_map(void);
-void	is_valid_char(char c, char *str);
+//game.c
+int		key_hook(int keycode, t_vars *vars);
+void	init_data(void);
+void	launch_game(void);
 
 //map_info.c
 int		get_element_index(char *element);
-void	get_mapdata(void);
 bool	check_full_config(t_vars *vars);
+void	get_mapdata(void);
 
 //map_parsing.c
-void	format_map(void);
+void	check_ones(int line, int column);
+void	check_walls(void);
+void	check_spaces(int line, int column);
+void	check_zeros(int line, int column);
 void	map_square(void);
 
 //map_tools.c
+double	set_direction(char dir);
 void	set_up_start(void);
+void	format_map(void);
 
 //map_validation.c
-void	validate_map(char *mapfile);
+int		check_file(char *map);
 void	read_map_file(int fd);
+void	validate_map(char *mapfile);
 
-//print.c
-void	generate_img(int win);
-void	draw_ray(int x, int wall_height, int text_pos, int texture);
+//map.c
+void	is_valid_char(char c, char *str);
+int		find_map(char **fullconfig);
+int		is_map(void);
+void	get_map(void);
 
 //print_tools.c
+void	free_n_quit(char **color_line, char **rgb);
+void	validate_rgb(char **color_line, char **rgb);
+int		retrieve_color(char **color_line);
 void	set_colors(void);
 
+//print.c
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
+char	*get_texture_pixel(void *text, int x, int y);
+void	draw_ray(int x, int wall_height, int text_pos, int texture);
+void	generate_img(int win);
+
 //raycasting.c
+int		get_texture(int wall_x, int wall_y);
+void	init_ray(double angle);
+void	ray(double angle, int i);
 void	raycasting(void);
 
 #endif

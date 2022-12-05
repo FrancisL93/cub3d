@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_validation.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/05 10:09:42 by malord            #+#    #+#             */
+/*   Updated: 2022/12/05 10:16:30 by malord           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
 //? Pas trouvé de edge cases qui font failer ce parsing. Qui dit mieux ? 
@@ -48,7 +60,7 @@ void	read_map_file(int fd)
 	}
 }
 
-//TODO Check if init_struct a des malloc pour ajouter free en cas d'erreur si applicable
+//TODO Check if init_struct a des malloc pour ajouter free en cas d'erreur
 
 void	validate_map(char *mapfile)
 {
@@ -71,7 +83,8 @@ void	validate_map(char *mapfile)
 	vars->full_config = ft_calloc(sizeof(char *), size + 1);
 	if (!vars->full_config)
 	{
-		ft_putstr_fd("Error\nNot enough memory for map allocation\n", STDERR_FILENO);
+		ft_putstr_fd("Error\n", STDERR_FILENO);
+		ft_putstr_fd("Not enough memory for map allocation\n", STDERR_FILENO);
 		quit_game(5);
 	}
 	fd = open(mapfile, O_RDONLY);

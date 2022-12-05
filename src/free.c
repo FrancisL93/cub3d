@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/05 10:09:02 by malord            #+#    #+#             */
+/*   Updated: 2022/12/05 10:13:20 by malord           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
-//TODO Verifier tous les free en plus d'ordonner les erreurs pour eviter les double free
+//TODO S'assurer que toutes les erreurs sont gerees
 //0-9 wrong execution & validate_map
 //10-19 get_map errors
 //20-29 format_map
