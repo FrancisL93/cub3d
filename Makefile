@@ -127,6 +127,11 @@ debug: $(LIBFTA) $(OBJ) #Compile for debugger
 list: 	#Show all make rules
 	@grep '^[^#[:space:]].*:' Makefile
 
+norm:	#norminette on all necessary files
+	@norminette src/
+	@norminette include/libft
+	@norminette include/cub3d.h
+
 .PHONY: all clean fclean re
 
 #Color Codes
