@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:18 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 15:39:40 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/05 15:44:13 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	get_texture(int wall_x, int wall_y)
 	int			x;
 	int			y;
 	static int	texture = 0;
-	
-	t_vars	*vars;
+	t_vars		*vars;
+
 	vars = get_data();
 	x = (int) floor(vars->game->ray_x - vars->game->raycos);
 	y = (int) floor(vars->game->ray_y - vars->game->raysin);
@@ -70,9 +70,9 @@ void	ray(double angle, int i)
 	vars->text_pos = floor((int)((int) vars->img->text_height[vars->texture] * \
 	(vars->game->ray_x + vars->game->ray_y))
 			% vars->img->text_width[vars->texture]);
-	if (texture == 3 || texture == 0)
-		text_pos = vars->img->text_width[vars->texture] - text_pos;
-	draw_ray(i, wall_height, text_pos, vars->texture);
+	if (vars->texture == 3 || vars->texture == 0)
+		vars->text_pos = vars->img->text_width[vars->texture] - vars->text_pos;
+	draw_ray(i, wall_height, vars);
 }
 
 void	raycasting(void)
