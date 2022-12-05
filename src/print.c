@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:11 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 11:35:27 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/05 15:32:31 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	draw_ray(int x, int wall_height, int text_pos, int texture)
 		j += text_increment * (wall_height - (vars->win_height / 2));
 	while (i < vars->win_height && i < (vars->win_height / 2 + wall_height))
 	{
-		tmp = vars->img->screen_addr + (i++ *vars->img->line_length + x
+		tmp = vars->img->screen_addr + (vars->img->line_length * i++ + x
 				* (vars->img->bpp / 8));
 		text_tmp = get_texture_pixel(vars->img->text[texture],text_pos,
 				(int)floor(j));

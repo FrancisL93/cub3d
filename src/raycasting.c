@@ -3,48 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:18 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 11:12:00 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/05 15:28:11 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-// TODO Comprendre le degree setter au start
-// void	intersection_correction(int *x, int *y, int wall_x, int wall_y)
-// {
-// 	t_vars	*vars;
-
-// 	vars = get_data();
-
-// }
-
 int	get_texture(int wall_x, int wall_y)
 {
-	int		x;
-	int		y;
-	double	ray_x;
-	double	ray_y;
+	int			x;
+	int			y;
+	static int	texture = 0;
+	
 	t_vars	*vars;
-
 	vars = get_data();
-	ray_x = vars->game->ray_x - vars->game->raycos;
-	ray_y = vars->game->ray_y - vars->game->raysin;
-	x = (int) floor(ray_x);
-	y = (int) floor(ray_y);
-	// if (x != wall_x && y != wall_y)
-	//  	intersection_correction(&x, &y, wall_x, wall_y);
-	if (x < wall_x)
-		return (1);
-	else if (x > wall_x)
-		return (0);
-	else if (y < wall_y)
-		return (3);
-	else if (y > wall_y)
-		return (2);
-	return (-1);
+	x = (int) floor(vars->game->ray_x - vars->game->raycos);
+	y = (int) floor(vars->game->ray_y - vars->game->raysin);
+	if (x < wall_x  && y == wall_y)
+		texture = 1;
+	else if (x > wall_x && y == wall_y)
+		texture = 0;
+	else if (y < wall_y && x == wall_x)
+		texture = 3;
+	else if (y > wall_y && x == wall_x)
+		texture = 2;
+	return (texture);
 }
 
 void	init_ray(double angle)
@@ -67,8 +53,8 @@ void	init_ray(double angle)
 void	ray(double angle, int i)
 {
 	int		wall_height;
-	int		texture;
 	int		text_pos;
+	int		texture;
 	double	distance;
 	t_vars	*vars;
 
@@ -85,8 +71,8 @@ void	ray(double angle, int i)
 	wall_height = floor((vars->win_height / 2) / distance);
 	text_pos = floor((int)((int) vars->img->text_height[texture] * \
 	(vars->game->ray_x + vars->game->ray_y)) % vars->img->text_width[texture]);
-	if (texture == 1 || texture == 2)
-		text_pos = vars->img->text_width[texture] - text_pos;
+	if (texture == 3 || texture == 0)
+	 	text_pos = vars->img->text_width[texture] - text_pos;
 	draw_ray(i, wall_height, text_pos, texture);
 }
 
