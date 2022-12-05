@@ -2,14 +2,14 @@
 
 double	set_direction(char dir)
 {
-	if (dir == 'N')
-		return (270);
-	else if (dir == 'E')
+	if (dir == 'E')
 		return (0);
 	else if (dir == 'S')
 		return (90);
 	else if (dir == 'W')
 		return (180);
+	else if (dir == 'N')
+		return (270);
 	return (0);
 }
 
