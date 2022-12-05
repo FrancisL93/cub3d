@@ -17,6 +17,7 @@ SRC =   map_validation.c 	\
 		free.c 				\
 		main.c				\
 		map_parsing.c		\
+		data.c 				\
 		raycasting.c
 
 LIBFT = include/libft

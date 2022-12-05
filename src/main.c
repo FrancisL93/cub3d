@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:17 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 11:15:36 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/05 12:51:27 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,31 @@
 //LEAKS Faire une fonction pour quand sort avec la croix (x rouge)
 //TODO raycasting int aux limites sont en dehors window a cause de floor? 
 
-void	print_map_data(char **mapdata)
-{
-	int	i;
-
-	i = 0;
-	while (i < 6)
-	{
-		printf("mapdata[i] = %s", mapdata[i]);
-		i++;
-	}
-	printf("\n");
-}
-
-void	print_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		printf("map[i] = %s", map[i]);
-		i++;
-	}
-	printf("\n");
-}
-
-t_vars	*get_data(void)
-{
-	static t_vars	*data = NULL;
-
-	if (data == NULL)
-		data = (t_vars *)ft_calloc(sizeof(t_vars), 1);
-	return (data);
-}
+//void	print_map_data(char **mapdata)
+//{
+//	int	i;
+//
+//	i = 0;
+//	while (i < 6)
+//	{
+//		printf("mapdata[i] = %s", mapdata[i]);
+//		i++;
+//	}
+//	printf("\n");
+//}
+//
+//void	print_map(char **map)
+//{
+//	int	i;
+//
+//	i = 0;
+//	while (map[i])
+//	{
+//		printf("map[i] = %s", map[i]);
+//		i++;
+//	}
+//	printf("\n");
+//}
 
 int	main(int argc, char **argv)
 {	
