@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:17 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 12:51:27 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/05 19:18:43 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 //LEAKS Faire une fonction pour quand sort avec la croix (x rouge)
 //TODO raycasting int aux limites sont en dehors window a cause de floor? 
+//? Dans le makefile, il y a un Wildcard, c'etait pas interdit ?
 
 //void	print_map_data(char **mapdata)
 //{
