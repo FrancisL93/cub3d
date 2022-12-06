@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:11 by malord            #+#    #+#             */
-/*   Updated: 2022/12/06 13:28:25 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/06 15:16:35 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void	generate_img(int win)
 	if (!vars->img->screen_addr)
 		quit_game(42);
 	raycasting();
+	draw_minimap();
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->screen_view, 0, 0);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->character, \
 	(vars->win_width / 2) - (vars->img->character_pos[0] / 2), \
