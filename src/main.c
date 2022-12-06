@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:17 by malord            #+#    #+#             */
-/*   Updated: 2022/12/06 15:06:49 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/06 15:13:26 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int	main(int argc, char **argv)
 {	
+	t_vars	*vars;
+
+	vars = get_data();
 	if (argc != 2)
 	{
 		ft_putstr_fd("Error\nExecute as ./cub3d map.cub\n", STDERR_FILENO);

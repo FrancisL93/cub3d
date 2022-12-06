@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:13 by malord            #+#    #+#             */
-/*   Updated: 2022/12/06 13:42:27 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/06 15:09:52 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	key_hook(int keycode, t_vars *vars)
 		else if (vars->game->dirx < 0)
 			vars->game->dirx = 360 - increment;
 		generate_img(1);
+		//test();
 	}
 	return (0);
 }
