@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/06 13:20:21 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/06 15:17:23 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,18 @@ typedef struct s_img {
 }t_img;
 
 typedef struct s_game {
-	double	posx;
-	double	posy;
-	double	dirx;
-	double	diry;
-	double	ray_x;
-	double	ray_y;
-	double	raycos;
-	double	raysin;
-	double	movement;
+	double			posx;
+	double			posy;
+	double			dirx;
+	double			diry;
+	double			ray_x;
+	double			ray_y;
+	double			raycos;
+	double			raysin;
+	double			movement;
+	double			xa;
+	double			ya;
+	unsigned int	*data;
 }	t_game;
 
 typedef struct s_vars {
@@ -166,5 +169,8 @@ int		get_texture(int wall_x, int wall_y);
 void	init_ray(double angle);
 void	ray(double angle, int i);
 void	raycasting(void);
+
+//minimap.c
+void	draw_minimap(void);
 
 #endif
