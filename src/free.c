@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:02 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 10:13:20 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/06 12:00:56 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 //30-39 build_imgs & init_data
 //40+ in game errors
 //50+ in game clean exit
+void	free_bonus()
+{
+	t_vars	*vars;
+
+	vars = get_data();
+	(void) vars;
+}
+
 int	quit_game(int exit_num)
 {
 	t_vars	*vars;
@@ -26,10 +34,12 @@ int	quit_game(int exit_num)
 	vars = get_data();
 	if (exit_num >= 40)
 		mlx_destroy_window(vars->mlx, vars->win);
+	if (vars->bonus)
+		free_bonus();
 	if (exit_num > 34)
 		free(vars->game);
 	if (exit_num > 33)
-		destroy_images(5);
+		destroy_images(5 + vars->bonus);
 	if (exit_num > 31)
 		free(vars->img);
 	if (exit_num > 14)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:11 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 15:41:58 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/06 13:28:25 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,30 @@ char	*get_texture_pixel(void	*text, int x, int y)
 	return (pixel);
 }
 
-void	draw_ray(int x, int wall_height, t_vars *vars)
+void	print_floor(int	x, int i, int wall_height, double angle)
+{
+	t_vars	*vars;
+	double	directions[2];
+
+	vars = get_data();
+	if (vars->bonus == 0)
+		while (i < vars->win_height)
+			my_mlx_pixel_put(vars->img, x, i++, vars->img->floor_color);
+	else
+	{
+		directions[0] = cos(angle * (PI / 180));
+		directions[1] = sin(angle * (PI / 180));
+		while (i < vars->win_height)
+			floor_casting(i++, x, directions, angle);
+		
+	}
+	// (void) start;
+	// (void) directions;
+	(void) wall_height;
+	// (void) angle;
+}
+
+void	draw_ray(int x, int wall_height, double angle, t_vars *vars)
 {
 	int			i;
 	double		j;
@@ -66,8 +89,7 @@ void	draw_ray(int x, int wall_height, t_vars *vars)
 		*tmp++ = *text_tmp++;
 		j += text_increment;
 	}
-	while (i < vars->win_height)
-		my_mlx_pixel_put(vars->img, x, i++, vars->img->floor_color);
+	print_floor(x, i, wall_height, angle);
 }
 
 void	generate_img(int win)

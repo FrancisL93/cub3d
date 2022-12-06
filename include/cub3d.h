@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 15:32:15 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/06 13:20:21 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct s_img {
 	char	*character_file;
 	int		character_pos[2];
 	void	*text[4];
+	void	*floor;
+	int		floor_size[2];
 	int		text_height[4];
 	int		text_width[4];
 	char	*screen_addr;
@@ -84,6 +86,7 @@ typedef struct s_vars {
 	int		one_start;
 	int		text_pos;
 	int		texture;
+	int		bonus;
 	t_game	*game;
 	t_img	*img;
 }	t_vars;
@@ -95,6 +98,9 @@ void	build_imgs(void);
 
 //data.c
 t_vars	*get_data(void);
+
+//floor_casting.c
+void	floor_casting(int y, int x, double *directions, double angle);
 
 //free.c
 int		quit_game(int exit_num);
@@ -152,7 +158,7 @@ void	set_colors(void);
 //print.c
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 char	*get_texture_pixel(void *text, int x, int y);
-void	draw_ray(int x, int wall_height, t_vars *vars);
+void	draw_ray(int x, int wall_height, double angle, t_vars *vars);
 void	generate_img(int win);
 
 //raycasting.c

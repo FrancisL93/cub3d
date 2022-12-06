@@ -3,6 +3,7 @@
 ## ************************************************************************** ##
 
 NAME	= cub3d
+BONUS	= $(NAME)_bonus
 EXECUTION = ./$(NAME) map.cub
 
 SRC =   map_validation.c 	\
@@ -14,12 +15,31 @@ SRC =   map_validation.c 	\
 		game_tools.c		\
 		print.c 			\
 		print_tools.c		\
+		floor_casting.c	\
 		free.c 				\
 		main.c				\
 		map_parsing.c		\
 		data.c 				\
 		fuck_norm.c			\
 		raycasting.c
+
+SRC_BONUS = map_validation.c 	\
+			map.c 				\
+			map_info.c 			\
+			assets.c			\
+			map_tools.c			\
+			game_bonus.c 		\
+			game_tools.c		\
+			print.c 			\
+			print_tools.c		\
+			floor_casting.c		\
+			free.c 				\
+			main.c				\
+			map_parsing.c		\
+			data.c 				\
+			fuck_norm.c			\
+			raycasting.c
+
 
 LIBFT = include/libft
 LIBFTA = include/libft/libft.a
@@ -29,6 +49,7 @@ MLXA = include/mlx/libmlx.a
 #MLX = mlx/ (M1 Mac @home)
 #MLXA = mlx/libmlx.a (M1 Mac @home)
 
+B = obj_bonus/
 O = obj/
 S = src/
 I = inc/
@@ -38,6 +59,7 @@ CFLAGS += -Wall -Wextra -Werror
 CFLAGS += -I$I
 
 OBJ = $(SRC:%=$O%.o)
+OBJ_BONUS = $(SRC_BONUS:%=$B%.o)
 
 RM = /bin/rm -f
 RMDIR = /bin/rm -rf
@@ -76,6 +98,20 @@ $(NAME): $(MLXA) $(LIBFTA) $(OBJ)
 	@$(CC) $(CFLAGS) -lmlx -Lmlx -framework OpenGL -framework AppKit $(LIBFTA) $(OBJ) -o $(NAME)
 	@echo "\033[0;32mCompiled! Execute as: $(EXECUTION)\033[0m"
 
+$B: #Create obj directory
+	@mkdir $@
+	@echo "\033[0;32mCompiling $(BONUS)...\033[0m"
+
+$(OBJ_BONUS): | $B
+
+$(OBJ_BONUS): $B%.o: $S% #Build objects $< take the name on the right of ":", $@ take the name on the left of ":"
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+bonus: $(MLXA) $(LIBFTA) $(OBJ_BONUS)
+	@$(CC) $(CFLAGS) -fsanitize=address -lmlx -framework OpenGL -framework AppKit $(LIBFTA) $(OBJ_BONUS) -o $(BONUS)
+	@echo "\033[0;32mCompiled! Execute as: ./$(BONUS) map.cub\033[0m"
+
+ 
 ## ************************************************************************** ##
 ##                                 Cleaning                                   ##
 ## ************************************************************************** ##
@@ -85,9 +121,11 @@ cleanmlx:
  
 cleanobj: #Delete .o files in obj directory
 	@$(RM) $(wildcard $(OBJ))
+	@$(RM) $(wildcard $(OBJ_BONUS))
 
 cleanobjdir: cleanobj #Delete obj directory
-	@$(RMDIR) $O
+	@$(RMDIR) $(O)
+	@$(RMDIR) $(B)
 
 clean: cleanobjdir #Delete obj directory and content
 	@echo "\033[0;31mObjects deleted!\033[0m"
@@ -96,6 +134,7 @@ fclean: clean #Delete objects and executable
 	@$(RM) $(LIBFTA)
 	@echo "\033[0;31mLibft.a deleted!\033[0m"
 	@$(RM) $(NAME)
+	@$(RM) $(BONUS)
 	@echo "\033[0;31mExecutable deleted!\033[0m"
 
 re: fclean #Delete all and rebuild executable
@@ -111,6 +150,9 @@ MAP = maps/good_map.cub
 
 exe: $(NAME) #Execute program
 	@./$(NAME) $(MAP)
+
+exe-bonus: $(BONUS) #Execute program
+	@./$(BONUS) $(MAP)
 
 exe-leak: $(NAME)
 	@leaks --atExit -- ./$(NAME) $(MAP)

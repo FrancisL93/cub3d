@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:18 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 15:44:13 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/06 12:52:56 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	ray(double angle, int i)
 			% vars->img->text_width[vars->texture]);
 	if (vars->texture == 3 || vars->texture == 0)
 		vars->text_pos = vars->img->text_width[vars->texture] - vars->text_pos;
-	draw_ray(i, wall_height, vars);
+	draw_ray(i, wall_height, angle, vars);
 }
 
 void	raycasting(void)

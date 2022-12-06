@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assets.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:08:53 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 10:12:39 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/06 13:51:25 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	destroy_images(int num)
 		mlx_destroy_image(vars->mlx, vars->img->text[3]);
 	if (num > 4)
 		mlx_destroy_image(vars->mlx, vars->img->character);
+	if (num > 5)
+		mlx_destroy_image(vars->mlx, vars->img->floor);
 }
 
 void	*get_text(char *texture, int num)
@@ -51,6 +53,20 @@ void	*get_text(char *texture, int num)
 	}
 	return (img);
 }
+void	build_bonus_assets()
+{
+	t_vars	*vars;
+
+	vars = get_data();
+	vars->img->floor = mlx_xpm_file_to_image(vars->mlx, "./img/floor1.xpm", \
+		&vars->img->floor_size[0], &vars->img->floor_size[1]);
+	if (!vars->img->floor)
+	{
+		ft_putstr_fd("Error\nXPM to image failure on textures\n", STDERR_FILENO);
+		destroy_images(5);
+		quit_game(33);
+	}
+}
 
 void	build_imgs(void)
 {
@@ -70,8 +86,11 @@ void	build_imgs(void)
 	if (!vars->img->character)
 	{
 		destroy_images(4);
+		ft_putstr_fd("Error\nXPM to image failure on textures\n", STDERR_FILENO);
 		quit_game(33);
 	}
+	if (vars->bonus)
+		build_bonus_assets();
 	vars->img->character_pos[0] = size[0];
 	vars->img->character_pos[1] = size[1];
 	return ;

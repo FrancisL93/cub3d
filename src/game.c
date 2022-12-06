@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:13 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 10:09:14 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/06 13:42:27 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	init_data(void)
 	vars->game = malloc(sizeof(*vars->game));
 	if (!vars->game)
 		quit_game(34);
-	printf("Pendant init = %f\n", vars->game->dirx);
 	vars->img->screen_view = NULL;
 	vars->focal_length = 60;
 	vars->win_width = 1920;
@@ -73,9 +72,9 @@ void	launch_game(void)
 		ft_putstr_fd("Error\nMlx init failure\n", STDERR_FILENO);
 		quit_game(30);
 	}
+	vars->bonus = 0;
 	build_imgs();
 	init_data();
-	printf("Apres init = %f\n", vars->game->dirx);
 	if (vars->mlx != NULL)
 		vars->win = mlx_new_window(vars->mlx, vars->win_width,
 				vars->win_height, "Cub3d");

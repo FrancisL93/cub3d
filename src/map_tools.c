@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:33 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 10:09:34 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/06 13:42:49 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	set_up_start(void)
 				vars->game->posx = j + 0.5;
 				vars->game->posy = i + 0.5;
 				vars->game->dirx = set_direction(vars->map[i][j]);
-				printf("%f\n", vars->game->dirx);
 				vars->map[i][j] = '0';
 				return ;
 			}
