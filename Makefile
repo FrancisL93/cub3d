@@ -21,7 +21,8 @@ SRC =   map_validation.c 	\
 		map_parsing.c		\
 		data.c 				\
 		fuck_norm.c			\
-		raycasting.c
+		raycasting.c		\
+		minimap.c
 
 SRC_BONUS = map_validation.c 	\
 			map.c 				\
@@ -95,7 +96,7 @@ $(MLXA):
 	@echo "\033[0;32mMlx compiled!\n\033[0m"
 
 $(NAME): $(MLXA) $(LIBFTA) $(OBJ)
-	@$(CC) $(CFLAGS) -lmlx -Lmlx -framework OpenGL -framework AppKit $(LIBFTA) $(OBJ) -o $(NAME)
+	@$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(LIBFTA) $(OBJ) -o $(NAME)
 	@echo "\033[0;32mCompiled! Execute as: $(EXECUTION)\033[0m"
 
 $B: #Create obj directory
