@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:42 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 10:16:30 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/05 18:59:32 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-//? Pas trouvé de edge cases qui font failer ce parsing. Qui dit mieux ? 
 
 int	check_file(char *map)
 {
@@ -59,8 +57,6 @@ void	read_map_file(int fd)
 		quit_game(6);
 	}
 }
-
-//TODO Check if init_struct a des malloc pour ajouter free en cas d'erreur
 
 void	validate_map(char *mapfile)
 {
