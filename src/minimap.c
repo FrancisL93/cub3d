@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 15:20:33 by malord            #+#    #+#             */
-/*   Updated: 2022/12/07 11:39:17 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/07 13:44:29 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,29 +46,42 @@ void	sqmmap(int x, int y, int map_item, t_vars *vars)
 		x++;
 	}
 }
-//TODO Deplacer le personnage en temps reel dans la minimap avec les keyhook
+//TODO Move le personnage dans la minimap avec les keyhook (3 keys for 1 case)
 
 void	draw_minimap(void)
 {
 	t_vars		*vars;
 	int			i;
 	int			j;
+	int			k = 0;
+	int			max = 0;
 
 	i = 0;
 	vars = get_data();
 	if (vars->bonus == 0)
 		return ;
+	i = 0;
+	while (vars->map[k])
+	{
+		if (max < (int)ft_strlen(vars->map[k]))
+			max = (int)ft_strlen(vars->map[k]);
+		k++;
+	}
+	if ((k * 10) >= vars->win_height || (max * 10) >= vars->win_width)
+	{
+		printf("ERROR BITCH\n");
+		exit(1);
+	}
 	while (vars->map[i])
 	{
 		j = 0;
-		while (vars->minimap[i][j])
+		while (vars->map[i][j] != '\n')
 		{
-			if (vars->minimap[i][j] == '1')
+			if (vars->map[i][j] == '1')
 				sqmmap(i * 10, j * 10, 1, vars);
-			else if (vars->minimap[i][j] == '0') 
+			else if (vars->map[i][j] == '0')
 				sqmmap(i * 10, j * 10, 0, vars);
-			else if (ft_strchr("NSWE", vars->minimap[i][j]))
-				sqmmap(i * 10, j * 10, 2, vars);
+			sqmmap(vars->game->posy * 10, vars->game->posx * 10, 2, vars);
 			j++;
 		}
 		i++;
