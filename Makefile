@@ -6,12 +6,11 @@ NAME	= cub3d
 BONUS	= $(NAME)_bonus
 EXECUTION = ./$(NAME) map.cub
 
-SRC =   map_validation.c 	\
+SRCS =   map_validation.c 	\
 		map.c 				\
 		map_info.c 			\
 		assets.c			\
 		map_tools.c			\
-		game.c 				\
 		game_tools.c		\
 		print.c 			\
 		print_tools.c		\
@@ -24,23 +23,10 @@ SRC =   map_validation.c 	\
 		raycasting.c		\
 		minimap.c
 
-SRC_BONUS = map_validation.c 	\
-			map.c 				\
-			map_info.c 			\
-			assets.c			\
-			map_tools.c			\
-			game_bonus.c 		\
-			game_tools.c		\
-			print.c 			\
-			print_tools.c		\
-			floor_casting.c		\
-			free.c 				\
-			main.c				\
-			map_parsing.c		\
-			data.c 				\
-			fuck_norm.c			\
-			raycasting.c		\
-			minimap.c
+SRC := $(SRCS)
+SRC += game.c
+SRC_BONUS := $(SRCS)
+SRC_BONUS += game_bonus.c
 
 
 LIBFT = include/libft
