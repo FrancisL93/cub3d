@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 15:20:33 by malord            #+#    #+#             */
-/*   Updated: 2022/12/07 11:36:01 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/07 11:39:17 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,7 @@ void	draw_minimap(void)
 				sqmmap(i * 10, j * 10, 1, vars);
 			else if (vars->minimap[i][j] == '0') 
 				sqmmap(i * 10, j * 10, 0, vars);
-			else if (vars->minimap[i][j] == 'N' || vars->minimap[i][j] == 'S'
-						|| vars->minimap[i][j] == 'W'
-						|| vars->minimap[i][j] == 'E')
+			else if (ft_strchr("NSWE", vars->minimap[i][j]))
 				sqmmap(i * 10, j * 10, 2, vars);
 			j++;
 		}
