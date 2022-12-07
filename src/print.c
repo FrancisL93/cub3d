@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:11 by malord            #+#    #+#             */
-/*   Updated: 2022/12/06 15:16:35 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/07 15:29:17 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	print_floor(int	x, int i, int wall_height, double angle)
 		directions[1] = sin(angle * (PI / 180));
 		while (i < vars->win_height)
 			floor_casting(i++, x, directions, angle);
-		
 	}
 	// (void) start;
 	// (void) directions;

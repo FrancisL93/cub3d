@@ -14,9 +14,9 @@ SRCS =   map_validation.c 	\
 		game_tools.c		\
 		print.c 			\
 		print_tools.c		\
-		floor_casting.c	\
+		game.c				\
+		floor_casting.c		\
 		free.c 				\
-		main.c				\
 		map_parsing.c		\
 		data.c 				\
 		fuck_norm.c			\
@@ -24,9 +24,9 @@ SRCS =   map_validation.c 	\
 		minimap.c
 
 SRC := $(SRCS)
-SRC += game.c
+SRC += main.c
 SRC_BONUS := $(SRCS)
-SRC_BONUS += game_bonus.c
+SRC_BONUS += main_bonus.c
 
 
 LIBFT = include/libft

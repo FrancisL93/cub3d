@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:13 by malord            #+#    #+#             */
-/*   Updated: 2022/12/07 15:03:42 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/07 15:08:51 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	launch_game(void)
 		ft_putstr_fd("Error\nMlx init failure\n", STDERR_FILENO);
 		quit_game(30);
 	}
-	vars->bonus = 0;
 	build_imgs();
 	init_data();
 	if (vars->mlx != NULL)

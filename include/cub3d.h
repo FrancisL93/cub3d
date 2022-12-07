@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/07 14:52:45 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/07 15:07:38 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_img {
 	void	*text[4];
 	void	*floor;
 	int		floor_size[2];
+	void	*ceiling;
+	int		ceiling_size[2];
 	int		text_height[4];
 	int		text_width[4];
 	char	*screen_addr;
@@ -84,6 +86,7 @@ typedef struct s_vars {
 	double	focal_length;
 	double	increment_angle;
 	double	ray_precision;
+	double	wall_distance;
 	int		win_width;
 	int		win_height;
 	int		map_start;

@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:02 by malord            #+#    #+#             */
-/*   Updated: 2022/12/06 12:00:56 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/07 14:38:52 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	quit_game(int exit_num)
 	if (exit_num > 34)
 		free(vars->game);
 	if (exit_num > 33)
-		destroy_images(5 + vars->bonus);
+		destroy_images(5 + vars->bonus * 2);
 	if (exit_num > 31)
 		free(vars->img);
 	if (exit_num > 14)
