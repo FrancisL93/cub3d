@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 15:20:33 by malord            #+#    #+#             */
-/*   Updated: 2022/12/07 11:33:43 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/07 11:36:01 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	sqmmap(int x, int y, int map_item, t_vars *vars)
 		x++;
 	}
 }
+//TODO Deplacer le personnage en temps reel dans la minimap avec les keyhook
 
 void	draw_minimap(void)
 {
