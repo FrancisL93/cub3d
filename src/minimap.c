@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 15:20:33 by malord            #+#    #+#             */
-/*   Updated: 2022/12/07 14:14:04 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/07 14:20:14 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,31 +46,40 @@ void	sqmmap(int x, int y, int map_item, t_vars *vars)
 		x++;
 	}
 }
-//TODO Move le personnage dans la minimap avec les keyhook (3 keys for 1 case)
+
+void	check_map_size(void)
+{
+	t_vars	*vars;
+	int		size;
+	int		max;
+
+	vars = get_data();
+	size = 0;
+	max = 0;
+	while (vars->map[size])
+	{
+		if (max < (int)ft_strlen(vars->map[size]))
+			max = (int)ft_strlen(vars->map[size]);
+		size++;
+	}
+	if ((size * 10) >= vars->win_height || (max * 10) >= vars->win_width)
+	{
+		ft_putstr_fd("Error\nMap is too large for window size.", STDERR_FILENO);
+		quit_game(51);
+	}
+}
 
 void	draw_minimap(void)
 {
 	t_vars		*vars;
 	int			i;
 	int			j;
-	int			k;
-	int			max;
 
 	i = 0;
 	vars = get_data();
 	if (vars->bonus == 0)
 		return ;
-	while (vars->map[k])
-	{
-		if (max < (int)ft_strlen(vars->map[k]))
-			max = (int)ft_strlen(vars->map[k]);
-		k++;
-	}
-	if ((k * 10) >= vars->win_height || (max * 10) >= vars->win_width)
-	{
-		printf("ERROR BITCH\n");
-		exit(1);
-	}
+	check_map_size();
 	while (vars->map[i])
 	{
 		j = 0;
