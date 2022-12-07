@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 15:20:33 by malord            #+#    #+#             */
-/*   Updated: 2022/12/07 13:44:29 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/07 14:14:04 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,13 @@ void	draw_minimap(void)
 	t_vars		*vars;
 	int			i;
 	int			j;
-	int			k = 0;
-	int			max = 0;
+	int			k;
+	int			max;
 
 	i = 0;
 	vars = get_data();
 	if (vars->bonus == 0)
 		return ;
-	i = 0;
 	while (vars->map[k])
 	{
 		if (max < (int)ft_strlen(vars->map[k]))
