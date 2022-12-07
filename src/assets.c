@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assets.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:08:53 by malord            #+#    #+#             */
-/*   Updated: 2022/12/06 13:51:25 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/07 15:00:37 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void	*get_text(char *texture, int num)
 	}
 	return (img);
 }
-void	build_bonus_assets()
+
+void	build_bonus_assets(void)
 {
 	t_vars	*vars;
 
