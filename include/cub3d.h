@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/07 10:03:37 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/07 11:34:39 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,8 @@ void	ray(double angle, int i);
 void	raycasting(void);
 
 //minimap.c
+char	*get_color(int map_item);
+void	sqmmap(int x, int y, int map_itemp, t_vars *vars);
 void	draw_minimap(void);
 
 #endif
