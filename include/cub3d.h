@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/06 15:17:23 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/07 10:03:37 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef struct s_vars {
 	char	**full_config;
 	char	*mapdata[6];
 	char	**map;
+	char	**minimap;
 	double	focal_length;
 	double	increment_angle;
 	double	ray_precision;
@@ -138,6 +139,7 @@ void	map_square(void);
 
 //map_tools.c
 double	set_direction(char dir);
+void	fill_minimap(void);
 void	set_up_start(void);
 void	format_map(void);
 
