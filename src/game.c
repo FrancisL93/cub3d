@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:13 by malord            #+#    #+#             */
-/*   Updated: 2022/12/06 15:09:52 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/07 15:03:42 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	init_data(void)
 	if (!vars->game)
 		quit_game(34);
 	vars->img->screen_view = NULL;
-	vars->focal_length = 60;
+	vars->focal_length = 66;
 	vars->win_width = 1920;
 	vars->win_height = 1080;
 	vars->increment_angle = vars->focal_length / vars->win_width;
