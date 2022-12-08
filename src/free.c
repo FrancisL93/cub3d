@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:02 by malord            #+#    #+#             */
-/*   Updated: 2022/12/08 16:19:39 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/08 16:31:58 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ int	quit_game(int exit_num)
 
 	vars = get_data();
 	if (exit_num >= 40)
+	{
 		mlx_destroy_window(vars->mlx, vars->win);
+		mlx_destroy_image(vars->mlx, vars->img->screen_view);
+	}
 	if (vars->bonus)
 		free_bonus();
 	if (exit_num > 34)
