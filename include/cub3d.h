@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/08 10:23:59 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/08 16:19:29 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ t_vars	*get_data(void);
 void	floor_casting(int y, int x, double *directions, double angle);
 
 //free.c
+void	free_bonus(void);
+int		closewin(void);
 int		quit_game(int exit_num);
 
 //fuck_norm.c
