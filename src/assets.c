@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:08:53 by malord            #+#    #+#             */
-/*   Updated: 2022/12/08 08:51:14 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/08 16:02:21 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	build_bonus_assets(void)
 		destroy_images(5);
 		quit_game(33);
 	}
-	vars->img->ceiling = mlx_xpm_file_to_image(vars->mlx, "./img/ceiling.xpm", \
+	vars->img->ceiling = mlx_xpm_file_to_image(vars->mlx, "./img/nightsky.xpm", \
 		&vars->img->ceiling_size[0], &vars->img->ceiling_size[1]);
 	if (!vars->img->ceiling)
 	{
