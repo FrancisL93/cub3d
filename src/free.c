@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:02 by malord            #+#    #+#             */
-/*   Updated: 2022/12/07 14:38:52 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/08 16:19:39 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,18 @@
 //30-39 build_imgs & init_data
 //40+ in game errors
 //50+ in game clean exit
-void	free_bonus()
+void	free_bonus(void)
 {
 	t_vars	*vars;
 
 	vars = get_data();
 	(void) vars;
+}
+
+int	closewin(void)
+{
+	quit_game(50);
+	return (0);
 }
 
 int	quit_game(int exit_num)
