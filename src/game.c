@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:13 by malord            #+#    #+#             */
-/*   Updated: 2022/12/07 15:08:51 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/08 16:12:30 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ void	launch_game(void)
 	}
 	generate_img(0);
 	mlx_hook(vars->win, 2, 0, key_hook, vars);
-	mlx_hook(vars->win, 17, 0, quit_game, vars);
+	mlx_hook(vars->win, 17, 0, closewin, vars);
 	mlx_loop(vars->mlx);
 }
