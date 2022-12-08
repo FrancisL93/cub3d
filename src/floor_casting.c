@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floor_casting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 12:51:18 by flahoud           #+#    #+#             */
-/*   Updated: 2022/12/08 10:54:50 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/08 13:42:05 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	put_floor_pixel(int y, int x, double tile_x, double tile_y)
 
 	vars = get_data();
 	tmp = init_tmp(x, &y);
-	texture_x = (int) (floor(tile_x * vars->img->floor_size[0])) / vars->img->floor_size[0];
-	texture_y = (int) (floor(tile_y * vars->img->floor_size[1])) / vars->img->floor_size[1];
+	texture_x = (int) floor(tile_x * vars->img->floor_size[0] / vars->img->floor_size[0]);
+	texture_y = (int) floor(tile_y * vars->img->floor_size[1] / vars->img->floor_size[1]);
 	text_tmp = get_texture_pixel(vars->img->floor, texture_x, texture_y);
 	*tmp++ = *text_tmp++;
 	*tmp++ = *text_tmp++;
@@ -51,24 +51,23 @@ void	put_floor_pixel(int y, int x, double tile_x, double tile_y)
 void	floor_casting(int y, int x, double *directions, double angle)
 {
 	t_vars	*vars;
-	double	dist;
-	// double	current_floor[2];
-	double		tile_x;
-	double		tile_y;
+	double	angle_beta;
+	double	r;
+	double	straight_line_dist;
+	double	player_height;
+	double	d;
+	double	floor_xy[2];
 
 	vars = get_data();
-	(void) angle;
-	dist = vars->win_height % (2 * y - vars->win_height);
-	dist = dist / cos(vars->game->dirx * (PI / 180));
-		
-	// current_floor[0] = weight * directions[0] + (1 - weight) * floor(vars->game->posx);
-	// current_floor[1] = weight * directions[1] + (1 - weight) * floor(vars->game->posy);
-	// tile_x = (int) (current_floor[0] * vars->img->ceiling_size[0]) % vars->img->ceiling_size[0];
-	// tile_y = (int) (current_floor[1] * vars->img->ceiling_size[1]) % vars->img->ceiling_size[1];
-	tile_x = dist * directions[0];
-	tile_y = dist * directions[1];
-	tile_x += vars->game->posx;
-	tile_y += vars->game->posy;
-	put_floor_pixel(y, x, tile_x, tile_y);
-	put_ceiling_pixel(vars->win_height - y, x, tile_x, tile_y);
+	player_height = vars->win_height;
+	angle_beta = fabs(angle - vars->game->dirx);
+	r = y - vars->win_height / 2;
+	straight_line_dist = (player_height * 277) / r;
+	d = straight_line_dist / cos(angle_beta * (PI / 180));
+	floor_xy[0] = vars->game->posx + cos(angle * (PI / 180)) * d;
+	floor_xy[1] = vars->game->posy - sin(angle * (PI / 180)) * d;
+	//printf("%f & %f |", floor_xy[0], floor_xy[1]);
+	put_floor_pixel(y, x, -floor_xy[0], floor_xy[1]);
+	(void) directions;
+	(void) x;
 }
