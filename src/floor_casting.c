@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 12:51:18 by flahoud           #+#    #+#             */
-/*   Updated: 2022/12/09 11:48:43 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/09 13:57:07 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	put_floor_pixel(int y, int x, double tile_x, double tile_y)
 
 	vars = get_data();
 	tmp = init_tmp(x, &y);
-	tile_x = abs((int) tile_x % vars->img->floor_size[0]);
-	tile_y = abs((int) tile_y % vars->img->floor_size[1]);
+	tile_x = abs((int) (tile_x + vars->game->posx * (double) vars->img->floor_size[0]) % vars->img->floor_size[0]);
+	tile_y = abs((int) (tile_y + vars->game->posy * (double) vars->img->floor_size[1]) % vars->img->floor_size[1]);
 	text_tmp = get_texture_pixel(vars->img->floor, tile_x, tile_y);
 	*tmp++ = *text_tmp++;
 	*tmp++ = *text_tmp++;
