@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floor_casting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 12:51:18 by flahoud           #+#    #+#             */
-/*   Updated: 2022/12/08 15:57:41 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/09 11:48:43 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	floor_casting(int y, int x, double *directions, double angle)
 	angle_beta = fabs(angle - vars->game->dirx);
 	r = y - vars->win_height / 2;
 	straight_line_dist = (player_height * 277) / r;
-	d = straight_line_dist / cos(angle_beta * (PI / 180));
+	d = straight_line_dist / cos(angle * (PI / 180));
 	floor_xy[0] = vars->game->posx + cos(angle * (PI / 180)) * d;
 	floor_xy[1] = vars->game->posy - sin(angle * (PI / 180)) * d;
 	put_floor_pixel(y, x, floor_xy[0], floor_xy[1]);

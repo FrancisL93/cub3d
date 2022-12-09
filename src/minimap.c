@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 15:20:33 by malord            #+#    #+#             */
-/*   Updated: 2022/12/07 14:52:41 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/09 11:50:55 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,22 @@ char	*get_color(int map_item)
 
 void	sqmmap(int x, int y, int map_item, t_vars *vars)
 {
-	char	**minimap_color;
-	int		color;
-	int		x_tmp;
-	int		y_tmp;
-	char	*color_info;
-
+	int			x_tmp;
+	int			y_tmp;
+	static int	color[3];
+	
 	x_tmp = x;
 	y_tmp = y;
-	color_info = get_color(map_item);
-	minimap_color = ft_split(color_info, ' ');
-	color = retrieve_color(minimap_color);
+	if (color[0] == 0)
+	{
+		color[0] = retrieve_color(ft_split(get_color(0), ' '));
+		color[1] = retrieve_color(ft_split(get_color(1), ' '));
+		color[2] = retrieve_color(ft_split(get_color(2), ' '));
+	}
 	while (x < (x_tmp + 10))
 	{
 		while (y < (y_tmp + 10))
-			my_mlx_pixel_put(vars->img, (y++ + 20), (x + 20), color);
+			my_mlx_pixel_put(vars->img, (y++ + 20), (x + 20), color[map_item]);
 		y = y_tmp;
 		x++;
 	}
@@ -53,9 +54,9 @@ void	check_map_size(void)
 	int		size;
 	int		max;
 
-	vars = get_data();
-	size = 0;
 	max = 0;
+	size = 0;
+	vars = get_data();
 	while (vars->map[size])
 	{
 		if (max < (int)ft_strlen(vars->map[size]))
@@ -89,10 +90,9 @@ void	draw_minimap(void)
 				sqmmap(i * 10, j * 10, 1, vars);
 			else if (vars->map[i][j] == '0')
 				sqmmap(i * 10, j * 10, 0, vars);
-			sqmmap((vars->game->posy * 10) - 5,
-				(vars->game->posx * 10) - 5, 2, vars);
 			j++;
 		}
 		i++;
 	}
+	sqmmap((vars->game->posy * 10) - 5, (vars->game->posx * 10) - 5, 2, vars);
 }
