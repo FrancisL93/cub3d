@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/08 16:19:29 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/09 13:38:50 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,5 +181,8 @@ void	raycasting(void);
 char	*get_color(int map_item);
 void	sqmmap(int x, int y, int map_itemp, t_vars *vars);
 void	draw_minimap(void);
+
+//mouse_move.c
+int		mouse_move(t_vars *vars);
 
 #endif

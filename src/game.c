@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:13 by malord            #+#    #+#             */
-/*   Updated: 2022/12/08 16:12:30 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/09 13:43:05 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	key_hook(int keycode, t_vars *vars)
 		else if (vars->game->dirx < 0)
 			vars->game->dirx = 360 - increment;
 		generate_img(1);
-		//test();
 	}
 	return (0);
 }
@@ -86,5 +85,6 @@ void	launch_game(void)
 	generate_img(0);
 	mlx_hook(vars->win, 2, 0, key_hook, vars);
 	mlx_hook(vars->win, 17, 0, closewin, vars);
+	mlx_hook(vars->win, 6, 0, mouse_move, vars);
 	mlx_loop(vars->mlx);
 }

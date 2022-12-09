@@ -21,7 +21,8 @@ SRCS =   map_validation.c 	\
 		data.c 				\
 		fuck_norm.c			\
 		raycasting.c		\
-		minimap.c
+		minimap.c			\
+		mouse_move.c
 
 SRC := $(SRCS)
 SRC += main.c
@@ -81,7 +82,7 @@ $(MLXA):
 	@echo "\033[0;32mMlx compiled!\n\033[0m"
 
 $(NAME): $(MLXA) $(LIBFTA) $(OBJ)
-	@$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(LIBFTA) $(OBJ) -o $(NAME)
+	@$(CC) $(CFLAGS) -lmlx -Lmlx -framework OpenGL -framework AppKit $(LIBFTA) $(OBJ) -o $(NAME)
 	@echo "\033[0;32mCompiled! Execute as: $(EXECUTION)\033[0m"
 
 $B: #Create obj directory
@@ -94,7 +95,7 @@ $(OBJ_BONUS): $B%.o: $S% #Build objects $< take the name on the right of ":", $@
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(MLXA) $(LIBFTA) $(OBJ_BONUS)
-	@$(CC) $(CFLAGS) -fsanitize=address -lmlx -framework OpenGL -framework AppKit $(LIBFTA) $(OBJ_BONUS) -o $(BONUS)
+	@$(CC) $(CFLAGS) -fsanitize=address -lmlx -Lmlx -framework OpenGL -framework AppKit $(LIBFTA) $(OBJ_BONUS) -o $(BONUS)
 	@echo "\033[0;32mCompiled! Execute as: ./$(BONUS) map.cub\033[0m"
 
  
