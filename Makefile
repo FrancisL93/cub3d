@@ -1,59 +1,33 @@
 ## ************************************************************************** ##
+##                                 Includes                                   ##
+## ************************************************************************** ##
+
+include include/settings.mk
+
+## ************************************************************************** ##
 ##                               Variables                                    ##
 ## ************************************************************************** ##
 
-NAME	= cub3d
-BONUS	= $(NAME)_bonus
-EXECUTION = ./$(NAME) map.cub
-
-SRCS =   map_validation.c 	\
-		map.c 				\
-		map_info.c 			\
-		assets.c			\
-		map_tools.c			\
-		game_tools.c		\
-		print.c 			\
-		print_tools.c		\
-		game.c				\
-		floor_casting.c		\
-		free.c 				\
-		map_parsing.c		\
-		data.c 				\
-		fuck_norm.c			\
-		raycasting.c		\
-		minimap.c			\
-		mouse_move.c
-
-SRC := $(SRCS)
-SRC += main.c
-SRC_BONUS := $(SRCS)
-SRC_BONUS += main_bonus.c
-
-
-LIBFT = include/libft
-LIBFTA = include/libft/libft.a
-
-MLX = include/mlx
-MLXA = include/mlx/libmlx.a
-
-B = obj_bonus/
-O = obj/
-S = src/
-I = inc/
-
-CC = gcc -g
-CFLAGS += -Wall -Wextra -Werror
-CFLAGS += -I$I
+EXECUTION = ./$(NAME) $(ARG)
+EXECUTION_B = ./$(BONUS) $(ARG)
 
 OBJ = $(SRC:%=$O%.o)
 OBJ_BONUS = $(SRC_BONUS:%=$B%.o)
 
-RM = /bin/rm -f
-RMDIR = /bin/rm -rf
+#Folders
+B = obj_bonus/
+O = obj/
+S = src/
+I = include/
 
-## ************************************************************************** ##
-##                             Pre-Compilation                                ##
-## ************************************************************************** ##
+CC ?=	gcc
+CFLAGS	+= -Wall -Wextra -Werror
+CFLAGS	+= -I$I
+DEBUG	= -g
+SFLAGS	= -fsanitize=address
+
+OBJ = $(SRC:%=$O%.o)
+OBJ_BONUS = $(SRC_BONUS:%=$B%.o)
 
 ## ************************************************************************** ##
 ##                               Compilation                                  ##
@@ -61,99 +35,99 @@ RMDIR = /bin/rm -rf
 
 all: $(NAME)
 
-$O: #Create obj directory
+$O:
 	@mkdir $@
 	@echo "\033[0;32mCompiling $(NAME)...\033[0m"
 
 $(OBJ): | $O
 
-$(OBJ): $O%.o: $S% #Build objects $< take the name on the right of ":", $@ take the name on the left of ":"
+$(OBJ): $O%.o: $S%
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(LIBFTA):
-	@echo "\033[0;32mCompiling libft...\033[0m"
-	@make -C $(LIBFT)
-	@make clean -C $(LIBFT)
-	@echo "\033[0;32mLibft compiled!\n\033[0m"
-
-$(MLXA):
-	@echo "\033[0;32mCompiling mlx...\033[0m"
-	@make -C $(MLX)
-	@echo "\033[0;32mMlx compiled!\n\033[0m"
-
-$(NAME): $(MLXA) $(LIBFTA) $(OBJ)
-	@$(CC) $(CFLAGS) -lmlx -Lmlx -framework OpenGL -framework AppKit $(LIBFTA) $(OBJ) -o $(NAME)
+$(NAME): $(LIBS) $(OBJ)
+	@$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LIBS) -o $(NAME)
 	@echo "\033[0;32mCompiled! Execute as: $(EXECUTION)\033[0m"
 
-$B: #Create obj directory
+## ************************************************************************** ##
+##                             Bonus compilation                              ##
+## ************************************************************************** ##
+
+$B:
 	@mkdir $@
 	@echo "\033[0;32mCompiling $(BONUS)...\033[0m"
 
 $(OBJ_BONUS): | $B
 
-$(OBJ_BONUS): $B%.o: $S% #Build objects $< take the name on the right of ":", $@ take the name on the left of ":"
+$(OBJ_BONUS): $B%.o: $S%
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-bonus: $(MLXA) $(LIBFTA) $(OBJ_BONUS)
-	@$(CC) $(CFLAGS) -fsanitize=address -lmlx -Lmlx -framework OpenGL -framework AppKit $(LIBFTA) $(OBJ_BONUS) -o $(BONUS)
-	@echo "\033[0;32mCompiled! Execute as: ./$(BONUS) map.cub\033[0m"
+$(BONUS): bonus
 
- 
+bonus: $(LIBS) $(OBJ_BONUS)
+	@$(CC) $(CFLAGS) $(OBJ_BONUS) $(LDFLAGS) $(LIBS) -o $(BONUS)
+	@echo "\033[0;32mCompiled! Execute as: ./$(EXECUTION_B)\033[0m"
+
 ## ************************************************************************** ##
 ##                                 Cleaning                                   ##
 ## ************************************************************************** ##
 
-cleanmlx:
-	@$(RM) $(MLXA)
+RM = /bin/rm -f
+RMDIR = /bin/rm -rf
  
-cleanobj: #Delete .o files in obj directory
+cleanobj:
 	@$(RM) $(wildcard $(OBJ))
 	@$(RM) $(wildcard $(OBJ_BONUS))
 
-cleanobjdir: cleanobj #Delete obj directory
-	@$(RMDIR) $(O)
-	@$(RMDIR) $(B)
+cleanobjdir: cleanobj
+	@$(RMDIR) $O
+	@$(RMDIR) $B
 
-clean: cleanobjdir #Delete obj directory and content
+clean: cleanobjdir
 	@echo "\033[0;31mObjects deleted!\033[0m"
 
 fclean: clean #Delete objects and executable
+	@$(RM) $(MLXA)
+	@echo "\033[0;31mlibmlx.a deleted!\033[0m"
 	@$(RM) $(LIBFTA)
-	@echo "\033[0;31mLibft.a deleted!\033[0m"
+	@echo "\033[0;31mlibft.a deleted!\033[0m"
 	@$(RM) $(NAME)
 	@$(RM) $(BONUS)
 	@echo "\033[0;31mExecutable deleted!\033[0m"
 
-re: fclean #Delete all and rebuild executable
+re: fclean
 	@make
 
 ## ************************************************************************** ##
 ##                               Execution                                    ##
 ## ************************************************************************** ##
 
-MAP = maps/good_map.cub
-#MAP = maps/good_map.txt
-#MAP = maps/map.cub
+exe: $(NAME)
+	@./$(NAME) $(ARG)
 
-exe: $(NAME) #Execute program
-	@./$(NAME) $(MAP)
-
-exe-bonus: $(BONUS) #Execute program
-	@./$(BONUS) $(MAP)
+exe-bonus: $(BONUS)
+	@./$(BONUS) $(ARG)
 
 exe-leak: $(NAME)
-	@leaks --atExit -- ./$(NAME) $(MAP)
+	@leaks --atExit -- ./$(NAME) $(ARG)
+exe-bleak: $(BONUS)
+	@leaks --atExit -- ./$(BONUS) $(ARG)
 #	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(MAP)
 #	--trace-children=yes
 
-segfault: $(MLXA) $(LIBFTA) $(OBJ)
-	@$(CC) $(CFLAGS) $(MLXA) $(LIBFTA) -fsanitize=address -framework OpenGL -framework AppKit $(OBJ) -o $(NAME)
+segf: $(LIBS) $(OBJ)
+	@$(CC) $(CFLAGS) $(SFLAGS) $(OBJ) $(LDFLAGS) $(LIBS) -o $(NAME)
 	@echo "\033[0;32mCompiled with segfault flag! Execute as: $(EXECUTION)\033[0m"
+segf-bonus: $(LIBS) $(OBJ_BONUS)
+	@$(CC) $(CFLAGS) $(SFLAGS) $(OBJ_BONUS) $(LDFLAGS) $(LIBS) -o $(BONUS)
+	@echo "\033[0;32mCompiled with segfault flag! Execute as: $(EXECUTION_B)\033[0m"
 #-fsanitize=threads (compiler les objets aussi avec)
 
-debug: $(LIBFTA) $(OBJ) #Compile for debugger
-	@$(CC) $(CFLAGS) $(LIBFTA) -lmlx -framework OpenGL -framework AppKit $(OBJ) -o $(NAME)
+debug: $(LIBS) $(OBJ) #Compile for debugger
+	@$(CC) $(CFLAGS) $(DEBUG) $(OBJ) $(LDFLAGS) $(LIBS) -o $(NAME)
 	@echo "\033[0;32mCompiled with -g for debug! Execute as: $(EXECUTION)\033[0m"
+debug-b: $(LIBS) $(OBJ_BONUS) #Compile for debugger
+	@$(CC) $(CFLAGS) $(DEBUG) $(OBJ_BONUS) $(LDFLAGS) $(LIBS) -o $(NAME)
+	@echo "\033[0;32mCompiled with -g for debug! Execute as: $(EXECUTION_B)\033[0m"
 
 list: 	#Show all make rules
 	@grep '^[^#[:space:]].*:' Makefile
