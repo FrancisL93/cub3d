@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 15:20:33 by malord            #+#    #+#             */
-/*   Updated: 2022/12/09 11:50:55 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/11 16:06:46 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	sqmmap(int x, int y, int map_item, t_vars *vars)
 	int			x_tmp;
 	int			y_tmp;
 	static int	color[3];
-	
+
 	x_tmp = x;
 	y_tmp = y;
 	if (color[0] == 0)
@@ -63,7 +63,7 @@ void	check_map_size(void)
 			max = (int)ft_strlen(vars->map[size]);
 		size++;
 	}
-	if ((size * 10) >= vars->win_height || (max * 10) >= vars->win_width)
+	if ((size * 10) >= vars->win_size[1] || (max * 10) >= vars->win_size[0])
 	{
 		ft_putstr_fd("Error\nMap is too large for window size.", STDERR_FILENO);
 		quit_game(51);

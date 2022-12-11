@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:02 by malord            #+#    #+#             */
-/*   Updated: 2022/12/08 16:31:58 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/11 16:28:58 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	quit_game(int exit_num)
 	if (exit_num > 31)
 		free(vars->img);
 	if (exit_num > 14)
-		free_double_array((void **) vars->map);
+		free(vars->map);
+	// 	free_double_array((void **) vars->map);
 	if (exit_num >= 10)
 		free_double_array((void **) vars->full_config);
 	free(vars);

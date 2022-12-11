@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/09 13:38:50 by mal              ###   ########.fr       */
+/*   Updated: 2022/12/11 16:38:21 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,22 @@ library (-lm man man 3 math)
 
 typedef struct s_img {
 	void	*screen_view;
+	void	*text[4];
 	void	*character;
+	void	*floor;
+	void	*ceiling;
 	char	*character_file;
 	int		character_pos[2];
-	void	*text[4];
-	void	*floor;
 	int		floor_size[2];
-	void	*ceiling;
 	int		ceiling_size[2];
 	int		text_height[4];
 	int		text_width[4];
 	char	*screen_addr;
-	char	*addr;
+	int		floor_color;
+	int		ceiling_color;
 	int		bpp;
 	int		line_length;
 	int		endian;
-	int		floor_color;
-	int		ceiling_color;
 }t_img;
 
 typedef struct s_game {
@@ -82,14 +81,11 @@ typedef struct s_vars {
 	char	**full_config;
 	char	*mapdata[6];
 	char	**map;
-	char	**minimap;
 	double	focal_length;
 	double	increment_angle;
 	double	ray_precision;
 	double	wall_distance;
-	int		win_width;
-	int		win_height;
-	int		map_start;
+	int		win_size[2];
 	int		one_start;
 	int		text_pos;
 	int		texture;

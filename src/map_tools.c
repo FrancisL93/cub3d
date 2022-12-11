@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:33 by malord            #+#    #+#             */
-/*   Updated: 2022/12/07 13:05:54 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/11 16:38:10 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,6 @@ double	set_direction(char dir)
 	return (0);
 }
 
-void	fill_minimap(void)
-{
-	t_vars	*vars;
-	int		i;
-	int		size;
-
-	vars = get_data();
-	size = 0;
-	while (vars->map[size])
-		size++;
-	vars->minimap = ft_calloc(sizeof(char *), size + 1);
-	i = 0;
-	while (vars->map[i])
-	{
-		vars->minimap[i] = ft_strdup(vars->map[i]);
-		i++;
-	}
-}
-
 void	set_up_start(void)
 {
 	int		i;
@@ -52,7 +33,6 @@ void	set_up_start(void)
 
 	i = 1;
 	vars = get_data();
-	fill_minimap();
 	while (vars->map[i])
 	{
 		j = 0;

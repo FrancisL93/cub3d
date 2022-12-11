@@ -3,31 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:27 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 10:09:28 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/11 16:41:00 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-//! Probably useless - Still error checking to do
-/*void	check_first_line(int column)
-{
-	t_vars	*vars;
-
-	vars = get_data();
-	while (vars->map[0][column] && column < (int)ft_strlen(vars->map[0]) - 1)
-	{
-		if (vars->map[0][column] != '1')
-		{
-			ft_putstr_fd("Error\nMap is not circled by walls.", STDERR_FILENO);
-			quit_game(13);
-		}
-		column++;
-	}
-}*/
 
 void	check_ones(int line, int column)
 {

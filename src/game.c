@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:13 by malord            #+#    #+#             */
-/*   Updated: 2022/12/09 13:43:05 by mal              ###   ########.fr       */
+/*   Updated: 2022/12/11 16:06:14 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	init_data(void)
 		quit_game(34);
 	vars->img->screen_view = NULL;
 	vars->focal_length = 66;
-	vars->win_width = 1920;
-	vars->win_height = 1080;
-	vars->increment_angle = vars->focal_length / vars->win_width;
-	vars->ray_precision = vars->win_width / 2;
+	vars->win_size[0] = 1920;
+	vars->win_size[1] = 1080;
+	vars->increment_angle = vars->focal_length / vars->win_size[0];
+	vars->ray_precision = vars->win_size[0] / 2;
 	vars->game->movement = 3;
 	vars->game->posx = 0;
 	vars->game->posy = 0;
@@ -75,8 +75,8 @@ void	launch_game(void)
 	build_imgs();
 	init_data();
 	if (vars->mlx != NULL)
-		vars->win = mlx_new_window(vars->mlx, vars->win_width,
-				vars->win_height, "Cub3d");
+		vars->win = mlx_new_window(vars->mlx, vars->win_size[0],
+				vars->win_size[1], "Cub3d");
 	if (!vars->win)
 	{
 		ft_putstr_fd("Error\nMlx window creation failure\n", STDERR_FILENO);

@@ -12,8 +12,7 @@ ARG = maps/good_map.cub
 #ARG = maps/good_map.txt
 #ARG = maps/map.cub
 
-SRCS =  map_validation.c 	\
-		map.c 				\
+SRCS = 	map.c 				\
 		map_info.c 			\
 		assets.c			\
 		map_tools.c			\

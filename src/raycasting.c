@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:18 by malord            #+#    #+#             */
-/*   Updated: 2022/12/07 14:22:39 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/11 16:07:38 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ray(double angle, int i)
 	distance = distance * cos(angle * (PI / 180) - vars->game->dirx
 			* (PI / 180));
 	vars->wall_distance = distance;
-	wall_height = floor((vars->win_height / 2) / distance);
+	wall_height = floor((vars->win_size[1] / 2) / distance);
 	vars->text_pos = floor((int)((int) vars->img->text_height[vars->texture] * \
 	(vars->game->ray_x + vars->game->ray_y))
 			% vars->img->text_width[vars->texture]);
@@ -85,7 +85,7 @@ void	raycasting(void)
 	i = 0;
 	vars = get_data();
 	angle = vars->game->dirx - (vars->focal_length / 2);
-	while (i < vars->win_width)
+	while (i < vars->win_size[0])
 	{
 		ray(angle, i);
 		angle += vars->increment_angle;

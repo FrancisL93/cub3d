@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malord <malord@student.42quebec.com>       +#+  +:+       +#+         #
+#    By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 09:39:10 by malord            #+#    #+#              #
-#    Updated: 2022/10/20 20:39:33 by malord           ###   ########.fr        #
+#    Updated: 2022/12/11 15:31:12 by flahoud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,10 @@ SRCS		=	src/add_string_first.c		\
 				src/strjoin_free_first.c	\
 				src/strjoin_free_last.c		\
 				src/strpop.c				\
-				src/xfree.c
+				src/xfree.c					\
+				src/ft_file_size.c			\
+				src/ft_check_file_ext.c		\
+				src/ft_store_file.c
 
 OBJS	=	$(patsubst $(SRCDIR)%.c,$(OBJDIR)%.o,$(SRCS))
 

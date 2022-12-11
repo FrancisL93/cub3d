@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_move.c                                       :+:      :+:    :+:   */
+/*   ft_store_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 13:34:09 by mal               #+#    #+#             */
-/*   Updated: 2022/12/11 16:06:58 by flahoud          ###   ########.fr       */
+/*   Created: 2022/12/11 15:12:41 by flahoud           #+#    #+#             */
+/*   Updated: 2022/12/11 15:33:06 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/libft.h"
 
-int	mouse_move(t_vars *vars)
+/*Receives a fd, read the file line by line and places it in storage, 
+which is already allocated. Close the fd.*/
+void	ft_store_file(char **storage, int fd)
 {
-	// int	pos_x;
-	// int	pos_y;
-	int	result = 0;
+	int	i;
 
-	// result = mlx_mouse_get_pos(vars->win, &pos_x, &pos_y);
-	// vars->game->dirx += (pos_x - vars->win_size[0] / 2) / 360;
-	(void) vars;
-	return (result);
+	i = 0;
+	storage[i] = get_next_line(fd);
+	while (storage[i++])
+	{
+		storage[i] = get_next_line(fd);
+	}
+	storage[i] = NULL;
+	close(fd);
+	return ;
 }

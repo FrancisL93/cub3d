@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:21 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 10:09:22 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/11 16:04:39 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,21 @@ bool	check_full_config(t_vars *vars)
 void	get_mapdata(void)
 {
 	int		i;
-	int		index;
+	int		map_start;
 	char	**tmp;
 	t_vars	*vars;
 
-	i = 0;
+	i = -1;
 	vars = get_data();
-	while (i < vars->map_start)
+	map_start = find_map(vars->full_config);
+	while (++i < map_start)
 	{
 		tmp = ft_split(vars->full_config[i], ' ');
 		if (tmp[0][0] != '\n')
 		{
-			index = get_element_index(tmp[0]);
-			if (tmp[1] && index >= 0 && check_full_config(vars) == false)
-				vars->mapdata[index] = vars->full_config[i];
+			if (tmp[1] && get_element_index(tmp[0]) >= 0 \
+			&& check_full_config(vars) == false)
+				vars->mapdata[get_element_index(tmp[0])] = vars->full_config[i];
 			else
 			{
 				free_double_array((void **) tmp);
@@ -71,6 +72,5 @@ void	get_mapdata(void)
 			}
 		}
 		free_double_array((void **) tmp);
-		i++;
 	}
 }

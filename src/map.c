@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:46 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 10:09:47 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/11 16:20:32 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,14 @@ int	is_map(void)
 	t_vars	*vars;
 	int		i;
 	int		j;
+	int		map_start;
 	char	*tmp;
 
 	vars = get_data();
-	vars->map_start = find_map(vars->full_config);
-	if (vars->map_start < 5)
+	map_start = find_map(vars->full_config);
+	if (map_start < 5)
 		return (-1);
-	i = vars->map_start - 1;
+	i = map_start - 1;
 	while (vars->full_config[++i])
 	{
 		tmp = ft_strtrim(vars->full_config[i], "\n");
@@ -89,13 +90,13 @@ int	is_map(void)
 		ft_putstr_fd("Error\nNo start position in map\n", STDERR_FILENO);
 		quit_game(13);
 	}
-	return (vars->map_start);
+	return (map_start);
 }
 
 void	get_map(void)
 {
-	int		index;
 	int		i;
+	int		index;
 	t_vars	*vars;
 
 	vars = get_data();
@@ -113,6 +114,32 @@ void	get_map(void)
 		quit_game(14);
 	i = 0;
 	while (vars->full_config[index])
-		vars->map[i++] = ft_strdup(vars->full_config[index++]);
+		vars->map[i++] = vars->full_config[index++];
 	vars->map[i] = NULL;
+}
+
+void	validate_map(char *mapfile)
+{
+	int		fd;
+	t_vars	*vars;
+
+	vars = get_data();
+	fd = ft_check_file_ext(mapfile, ".cub");
+	if (fd < 0)
+		quit_game(2);
+	vars->full_config = ft_calloc(sizeof(char *), ft_file_size(fd) + 1);
+	if (!vars->full_config)
+	{
+		ft_putstr_fd("Error\n", STDERR_FILENO);
+		ft_putstr_fd("Not enough memory for map allocation\n", STDERR_FILENO);
+		quit_game(5);
+	}
+	fd = open(mapfile, O_RDONLY);
+	ft_store_file(vars->full_config, fd);
+	if (vars->full_config[0] == NULL)
+	{
+		ft_putstr_fd("Error\nMapfile is empty\n", STDERR_FILENO);
+		free(vars->full_config);
+		quit_game(6);
+	}
 }

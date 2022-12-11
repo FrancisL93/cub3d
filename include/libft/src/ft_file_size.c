@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_move.c                                       :+:      :+:    :+:   */
+/*   ft_file_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 13:34:09 by mal               #+#    #+#             */
-/*   Updated: 2022/12/11 16:06:58 by flahoud          ###   ########.fr       */
+/*   Created: 2022/12/11 15:04:40 by flahoud           #+#    #+#             */
+/*   Updated: 2022/12/11 16:18:41 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/libft.h"
 
-int	mouse_move(t_vars *vars)
+/*Read the file line by line, close the file fd and returns number of lines*/
+int	ft_file_size(int fd)
 {
-	// int	pos_x;
-	// int	pos_y;
-	int	result = 0;
-
-	// result = mlx_mouse_get_pos(vars->win, &pos_x, &pos_y);
-	// vars->game->dirx += (pos_x - vars->win_size[0] / 2) / 360;
-	(void) vars;
-	return (result);
+	int		size;
+	char	*temp;
+	
+	size = 0;
+	temp = get_next_line(fd);
+	while (temp)
+	{
+		size++;
+		free(temp);
+		temp = get_next_line(fd);
+	}
+	free(temp);
+	close(fd);
+	return (size);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floor_casting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 12:51:18 by flahoud           #+#    #+#             */
-/*   Updated: 2022/12/09 21:26:35 by mal              ###   ########.fr       */
+/*   Updated: 2022/12/11 16:08:11 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,15 @@ void	floor_casting(int y, int x, double *directions, double angle)
 	double	floor_xy[2];
 
 	vars = get_data();
-	player_height = vars->win_height;
+	player_height = vars->win_size[1];
 	angle_beta = fabs(angle - vars->game->dirx);
-	r = y - vars->win_height / 2;
+	r = y - vars->win_size[1] / 2;
 	straight_line_dist = (player_height * 277) / r;
 	d = straight_line_dist / cos(angle_beta * (PI / 180));
 	floor_xy[1] = (vars->game->posy - sin(angle * (PI / 180)) * d);
 	floor_xy[0] = (vars->game->posx + cos(angle * (PI / 180)) * d);
 	put_floor_pixel(y, x, floor_xy[0], floor_xy[1]);
-	put_ceiling_pixel(vars->win_height - y, x, floor_xy[0], floor_xy[1]);
+	put_ceiling_pixel(vars->win_size[1] - y, x, floor_xy[0], floor_xy[1]);
 	(void) directions;
 	(void) x;
 }
