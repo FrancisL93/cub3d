@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/12 16:28:38 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/12 16:38:22 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	build_imgs(void);
 t_vars	*get_data(void);
 
 //floor_casting.c
-void	floor_casting(int y, int x, double *directions, double angle);
+void	floor_casting(int y, int x, double angle);
 
 //free.c
 void	free_bonus(void);

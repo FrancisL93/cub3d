@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:11 by malord            #+#    #+#             */
-/*   Updated: 2022/12/12 16:28:00 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/12 16:38:30 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	print_floor(int x, int i, double angle)
 		directions[0] = cos(angle * (PI / 180));
 		directions[1] = sin(angle * (PI / 180));
 		while (i < WIN_HEIGHT)
-			floor_casting(i++, x, directions, angle);
+			floor_casting(i++, x, angle);
 	}
 }
 

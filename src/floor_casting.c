@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 12:51:18 by flahoud           #+#    #+#             */
-/*   Updated: 2022/12/12 16:26:29 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/12 17:02:46 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ void	put_ceiling_pixel(int y, int x, double tile_x, double tile_y)
 
 	vars = get_data();
 	tmp = init_tmp(x, &y);
-	tile_x = abs((int) tile_x % vars->img->ceiling_size[0]);
-	tile_y = abs((int) tile_y % vars->img->ceiling_size[1]);
-	//tile_y = (int) floor(tile_y * vars->img->ceiling_size[1]) % vars->img->ceiling_size[1];
+	tile_x = abs((int) (tile_x + vars->game->posx * (double) vars->img->ceiling_size[0]) % vars->img->ceiling_size[0]);
+	tile_y = abs((int) (tile_y - vars->game->posy * (double) vars->img->ceiling_size[1]) % vars->img->ceiling_size[1]);
 	text_tmp = get_texture_pixel(vars->img->ceiling, tile_x, tile_y);
 	*tmp++ = *text_tmp++;
 	*tmp++ = *text_tmp++;
@@ -45,7 +44,7 @@ void	put_floor_pixel(int y, int x, double tile_x, double tile_y)
 	*tmp++ = *text_tmp++;
 }
 
-void	floor_casting(int y, int x, double *directions, double angle)
+void	floor_casting(int y, int x, double angle)
 {
 	t_vars	*vars;
 	double	angle_beta;
@@ -61,10 +60,8 @@ void	floor_casting(int y, int x, double *directions, double angle)
 	r = y - WIN_HEIGHT / 2;
 	straight_line_dist = (player_height * 277) / r;
 	d = straight_line_dist / cos(angle_beta * (PI / 180));
-	floor_xy[1] = (vars->game->posy - sin(angle * (PI / 180)) * d);
+	floor_xy[1] = (vars->game->posy + sin(angle * (PI / 180)) * d);
 	floor_xy[0] = (vars->game->posx + cos(angle * (PI / 180)) * d);
 	put_floor_pixel(y, x, floor_xy[0], floor_xy[1]);
 	put_ceiling_pixel(WIN_HEIGHT - y, x, floor_xy[0], floor_xy[1]);
-	(void) directions;
-	(void) x;
 }

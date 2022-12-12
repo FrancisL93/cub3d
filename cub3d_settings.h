@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_settings.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:25:45 by malord            #+#    #+#             */
-/*   Updated: 2022/12/12 12:26:35 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/12 17:02:18 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,10 @@
 
 # define FOCAL_LENGTH	66
 # define RAY_PRECISION	500
+
+//Bonus
+
+#define FLOOR_TEXT	"./img/floor1.xpm"
+#define	CEIL_TEXT	"./img/nightsky.xpm"
 
 #endif

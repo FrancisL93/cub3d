@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assets.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:08:53 by malord            #+#    #+#             */
-/*   Updated: 2022/12/12 11:01:32 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/12 17:00:32 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	build_bonus_assets(void)
 	t_vars	*vars;
 
 	vars = get_data();
-	vars->img->floor = mlx_xpm_file_to_image(vars->mlx, "./img/floor1.xpm", \
+	vars->img->floor = mlx_xpm_file_to_image(vars->mlx, FLOOR_TEXT, \
 		&vars->img->floor_size[0], &vars->img->floor_size[1]);
 	if (!vars->img->floor)
 	{
@@ -69,7 +69,7 @@ void	build_bonus_assets(void)
 		destroy_images(5);
 		quit_game(33);
 	}
-	vars->img->ceiling = mlx_xpm_file_to_image(vars->mlx, "./img/nightsky.xpm", \
+	vars->img->ceiling = mlx_xpm_file_to_image(vars->mlx, CEIL_TEXT, \
 		&vars->img->ceiling_size[0], &vars->img->ceiling_size[1]);
 	if (!vars->img->ceiling)
 	{
