@@ -37,3 +37,4 @@ include/minilibx/libmlx.a
 maps/map_space.cub
 obj_bonus
 cub3d_bonus
+include/mlx/libmlx.a
