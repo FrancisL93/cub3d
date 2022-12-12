@@ -38,3 +38,12 @@ maps/map_space.cub
 obj_bonus
 cub3d_bonus
 include/mlx/libmlx.a
+include/mlx/*.o
+include/mlx/mlx_init_loop.o
+include/mlx/mlx_int_str_to_wordtab.o
+include/mlx/mlx_new_image.o
+include/mlx/mlx_mouse.o
+include/mlx/mlx_new_window.o
+include/mlx/mlx_png.o
+include/mlx/mlx_xpm.o
+include/mlx/mlx_shaders.o
