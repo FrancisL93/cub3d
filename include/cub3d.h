@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/12 12:22:30 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/12 12:42:01 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,6 @@ void	sqmmap(int x, int y, int map_itemp, t_vars *vars);
 void	draw_minimap(void);
 
 //mouse_move.c
-int		mouse_move(t_vars *vars);
+int		mouse_move(int x, int y, t_vars *vars);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:13 by malord            #+#    #+#             */
-/*   Updated: 2022/12/12 12:22:49 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/12 13:01:49 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,13 @@ void	launch_game(void)
 		ft_putstr_fd("Error\nMlx window creation failure\n", STDERR_FILENO);
 		quit_game(40);
 	}
+	if (vars->bonus == 1)
+	{
+		mlx_mouse_hide();
+		mlx_hook(vars->win, 6, 0, mouse_move, vars);
+	}
 	generate_img(0);
 	mlx_hook(vars->win, 2, 0, key_hook, vars);
 	mlx_hook(vars->win, 17, 0, closewin, vars);
-	//lx_hook(vars->win, 6, 0, mouse_move, vars);
 	mlx_loop(vars->mlx);
 }

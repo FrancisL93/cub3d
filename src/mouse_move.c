@@ -3,28 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_move.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:34:09 by mal               #+#    #+#             */
-/*   Updated: 2022/12/12 12:23:30 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/12 12:54:48 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	mouse_move(t_vars *vars)
+int	mouse_move(int x, int y, t_vars *vars)
 {
-	int	increment;
-	int	pos_x;
-	int	pos_y;
+	double	increment;
 
-	pos_x = (int)vars->game->posx;
-	pos_y = (int)vars->game->posy;
-	increment = 5;
-	mlx_mouse_get_pos(vars->win, &pos_x, &pos_y);
-	vars->game->dirx += increment;
-	pos_x += increment;
-	pos_y += increment;
-	mlx_mouse_get_pos(vars->win, &pos_x, &pos_y);
+	(void)y;
+	increment = 0.1;
+	vars->game->dirx += (x - WIN_WIDTH / 2) * increment;
+	if (vars->game->dirx > 360)
+		vars->game->dirx = increment;
+	else if (vars->game->dirx < 0)
+		vars->game->dirx = 360 - increment;
+	generate_img(1);
+	mlx_mouse_move(vars->win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	return (0);
 }
