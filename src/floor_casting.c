@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 12:51:18 by flahoud           #+#    #+#             */
-/*   Updated: 2022/12/11 16:08:11 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/12 10:57:06 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,15 @@ void	floor_casting(int y, int x, double *directions, double angle)
 	double	floor_xy[2];
 
 	vars = get_data();
-	player_height = vars->win_size[1];
+	player_height = WIN_HEIGHT;
 	angle_beta = fabs(angle - vars->game->dirx);
-	r = y - vars->win_size[1] / 2;
+	r = y - WIN_HEIGHT / 2;
 	straight_line_dist = (player_height * 277) / r;
 	d = straight_line_dist / cos(angle_beta * (PI / 180));
 	floor_xy[1] = (vars->game->posy - sin(angle * (PI / 180)) * d);
 	floor_xy[0] = (vars->game->posx + cos(angle * (PI / 180)) * d);
 	put_floor_pixel(y, x, floor_xy[0], floor_xy[1]);
-	put_ceiling_pixel(vars->win_size[1] - y, x, floor_xy[0], floor_xy[1]);
+	put_ceiling_pixel(WIN_HEIGHT - y, x, floor_xy[0], floor_xy[1]);
 	(void) directions;
 	(void) x;
 }

@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:11 by malord            #+#    #+#             */
-/*   Updated: 2022/12/11 16:14:39 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/12 12:06:56 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,44 +48,43 @@ void	print_floor(int x, int i, int wall_height, double angle)
 
 	vars = get_data();
 	if (vars->bonus == 0)
-		while (i < vars->win_size[1])
+		while (i < WIN_HEIGHT)
 			my_mlx_pixel_put(vars->img, x, i++, vars->img->floor_color);
 	else
 	{
 		directions[0] = cos(angle * (PI / 180));
 		directions[1] = sin(angle * (PI / 180));
-		while (i < vars->win_size[1])
+		while (i < WIN_HEIGHT)
 			floor_casting(i++, x, directions, angle);
 	}
 	(void) wall_height;
 }
 
-void	draw_ray(int x, int wall_height, double angle, t_vars *vars)
+void	draw_ray(t_ray *ray, t_vars *vars)
 {
 	int			i;
 	double		j;
-	double		text_increment;
 	char		*tmp;
 	char		*text_tmp;
 
 	i = 0;
-	text_increment = init_increment(wall_height);
-	while (i < (vars->win_size[1] / 2 - wall_height))
-		my_mlx_pixel_put(vars->img, x, i++, vars->img->ceiling_color);
+	ray->wall_increment = init_increment(ray->wall_height);
+	while (i < (WIN_HEIGHT / 2 - ray->wall_height))
+		my_mlx_pixel_put(vars->img, ray->pos, i++, vars->img->ceiling_color);
 	j = 0;
-	if (wall_height > vars->win_size[1] / 2)
-		j += text_increment * (wall_height - (vars->win_size[1] / 2));
-	while (i < vars->win_size[1] && i < (vars->win_size[1] / 2 + wall_height))
+	if (ray->wall_height > WIN_HEIGHT / 2)
+		j += ray->wall_increment * (ray->wall_height - (WIN_HEIGHT / 2));
+	while (i < WIN_HEIGHT && i < (WIN_HEIGHT / 2 + ray->wall_height))
 	{
-		tmp = init_tmp(x, &i);
+		tmp = init_tmp(ray->pos, &i);
 		text_tmp = get_texture_pixel(vars->img->text[vars->texture],
 				vars->text_pos, (int)floor(j));
 		*tmp++ = *text_tmp++;
 		*tmp++ = *text_tmp++;
 		*tmp++ = *text_tmp++;
-		j += text_increment;
+		j += ray->wall_increment;
 	}
-	print_floor(x, i, wall_height, angle);
+	print_floor(ray->pos, i, ray->wall_height, ray->angle);
 }
 
 void	generate_img(int win)
@@ -96,8 +95,8 @@ void	generate_img(int win)
 	if (win)
 		mlx_clear_window(vars->mlx, vars->win);
 	if (!vars->img->screen_view)
-		vars->img->screen_view = mlx_new_image(vars->mlx, vars->win_size[0], \
-		vars->win_size[1]);
+		vars->img->screen_view = mlx_new_image(vars->mlx, WIN_WIDTH, \
+		WIN_HEIGHT);
 	if (!vars->img->screen_view)
 		quit_game(41);
 	vars->img->screen_addr = mlx_get_data_addr(vars->img->screen_view, \
@@ -108,6 +107,6 @@ void	generate_img(int win)
 	draw_minimap();
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->screen_view, 0, 0);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->character, \
-	(vars->win_size[0] / 2) - (vars->img->character_pos[0] / 2), \
-	vars->win_size[1] - vars->img->character_pos[1]);
+	(WIN_WIDTH / 2) - (vars->img->character_pos[0] / 2), \
+	WIN_HEIGHT - vars->img->character_pos[1]);
 }

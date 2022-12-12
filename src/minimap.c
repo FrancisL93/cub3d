@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 15:20:33 by malord            #+#    #+#             */
-/*   Updated: 2022/12/11 16:06:46 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/12 10:59:06 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	check_map_size(void)
 			max = (int)ft_strlen(vars->map[size]);
 		size++;
 	}
-	if ((size * 10) >= vars->win_size[1] || (max * 10) >= vars->win_size[0])
+	if ((size * 10) >= WIN_HEIGHT || (max * 10) >= WIN_WIDTH)
 	{
 		ft_putstr_fd("Error\nMap is too large for window size.", STDERR_FILENO);
 		quit_game(51);

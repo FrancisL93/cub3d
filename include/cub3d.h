@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/12 09:21:59 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/12 12:22:30 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ library (-lm man man 3 math)
 # include <stdio.h>
 # include <stdbool.h>
 # include "libft/include/libft.h"
+# include "../cub3d_settings.h"
 
 # define ESC 	53
 # define UP		13
@@ -37,6 +38,21 @@ library (-lm man man 3 math)
 
 # define BYTE_SIZE 4
 # define PI		3.14159265
+
+typedef struct s_ray {
+	double	x;
+	double	y;
+	double	cos;
+	double	sin;
+	double	angle;
+	double	distance;
+	double	wall_increment;
+	int		pos;
+	int		wall_height;
+	int		texture;
+	int		text_pos;
+	
+}t_ray;
 
 typedef struct s_img {
 	void	*screen_view;
@@ -63,10 +79,6 @@ typedef struct s_game {
 	double			posy;
 	double			dirx;
 	double			diry;
-	double			ray_x;
-	double			ray_y;
-	double			raycos;
-	double			raysin;
 	double			movement;
 	double			xa;
 	double			ya;
@@ -79,11 +91,7 @@ typedef struct s_vars {
 	char	**full_config;
 	char	*mapdata[6];
 	char	**map;
-	double	focal_length;
 	double	increment_angle;
-	double	ray_precision;
-	double	wall_distance;
-	int		win_size[2];
 	int		one_start;
 	int		text_pos;
 	int		texture;
@@ -162,13 +170,12 @@ void	set_colors(void);
 //print.c
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 char	*get_texture_pixel(void *text, int x, int y);
-void	draw_ray(int x, int wall_height, double angle, t_vars *vars);
+void	draw_ray(t_ray *ray, t_vars *vars);
 void	generate_img(int win);
 
 //raycasting.c
-int		get_texture(int wall_x, int wall_y);
+int		get_texture(t_ray *ray);
 void	init_ray(double angle);
-void	ray(double angle, int i);
 void	raycasting(void);
 
 //minimap.c
