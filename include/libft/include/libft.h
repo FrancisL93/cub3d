@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 08:40:35 by malord            #+#    #+#             */
-/*   Updated: 2022/12/11 15:30:58 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/12 11:47:08 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,6 @@ t_list	*ft_lstnew(void *content);
 
 int		ft_file_size(int fd);
 int		ft_check_file_ext(char *file, char *ext);
-void	ft_store_file(char **storage, int fd);
+char	**ft_store_file(int fd, int size);
 
 #endif

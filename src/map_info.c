@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:21 by malord            #+#    #+#             */
-/*   Updated: 2022/12/11 16:04:39 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/12 11:55:57 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	get_mapdata(void)
 	while (++i < map_start)
 	{
 		tmp = ft_split(vars->full_config[i], ' ');
-		if (tmp[0][0] != '\n')
+		if (tmp && tmp[0][0] != '\n')
 		{
 			if (tmp[1] && get_element_index(tmp[0]) >= 0 \
 			&& check_full_config(vars) == false)
@@ -71,6 +71,6 @@ void	get_mapdata(void)
 				quit_game(15);
 			}
 		}
-		free_double_array((void **) tmp);
+		free_double_array((void **)tmp);
 	}
 }

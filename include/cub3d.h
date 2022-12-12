@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/11 16:38:21 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/12 09:21:59 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ library (-lm man man 3 math)
 #ifndef CUB3D_H
 # define CUB3D_H
 
-//# include "minilibx/mlx.h"
-//# include "../mlx/mlx.h"    //M1 Mac @home
 # include "mlx/mlx.h"
 # include <math.h>
 # include <stdio.h>
