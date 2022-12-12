@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fuck_norm.c                                        :+:      :+:    :+:   */
+/*   raycasting_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 15:30:48 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 15:33:57 by malord           ###   ########.fr       */
+/*   Created: 2022/12/12 12:46:17 by flahoud           #+#    #+#             */
+/*   Updated: 2022/12/12 15:13:16 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-double	init_increment(int wall_height)
+double	init_increment(t_ray *ray)
 {
 	double	text_increment;
 	t_vars	*vars;
 
 	vars = get_data();
-	text_increment = (double) vars->img->text_height[vars->texture]
-		/ (wall_height) / 2;
+	text_increment = (double) vars->img->text_height[ray->texture]
+		/ (ray->wall_height) / 2;
 	return (text_increment);
 }
 

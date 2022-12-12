@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:18 by malord            #+#    #+#             */
-/*   Updated: 2022/12/12 12:17:12 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/12 14:22:58 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,34 +39,32 @@ void	calculate_ray(t_ray *ray)
 
 	vars = get_data();
 	ray->texture = get_texture(ray);
-	if (vars->texture < 0)
+	if (ray->texture < 0)
 		quit_game(43);
 	ray->distance = sqrt(pow(vars->game->posx - ray->x, 2) + \
 	pow(vars->game->posy - ray->y, 2));
 	ray->distance = ray->distance * cos(ray->angle * (PI / 180) - vars->game->dirx
 			* (PI / 180));
 	ray->wall_height = floor((WIN_HEIGHT / 2) / ray->distance);
-	vars->text_pos = floor((int)((int) vars->img->text_height[vars->texture] * \
+	ray->text_pos = floor((int)((int) vars->img->text_height[ray->texture] * \
 	(ray->x + ray->y))
-			% vars->img->text_width[vars->texture]);
-	if (vars->texture == 3 || vars->texture == 0)
-		vars->text_pos = vars->img->text_width[vars->texture] - vars->text_pos;
+			% vars->img->text_width[ray->texture]);
+	if (ray->texture == 3 || ray->texture == 0)
+		ray->text_pos = vars->img->text_width[ray->texture] - ray->text_pos;
 	draw_ray(ray, vars);
 }
 
 void	raycasting(void)
 {
 	int		i;
-	float	angle;
 	t_vars	*vars;
 	t_ray	ray;
 
 	i = 0;
 	vars = get_data();
-	angle = vars->game->dirx - (FOCAL_LENGTH / 2);
+	ray.angle = vars->game->dirx - (FOCAL_LENGTH / 2);
 	while (i < WIN_WIDTH)
 	{
-		ray.angle = angle;
 		ray.pos = i;
 		ray.x = vars->game->posx;
 		ray.y = vars->game->posy;
@@ -78,7 +76,7 @@ void	raycasting(void)
 			ray.y += ray.sin;
 		}
 		calculate_ray(&ray);
-		angle += (double) FOCAL_LENGTH / WIN_WIDTH;
+		ray.angle += (double) FOCAL_LENGTH / WIN_WIDTH;
 		i++;
 	}
 }

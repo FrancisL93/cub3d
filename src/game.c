@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:13 by malord            #+#    #+#             */
-/*   Updated: 2022/12/12 15:10:25 by mal              ###   ########.fr       */
+/*   Updated: 2022/12/12 16:28:44 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	launch_game(void)
 	init_data();
 	if (vars->mlx != NULL)
 		vars->win = mlx_new_window(vars->mlx, WIN_WIDTH,
-				WIN_HEIGHT, "Cub3d");
+				WIN_HEIGHT, GAME_NAME);
 	if (!vars->win)
 	{
 		ft_putstr_fd("Error\nMlx window creation failure\n", STDERR_FILENO);

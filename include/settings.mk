@@ -24,8 +24,8 @@ SRCS = 	map.c 				\
 		free.c 				\
 		map_parsing.c		\
 		data.c 				\
-		fuck_norm.c			\
 		raycasting.c		\
+		raycasting_tools.c  \
 		minimap.c			\
 		mouse_move.c
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/12 12:42:01 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/12 16:28:38 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ library (-lm man man 3 math)
 # define LEFTA	123
 # define RIGHTA 124
 
+# define FLOOR	4
+# define CEILING 5
+
 # define BYTE_SIZE 4
 # define PI		3.14159265
 
@@ -46,11 +49,12 @@ typedef struct s_ray {
 	double	sin;
 	double	angle;
 	double	distance;
-	double	wall_increment;
+	double	text_increment;
 	int		pos;
 	int		wall_height;
 	int		texture;
 	int		text_pos;
+	int		text[2];
 	
 }t_ray;
 
@@ -116,10 +120,6 @@ void	free_bonus(void);
 int		closewin(void);
 int		quit_game(int exit_num);
 
-//fuck_norm.c
-double	init_increment(int wall_height);
-char	*init_tmp(int x, int *i);
-
 //game_tools.c
 void	move_up(void);
 void	move_down(void);
@@ -172,11 +172,16 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 char	*get_texture_pixel(void *text, int x, int y);
 void	draw_ray(t_ray *ray, t_vars *vars);
 void	generate_img(int win);
+double	init_increment(t_ray *ray);
 
 //raycasting.c
 int		get_texture(t_ray *ray);
 void	init_ray(double angle);
 void	raycasting(void);
+
+//raycasting_tools.c
+double	init_increment(t_ray *ray);
+char	*init_tmp(int x, int *i);
 
 //minimap.c
 char	*get_color(int map_item);
