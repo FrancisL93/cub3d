@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:11 by malord            #+#    #+#             */
-/*   Updated: 2022/12/13 15:01:33 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/13 16:17:37 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,10 @@ void	draw_ray(t_ray *ray, t_vars *vars)
 
 	i = 0;
 	ray->text_increment = init_increment(ray);
-	while (i < (WIN_HEIGHT / 2 - ray->wall_height))
+	while (vars->bonus == 0 && i < (WIN_HEIGHT / 2 - ray->wall_height))
 		my_mlx_pixel_put(vars->img, ray->pos, i++, vars->img->ceiling_color);
+	while (vars->bonus == 1 && i < (WIN_HEIGHT / 2 - ray->wall_height))
+		i++;
 	j = 0;
 	if (ray->wall_height > WIN_HEIGHT / 2)
 		j += ray->text_increment * (ray->wall_height - (WIN_HEIGHT / 2));
