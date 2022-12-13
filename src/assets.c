@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assets.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:08:53 by malord            #+#    #+#             */
-/*   Updated: 2022/12/13 09:03:29 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/13 11:02:19 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	build_bonus_assets(void)
 void	build_imgs(void)
 {
 	t_vars	*vars;
-	int		size[2];
 
 	vars = get_data();
 	vars->img = malloc(sizeof(*vars->img));
@@ -94,7 +93,7 @@ void	build_imgs(void)
 	vars->img->text[2] = get_text(vars->mapdata[2], 2);
 	vars->img->text[3] = get_text(vars->mapdata[3], 3);
 	vars->img->character = mlx_xpm_file_to_image(vars->mlx, CHARACTER_ASSET,
-			&size[0], &size[1]);
+			&vars->img->character_size[0], &vars->img->character_size[1]);
 	if (!vars->img->character)
 	{
 		destroy_images(4);
@@ -103,7 +102,5 @@ void	build_imgs(void)
 	}
 	if (vars->bonus)
 		build_bonus_assets();
-	vars->img->character_pos[0] = size[0];
-	vars->img->character_pos[1] = size[1];
 	return ;
 }

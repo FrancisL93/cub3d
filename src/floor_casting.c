@@ -6,62 +6,59 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 12:51:18 by flahoud           #+#    #+#             */
-/*   Updated: 2022/12/13 10:46:40 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/13 15:11:00 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	put_ceiling_pixel(int y, int x, double tile_x, double tile_y)
+void	put_ceiling_pixel(t_vars *vars, t_ray *ray, int y)
 {
+	int		text_x;
+	int		text_y;
 	char	*tmp;
 	char	*text_tmp;
-	t_vars	*vars;
 
-	vars = get_data();
-	tmp = init_tmp(x, &y);
-	tile_x = abs((int) (tile_x + vars->game->posx * (double) vars->img->ceiling_size[0]) % vars->img->ceiling_size[0]);
-	tile_y = abs((int) (tile_y - vars->game->posy * (double) vars->img->ceiling_size[1]) % vars->img->ceiling_size[1]);
-	text_tmp = get_texture_pixel(vars->img->ceiling, tile_x, tile_y);
+	y = WIN_HEIGHT - y;
+	tmp = init_tmp(ray->pos, &y);
+	text_x = ((int) floor(ray->x * vars->img->ceiling_size[0])) \
+	% vars->img->ceiling_size[0];
+	text_y = ((int) floor(ray->y * vars->img->ceiling_size[1])) \
+	% vars->img->ceiling_size[1];
+	text_tmp = get_texture_pixel(vars->img->ceiling, text_x, text_y);
 	*tmp++ = *text_tmp++;
 	*tmp++ = *text_tmp++;
 	*tmp++ = *text_tmp++;
 }
 
-void	put_floor_pixel(int y, int x, double tile_x, double tile_y)
+void	put_floor_pixel(t_vars *vars, t_ray *ray, int y)
 {
+	int		text_x;
+	int		text_y;
 	char	*tmp;
 	char	*text_tmp;
-	t_vars	*vars;
 
-	vars = get_data();
-	tmp = init_tmp(x, &y);
-	tile_x = abs((int) (tile_x + vars->game->posx * (double) vars->img->floor_size[0]) % vars->img->floor_size[0]);
-	tile_y = abs((int) (tile_y - vars->game->posy * (double) vars->img->floor_size[1]) % vars->img->floor_size[1]);
-	text_tmp = get_texture_pixel(vars->img->floor, tile_x, tile_y);
+	tmp = init_tmp(ray->pos, &y);
+	text_x = ((int) floor(ray->x * vars->img->floor_size[0])) \
+	% vars->img->floor_size[0];
+	text_y = ((int) floor(ray->y * vars->img->floor_size[1])) \
+	% vars->img->floor_size[1];
+	text_tmp = get_texture_pixel(vars->img->floor, text_x, text_y);
 	*tmp++ = *text_tmp++;
 	*tmp++ = *text_tmp++;
 	*tmp++ = *text_tmp++;
 }
 
-void	floor_casting(int y, int x, double angle)
+void	floor_casting(t_ray *ray, int y)
 {
 	t_vars	*vars;
-	double	angle_beta;
-	double	r;
-	double	straight_line_dist;
-	double	player_height;
-	double	d;
-	double	floor_xy[2];
 
 	vars = get_data();
-	player_height = WIN_HEIGHT;
-	angle_beta = fabs(angle - vars->game->dirx);
-	r = y - WIN_HEIGHT / 2;
-	straight_line_dist = (player_height * 277) / r;
-	d = straight_line_dist / cos(angle_beta * (PI / 180));
-	floor_xy[1] = (vars->game->posy + sin(angle * (PI / 180)) * d);
-	floor_xy[0] = (vars->game->posx + cos(angle * (PI / 180)) * d);
-	put_floor_pixel(y, x, floor_xy[0], floor_xy[1]);
-	put_ceiling_pixel(WIN_HEIGHT - y, x, floor_xy[0], floor_xy[1]);
+	ray->distance = (double) WIN_HEIGHT / (2 * y - WIN_HEIGHT);
+	ray->distance = ray->distance / cos(vars->game->dirx * (PI / 180) - \
+	ray->angle * (PI / 180));
+	ray->x = ray->distance * ray->cos + vars->game->posx;
+	ray->y = ray->distance * ray->sin + vars->game->posy;
+	put_floor_pixel(vars, ray, y);
+	put_ceiling_pixel(vars, ray, y);
 }

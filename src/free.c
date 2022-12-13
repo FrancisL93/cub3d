@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:02 by malord            #+#    #+#             */
-/*   Updated: 2022/12/13 10:50:26 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/13 15:01:48 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	quit_game(int exit_num)
 	if (exit_num > 31)
 		free(vars->img);
 	if (exit_num > 14)
-	 	free_double_array((void **) vars->map);
+		free_double_array((void **) vars->map);
 	if (exit_num >= 10)
 		free_double_array((void **) vars->full_config);
 	free(vars);

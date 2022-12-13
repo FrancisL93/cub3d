@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:17 by malord            #+#    #+#             */
-/*   Updated: 2022/12/12 11:11:01 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/13 10:54:12 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error\nExecute as ./cub3d map.cub\n", STDERR_FILENO);
 		quit_game(1);
 	}
+	vars->bonus = 0;
 	validate_map(argv[1]);
 	get_map();
 	get_mapdata();
 	format_map();
-	vars->bonus = 0;
 	launch_game();
 }

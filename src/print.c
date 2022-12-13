@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:11 by malord            #+#    #+#             */
-/*   Updated: 2022/12/12 16:38:30 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/13 15:01:33 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,20 @@ char	*get_texture_pixel(void	*text, int x, int y)
 	return (pixel);
 }
 
-void	print_floor(int x, int i, double angle)
+void	print_floor(t_ray *ray, int i)
 {
 	t_vars	*vars;
-	double	directions[2];
 
 	vars = get_data();
 	if (vars->bonus == 0)
 		while (i < WIN_HEIGHT)
-			my_mlx_pixel_put(vars->img, x, i++, vars->img->floor_color);
+			my_mlx_pixel_put(vars->img, ray->pos, i++, vars->img->floor_color);
 	else
 	{
-		directions[0] = cos(angle * (PI / 180));
-		directions[1] = sin(angle * (PI / 180));
+		ray->cos = cos(ray->angle * (PI / 180));
+		ray->sin = sin(ray->angle * (PI / 180));
 		while (i < WIN_HEIGHT)
-			floor_casting(i++, x, angle);
+			floor_casting(ray, i++);
 	}
 }
 
@@ -83,7 +82,7 @@ void	draw_ray(t_ray *ray, t_vars *vars)
 		*tmp++ = *text_tmp++;
 		j += ray->text_increment;
 	}
-	print_floor(ray->pos, i, ray->angle);
+	print_floor(ray, i);
 }
 
 void	generate_img(int win)
@@ -103,11 +102,9 @@ void	generate_img(int win)
 	if (!vars->img->screen_addr)
 		quit_game(42);
 	raycasting();
-	// if (vars->bonus)
-	// 	floor_casting();
 	draw_minimap();
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->screen_view, 0, 0);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->character, \
-	(WIN_WIDTH / 2) - (vars->img->character_pos[0] / 2), \
-	WIN_HEIGHT - vars->img->character_pos[1]);
+	(WIN_WIDTH / 2) - (vars->img->character_size[0] / 2), \
+	WIN_HEIGHT - vars->img->character_size[1]);
 }

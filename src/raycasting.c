@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:18 by malord            #+#    #+#             */
-/*   Updated: 2022/12/12 14:22:58 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/13 15:02:27 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	calculate_ray(t_ray *ray)
 		quit_game(43);
 	ray->distance = sqrt(pow(vars->game->posx - ray->x, 2) + \
 	pow(vars->game->posy - ray->y, 2));
-	ray->distance = ray->distance * cos(ray->angle * (PI / 180) - vars->game->dirx
-			* (PI / 180));
+	ray->distance = ray->distance * cos(ray->angle * (PI / 180) - \
+	vars->game->dirx * (PI / 180));
 	ray->wall_height = floor((WIN_HEIGHT / 2) / ray->distance);
 	ray->text_pos = floor((int)((int) vars->img->text_height[ray->texture] * \
 	(ray->x + ray->y))

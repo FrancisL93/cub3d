@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/13 08:46:20 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/13 14:42:00 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_img {
 	void	*floor;
 	void	*ceiling;
 	char	*character_file;
-	int		character_pos[2];
+	int		character_size[2];
 	int		floor_size[2];
 	int		ceiling_size[2];
 	int		text_height[4];
@@ -112,7 +112,7 @@ void	build_imgs(void);
 t_vars	*get_data(void);
 
 //floor_casting.c
-void	floor_casting(int y, int x, double angle);
+void	floor_casting(t_ray *ray, int y);
 
 //free.c
 void	free_bonus(void);
