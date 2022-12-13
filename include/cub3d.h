@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/13 14:42:00 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/13 16:25:39 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,5 +189,8 @@ void	draw_minimap(void);
 
 //mouse_move.c
 int		mouse_move(int x, int y, t_vars *vars);
+
+//parsing_bonus.c
+void    is_valid_char_bonus(char c, char *str);
 
 #endif

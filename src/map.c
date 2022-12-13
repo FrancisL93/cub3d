@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:46 by malord            #+#    #+#             */
-/*   Updated: 2022/12/12 12:23:07 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/13 16:34:07 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,12 @@ int	is_map(void)
 		tmp = ft_strtrim(vars->full_config[i], "\n");
 		j = 0;
 		while (tmp[j] != '\0')
-			is_valid_char(tmp[j++], tmp);
+		{
+			if (vars->bonus == 1)
+				is_valid_char_bonus(tmp[j++], tmp);
+			else
+				is_valid_char(tmp[j++], tmp);
+		}
 		free(tmp);
 	}
 	if (vars->one_start == 0)

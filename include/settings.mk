@@ -8,7 +8,7 @@ ifndef SETTINGS_MK
 NAME	= cub3d
 BONUS	= $(NAME)_bonus
 
-ARG = maps/good_map.cub
+ARG = maps/good_map_bonus.cub
 #ARG = maps/good_map.txt
 #ARG = maps/map.cub
 
@@ -27,7 +27,8 @@ SRCS = 	map.c 				\
 		raycasting.c		\
 		raycasting_tools.c  \
 		minimap.c			\
-		mouse_move.c
+		mouse_move.c		\
+		parsing_bonus.c
 
 SRC := $(SRCS)
 SRC += main.c
