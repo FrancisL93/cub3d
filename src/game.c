@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:13 by malord            #+#    #+#             */
-/*   Updated: 2022/12/12 16:28:44 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/13 08:31:55 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,19 @@ void	init_data(void)
 	set_colors();
 }
 
+static void	launch_bonus(void)
+{
+	t_vars	*vars;
+
+	vars = get_data();
+	if (vars->bonus == 1)
+	{
+		mlx_mouse_hide();
+		mlx_hook(vars->win, 6, 0, mouse_move, vars);
+	}
+	return ;
+}
+
 void	launch_game(void)
 {
 	t_vars	*vars;
@@ -75,11 +88,7 @@ void	launch_game(void)
 		quit_game(40);
 	}
 	generate_img(0);
-	if (vars->bonus == 1)
-	{
-		mlx_mouse_hide();
-		mlx_hook(vars->win, 6, 0, mouse_move, vars);
-	}
+	launch_bonus();
 	mlx_hook(vars->win, 2, 0, key_hook, vars);
 	mlx_hook(vars->win, 17, 0, closewin, vars);
 	mlx_loop(vars->mlx);
