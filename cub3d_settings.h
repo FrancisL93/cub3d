@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:25:45 by malord            #+#    #+#             */
-/*   Updated: 2022/12/13 08:36:59 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/13 08:40:17 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 //Bonus
 
-#define FLOOR_TEXT	"./img/floor1.xpm"
-#define	CEIL_TEXT	"./img/nightsky.xpm"
+# define FLOOR_TEXT	"./img/floor1.xpm"
+# define CEIL_TEXT	"./img/nightsky.xpm"
 
 #endif
