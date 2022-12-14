@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assets.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:08:53 by malord            #+#    #+#             */
-/*   Updated: 2022/12/13 11:02:19 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/14 09:04:51 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	*get_text(char *texture, int num)
 
 	vars = get_data();
 	texture_split = ft_split(texture, ' ');
+	for (int i = 0; texture_split[i]; i++)
+		printf("texture_split[i] = %s\n", texture_split[i]);
 	tmp = ft_strtrim(texture_split[1], "\n");
 	img = mlx_xpm_file_to_image(vars->mlx, tmp, &vars->img->text_width[num],
 			&vars->img->text_height[num]);
@@ -79,7 +81,6 @@ void	build_bonus_assets(void)
 	}
 }
 
-//TODO serait nice de pouvoir scale le personage en fonction de window size !
 void	build_imgs(void)
 {
 	t_vars	*vars;
@@ -92,6 +93,8 @@ void	build_imgs(void)
 	vars->img->text[1] = get_text(vars->mapdata[1], 1);
 	vars->img->text[2] = get_text(vars->mapdata[2], 2);
 	vars->img->text[3] = get_text(vars->mapdata[3], 3);
+	if (vars->bonus == 1)
+		vars->img->text[4] = get_text(DOOR_ASSET, 4);
 	vars->img->character = mlx_xpm_file_to_image(vars->mlx, CHARACTER_ASSET,
 			&vars->img->character_size[0], &vars->img->character_size[1]);
 	if (!vars->img->character)

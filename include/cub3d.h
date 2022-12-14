@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/13 16:25:39 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/14 09:01:08 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_ray {
 
 typedef struct s_img {
 	void	*screen_view;
-	void	*text[4];
+	void	*text[5];
 	void	*character;
 	void	*floor;
 	void	*ceiling;
@@ -67,8 +67,8 @@ typedef struct s_img {
 	int		character_size[2];
 	int		floor_size[2];
 	int		ceiling_size[2];
-	int		text_height[4];
-	int		text_width[4];
+	int		text_height[5];
+	int		text_width[5];
 	char	*screen_addr;
 	int		floor_color;
 	int		ceiling_color;

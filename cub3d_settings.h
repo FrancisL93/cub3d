@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:25:45 by malord            #+#    #+#             */
-/*   Updated: 2022/12/13 16:48:52 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/14 08:57:28 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # define GAME_NAME	"Space Market"
 //Resize le character selon window
 # define CHARACTER_ASSET	"./img/panier.xpm"
-# define DOOR_ASSET "./img/door.xpm"
 
 # define WIN_WIDTH	1280
 # define WIN_HEIGHT	720
@@ -28,5 +27,6 @@
 
 # define FLOOR_TEXT	"./img/floor1.xpm"
 # define CEIL_TEXT	"./img/ceiling.xpm"
+# define DOOR_ASSET "DO ./img/door.xpm"
 
 #endif
