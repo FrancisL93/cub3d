@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:08 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 10:35:22 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/14 17:04:21 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,9 @@ void	set_movement(int keycode)
 	else if (keycode == RIGHT)
 		move_right();
 	if (vars->map[(int) floor(vars->game->posy)]
-		[(int) floor(vars->game->posx)] == '1')
+		[(int) floor(vars->game->posx)] == '1'
+		|| vars->map[(int) floor(vars->game->posy)]
+		[(int) floor(vars->game->posx)] == 'D')
 	{
 		vars->game->posx = x;
 		vars->game->posy = y;

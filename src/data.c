@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:03:33 by malord            #+#    #+#             */
-/*   Updated: 2022/11/18 14:33:51 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/14 11:22:45 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,13 @@ t_vars	*get_data(void)
 	if (data == NULL)
 		data = (t_vars *)ft_calloc(sizeof(t_vars), 1);
 	return (data);
+}
+
+t_ray	*get_ray(void)
+{
+	static t_ray	*ray = NULL;
+
+	if (ray == NULL)
+		ray = (t_ray *)ft_calloc(sizeof(t_ray), 1);
+	return (ray);
 }

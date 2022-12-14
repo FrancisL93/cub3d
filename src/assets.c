@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:08:53 by malord            #+#    #+#             */
-/*   Updated: 2022/12/14 09:04:51 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/14 10:33:09 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ void	*get_text(char *texture, int num)
 
 	vars = get_data();
 	texture_split = ft_split(texture, ' ');
-	for (int i = 0; texture_split[i]; i++)
-		printf("texture_split[i] = %s\n", texture_split[i]);
 	tmp = ft_strtrim(texture_split[1], "\n");
 	img = mlx_xpm_file_to_image(vars->mlx, tmp, &vars->img->text_width[num],
 			&vars->img->text_height[num]);

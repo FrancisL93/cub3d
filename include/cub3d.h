@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/14 09:01:08 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:40:20 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ library (-lm man man 3 math)
 # define RIGHT	2
 # define LEFTA	123
 # define RIGHTA 124
+# define SPACE	49
 
 # define FLOOR	4
 # define CEILING 5
@@ -99,6 +100,7 @@ typedef struct s_vars {
 	int		text_pos;
 	int		texture;
 	int		bonus;
+	int		flag;
 	t_game	*game;
 	t_img	*img;
 }	t_vars;
@@ -110,6 +112,7 @@ void	build_imgs(void);
 
 //data.c
 t_vars	*get_data(void);
+t_ray	*get_ray(void);
 
 //floor_casting.c
 void	floor_casting(t_ray *ray, int y);
@@ -127,6 +130,7 @@ void	move_right(void);
 void	set_movement(int keycode);
 
 //game.c
+void	door_handling(void);
 int		key_hook(int keycode, t_vars *vars);
 void	init_data(void);
 void	launch_game(void);
@@ -191,6 +195,6 @@ void	draw_minimap(void);
 int		mouse_move(int x, int y, t_vars *vars);
 
 //parsing_bonus.c
-void    is_valid_char_bonus(char c, char *str);
+void	is_valid_char_bonus(char c, char *str);
 
 #endif

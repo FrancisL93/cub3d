@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:18 by malord            #+#    #+#             */
-/*   Updated: 2022/12/13 16:28:07 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:18:35 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ int	get_texture(t_ray *ray)
 	vars = get_data();
 	x = (int) floor(ray->x - ray->cos);
 	y = (int) floor(ray->y - ray->sin);
+	if (vars->map[(int)ray->y][(int)ray->x] == 'D')
+	{
+		texture = 4;
+		return (texture);
+	}
 	if (x < floor(ray->x) && y == floor(ray->y))
 		texture = 1;
 	else if (x > floor(ray->x) && y == floor(ray->y))
@@ -70,7 +75,7 @@ void	raycasting(void)
 		ray.y = vars->game->posy;
 		ray.cos = cos(ray.angle * (PI / 180)) / (double) RAY_PRECISION;
 		ray.sin = sin(ray.angle * (PI / 180)) / (double) RAY_PRECISION;
-		while (vars->map[(int) floor(ray.y)][(int) floor(ray.x)] != '1')
+		while (vars->map[(int) floor(ray.y)][(int) floor(ray.x)] == '0')
 		{
 			ray.x += ray.cos;
 			ray.y += ray.sin;
