@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_tools.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:51 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 11:37:11 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/15 13:57:08 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	validate_rgb(char **color_line, char **rgb)
 				quit_game(22);
 			}
 		}
+		//else
+		//	quit_game(22);
 		i++;
 	}
 }
