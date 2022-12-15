@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/14 20:37:51 by mal              ###   ########.fr       */
+/*   Updated: 2022/12/15 10:34:10 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ typedef struct s_vars {
 	int		flag;
 	int		tmpx;
 	int		tmpy;
+	char	*valid_char;
 	t_game	*game;
 	t_img	*img;
 }	t_vars;
@@ -132,7 +133,6 @@ void	move_right(void);
 void	set_movement(int keycode);
 
 //game.c
-void	door_handling(void);
 int		key_hook(int keycode, t_vars *vars);
 void	init_data(void);
 void	launch_game(void);
@@ -198,5 +198,9 @@ int		mouse_move(int x, int y, t_vars *vars);
 
 //parsing_bonus.c
 void	is_valid_char_bonus(char c, char *str);
+
+//doors.c
+void	replace_door(void);
+void	door_handling(t_vars *vars);
 
 #endif

@@ -105,7 +105,7 @@ exe: $(NAME)
 	@./$(NAME) $(ARG)
 
 exe-bonus: $(BONUS)
-	@./$(BONUS) $(ARG)
+	@./$(BONUS) $(ARG_BONUS)
 
 exe-leak: $(NAME)
 	@leaks --atExit -- ./$(NAME) $(ARG)
@@ -133,10 +133,10 @@ list: 	#Show all make rules
 	@grep '^[^#[:space:]].*:' Makefile
 
 norm:	#norminette on all necessary files
-	@norminette src/
-	@norminette *.h
-	@norminette include/libft
 	@norminette include/cub3d.h
+	@norminette include/libft/include
+	@norminette include/libft/src
+	@norminette src/
 
 .PHONY: all clean fclean re
 

@@ -6,14 +6,14 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:25:45 by malord            #+#    #+#             */
-/*   Updated: 2022/12/14 17:10:00 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 10:38:57 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_SETTINGS_H
 # define CUB3D_SETTINGS_H
 
-# define GAME_NAME	"Space Market"
+# define GAME_NAME	"Cub3D"
 //Resize le character selon window
 # define CHARACTER_ASSET	"./img/panier.xpm"
 

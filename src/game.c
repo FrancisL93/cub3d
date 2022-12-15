@@ -6,46 +6,11 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:13 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 09:24:05 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 10:22:44 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-void	door_handling(void)
-{
-	t_vars		*vars;
-
-	vars = get_data();
-	if (vars->map[((int)vars->game->posy - 1)][(int) vars->game->posx] == 'D')
-	{
-		vars->map[(int) vars->game->posy - 1][(int) vars->game->posx] = 'O';
-		vars->tmpx = (int)vars->game->posx;
-		vars->tmpy = (int)vars->game->posy - 1;
-		vars->flag = 1;
-	}
-	else if (vars->map[((int)vars->game->posy + 1)][(int) vars->game->posx] == 'D')
-	{
-		vars->map[(int) vars->game->posy + 1][(int) vars->game->posx] = 'O';
-		vars->tmpx = (int)vars->game->posx;
-		vars->tmpy = (int)vars->game->posy + 1;
-		vars->flag = 2;
-	}
-	else if (vars->map[((int)vars->game->posy)][(int) vars->game->posx - 1] == 'D')
-	{
-		vars->map[(int) vars->game->posy][(int) vars->game->posx - 1] = 'O';
-		vars->tmpx = (int)vars->game->posx - 1;
-		vars->tmpy = (int)vars->game->posy;
-		vars->flag = 3;
-	}
-	else if (vars->map[((int)vars->game->posy)][(int) vars->game->posx + 1] == 'D')
-	{
-		vars->map[(int) vars->game->posy][(int) vars->game->posx + 1] = 'O';
-		vars->tmpx = (int)vars->game->posx + 1;
-		vars->tmpy = (int)vars->game->posy;
-		vars->flag = 4;
-	}
-}
 
 int	key_hook(int keycode, t_vars *vars)
 {
@@ -58,7 +23,7 @@ int	key_hook(int keycode, t_vars *vars)
 	{
 		set_movement(keycode);
 		if (keycode == SPACE)
-			door_handling();
+			door_handling(vars);
 		if (keycode == LEFTA)
 			vars->game->dirx -= increment;
 		else if (keycode == RIGHTA)

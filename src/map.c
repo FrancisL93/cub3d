@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:46 by malord            #+#    #+#             */
-/*   Updated: 2022/12/13 16:34:07 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 10:35:57 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	is_valid_char(char c, char *str)
 	t_vars	*vars;
 
 	vars = get_data();
-	if (!ft_strchr("0 1NSEW", c))
+	if (!ft_strchr(vars->valid_char, c))
 	{
 		free(str);
 		ft_putstr_fd("Error\nInvalid character in map\n", STDERR_FILENO);
@@ -82,12 +82,7 @@ int	is_map(void)
 		tmp = ft_strtrim(vars->full_config[i], "\n");
 		j = 0;
 		while (tmp[j] != '\0')
-		{
-			if (vars->bonus == 1)
-				is_valid_char_bonus(tmp[j++], tmp);
-			else
-				is_valid_char(tmp[j++], tmp);
-		}
+			is_valid_char(tmp[j++], tmp);
 		free(tmp);
 	}
 	if (vars->one_start == 0)
@@ -142,4 +137,8 @@ void	validate_map(char *mapfile)
 		free(vars->full_config);
 		quit_game(6);
 	}
+	if (vars->bonus == 1)
+		vars->valid_char = "0 1NSEWD";
+	else
+		vars->valid_char = "0 1NSEW";
 }
