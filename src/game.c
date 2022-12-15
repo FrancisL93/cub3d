@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:13 by malord            #+#    #+#             */
-/*   Updated: 2022/12/14 17:35:12 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/14 20:42:11 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,50 +15,50 @@
 void	door_handling(void)
 {
 	t_vars		*vars;
-	static int	tmpx = 0;;
-	static int	tmpy = 0;
+	//static int	tmpy = 0;
+	//static int	tmpx = 0;;
 	//static int	flag = 0;
 
 	vars = get_data();
 	if (vars->map[((int)vars->game->posy - 1)][(int) vars->game->posx] == 'D')
 	{
 		vars->map[(int) vars->game->posy - 1][(int) vars->game->posx] = '0';
-		tmpx = (int)vars->game->posx;
-		tmpy = (int)vars->game->posy - 1;
+		vars->tmpx = (int)vars->game->posx;
+		vars->tmpy = (int)vars->game->posy - 1;
 		vars->flag = 1;
 	}
 	else if (vars->map[((int)vars->game->posy + 1)][(int) vars->game->posx] == 'D')
 	{
 		vars->map[(int) vars->game->posy + 1][(int) vars->game->posx] = '0';
-		tmpx = (int)vars->game->posx;
-		tmpy = (int)vars->game->posy + 1;
+		vars->tmpx = (int)vars->game->posx;
+		vars->tmpy = (int)vars->game->posy + 1;
 		vars->flag = 2;
 	}
 	else if (vars->map[((int)vars->game->posy)][(int) vars->game->posx - 1] == 'D')
 	{
 		vars->map[(int) vars->game->posy][(int) vars->game->posx - 1] = '0';
-		tmpx = (int)vars->game->posx - 1;
-		tmpy = (int)vars->game->posy;
+		vars->tmpx = (int)vars->game->posx - 1;
+		vars->tmpy = (int)vars->game->posy;
 		vars->flag = 3;
 	}
 	else if (vars->map[((int)vars->game->posy)][(int) vars->game->posx + 1] == 'D')
 	{
 		vars->map[(int) vars->game->posy][(int) vars->game->posx + 1] = '0';
-		tmpx = (int)vars->game->posx + 1;
-		tmpy = (int)vars->game->posy;
+		vars->tmpx = (int)vars->game->posx + 1;
+		vars->tmpy = (int)vars->game->posy;
 		vars->flag = 4;
 	}
-	if (vars->flag == 1 && (int)vars->game->posy - 1 != tmpy)
-		vars->map[tmpy][tmpx] = 'D';
-	else if (vars->flag == 2 && ((int)vars->game->posx != tmpx
-			|| (int)vars->game->posy + 1 != tmpy))
-				vars->map[tmpy][tmpx] = 'D';
-	else if (vars->flag == 3 && ((int)vars->game->posx - 1 != tmpx
-			|| (int)vars->game->posy != tmpy))
-				vars->map[tmpy][tmpx] = 'D';
-	else if (vars->flag == 4 && ((int)vars->game->posx + 1 != tmpx
-			|| (int)vars->game->posy != tmpy))
-			vars->map[tmpy][tmpx] = 'D';
+	//if (vars->flag == 1 && (int)vars->game->posy - 1 != vars->tmpy)
+	//	vars->map[vars->tmpy][vars->tmpx] = 'D';
+	//else if (vars->flag == 2 && ((int)vars->game->posx != vars->tmpx
+	//		|| (int)vars->game->posy + 1 != vars->tmpy))
+	//			vars->map[vars->tmpy][vars->tmpx] = 'D';
+	//else if (vars->flag == 3 && ((int)vars->game->posx - 1 != vars->tmpx
+	//		|| (int)vars->game->posy != vars->tmpy))
+	//			vars->map[vars->tmpy][vars->tmpx] = 'D';
+	//else if (vars->flag == 4 && ((int)vars->game->posx + 1 != vars->tmpx
+	//		|| (int)vars->game->posy != vars->tmpy))
+	//		vars->map[vars->tmpy][vars->tmpx] = 'D';
 }
 
 int	key_hook(int keycode, t_vars *vars)
