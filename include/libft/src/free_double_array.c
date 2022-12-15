@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_double_array.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42quebec.com>       +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 07:47:23 by malord            #+#    #+#             */
-/*   Updated: 2022/10/20 18:49:52 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 11:33:52 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	free_double_array(void **array)
 	int	i;
 
 	i = 0;
-	while (array[i])
+	while (array && array[i])
 	{
 		free(array[i]);
 		i++;

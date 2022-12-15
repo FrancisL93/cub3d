@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:46 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 10:35:57 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 11:33:31 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ void	is_valid_char(char c, char *str)
 	if (!ft_strchr(vars->valid_char, c))
 	{
 		free(str);
-		ft_putstr_fd("Error\nInvalid character in map\n", STDERR_FILENO);
-		quit_game(11);
+		quit_game(5);
 	}
 	if (ft_strchr("NSEW", c))
 	{
@@ -30,8 +29,7 @@ void	is_valid_char(char c, char *str)
 		else
 		{
 			free(str);
-			ft_putstr_fd("Error\nMore than one start position\n", STDERR_FILENO);
-			quit_game(12);
+			quit_game(6);
 		}
 	}
 }
@@ -86,10 +84,7 @@ int	is_map(void)
 		free(tmp);
 	}
 	if (vars->one_start == 0)
-	{
-		ft_putstr_fd("Error\nNo start position in map\n", STDERR_FILENO);
-		quit_game(13);
-	}
+		quit_game(7);
 	return (map_start);
 }
 
@@ -102,16 +97,13 @@ void	get_map(void)
 	vars = get_data();
 	index = is_map();
 	if (index == -1)
-	{
-		ft_putstr_fd("Error\nBad map file content\n", STDERR_FILENO);
-		quit_game(10);
-	}
+		quit_game(8);
 	i = index;
 	while (vars->full_config[i])
 		i++;
 	vars->map = ft_calloc(sizeof(char *), i - index + 1);
 	if (!vars->map)
-		quit_game(14);
+		quit_game(9);
 	i = 0;
 	while (vars->full_config[index])
 		vars->map[i++] = ft_strdup(vars->full_config[index++]);
@@ -127,16 +119,12 @@ void	validate_map(char *mapfile)
 	vars = get_data();
 	fd = ft_check_file_ext(mapfile, ".cub");
 	if (fd < 0)
-		quit_game(2);
+		quit_game(3);
 	size = ft_file_size(fd);
 	fd = open(mapfile, O_RDONLY);
 	vars->full_config = ft_store_file(fd, size);
 	if (vars->full_config[0] == NULL)
-	{
-		ft_putstr_fd("Error\nMapfile is empty\n", STDERR_FILENO);
-		free(vars->full_config);
-		quit_game(6);
-	}
+		quit_game(4);
 	if (vars->bonus == 1)
 		vars->valid_char = "0 1NSEWD";
 	else

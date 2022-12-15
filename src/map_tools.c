@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:33 by malord            #+#    #+#             */
-/*   Updated: 2022/12/11 16:38:10 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/15 11:22:06 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,30 @@ void	set_up_start(void)
 	}
 }
 
-void	format_map(void)
+void	map_square(void)
 {
-	t_vars	*vars;
 	int		i;
 	int		j;
+	int		max_len;
+	t_vars	*vars;
 
+	i = -1;
 	vars = get_data();
-	i = 0;
-	while (vars->map[i])
+	max_len = ft_strlen(vars->map[0]);
+	while (vars->map[++i])
 	{
+		if ((int)ft_strlen(vars->map[i]) > max_len)
+			max_len = ft_strlen(vars->map[i]);
+	}
+	i = -1;
+	while (vars->map[++i])
+	{
+		vars->map[i][ft_strlen(vars->map[i]) - 1] = '\0';
 		j = 0;
 		while (vars->map[i][j])
-		{
-			if (vars->map[i][j] == ' ')
-				check_spaces(i, j);
-			if (vars->map[i][j] == '0' && vars->map[i + 1])
-				check_zeros(i, j);
 			j++;
-		}
-		i++;
+		while (j++ < max_len)
+			vars->map[i] = add_string_last('1', vars->map[i]);
+		vars->map[i] = add_string_last('\n', vars->map[i]);
 	}
-	check_walls();
-	map_square();
 }

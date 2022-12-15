@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_tools.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:51 by malord            #+#    #+#             */
-/*   Updated: 2022/12/05 11:14:46 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 11:37:11 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-void	free_n_quit(char **color_line, char **rgb)
-{
-	free_double_array((void **)color_line);
-	free_double_array((void **)rgb);
-	ft_putstr_fd("Error\nColor settings not valid\n", STDERR_FILENO);
-	quit_game(34);
-}
 
 void	validate_rgb(char **color_line, char **rgb)
 {
@@ -27,7 +19,11 @@ void	validate_rgb(char **color_line, char **rgb)
 
 	i = 0;
 	if (color_line[2] || rgb[3])
-		free_n_quit(color_line, rgb);
+	{
+		free_double_array((void **)color_line);
+		free_double_array((void **)rgb);
+		quit_game(21);
+	}
 	while (rgb[i])
 	{
 		if (ft_strlen(rgb[i]) < 4)
@@ -37,8 +33,7 @@ void	validate_rgb(char **color_line, char **rgb)
 			{
 				free_double_array((void **)color_line);
 				free_double_array((void **)rgb);
-				ft_putstr_fd("Error\nColor value not valid\n", STDERR_FILENO);
-				quit_game(35);
+				quit_game(22);
 			}
 		}
 		i++;
@@ -70,7 +65,7 @@ void	set_colors(void)
 
 	vars = get_data();
 	color_line = ft_split(vars->mapdata[4], ' ');
-	vars->img->floor_color = retrieve_color(color_line);
+	vars->img->color[0] = retrieve_color(color_line);
 	color_line = ft_split(vars->mapdata[5], ' ');
-	vars->img->ceiling_color = retrieve_color(color_line);
+	vars->img->color[1] = retrieve_color(color_line);
 }

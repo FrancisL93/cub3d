@@ -3,37 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   assets.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:08:53 by malord            #+#    #+#             */
-/*   Updated: 2022/12/14 10:33:09 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 11:23:36 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	destroy_images(int num)
+void	destroy_images(void)
 {
+	int		i;
 	t_vars	*vars;
 
+	i = 0;
 	vars = get_data();
-	if (num > 0)
-		mlx_destroy_image(vars->mlx, vars->img->text[0]);
-	if (num > 1)
-		mlx_destroy_image(vars->mlx, vars->img->text[1]);
-	if (num > 2)
-		mlx_destroy_image(vars->mlx, vars->img->text[2]);
-	if (num > 3)
-		mlx_destroy_image(vars->mlx, vars->img->text[3]);
-	if (num > 4)
-		mlx_destroy_image(vars->mlx, vars->img->character);
-	if (num > 5)
-		mlx_destroy_image(vars->mlx, vars->img->floor);
-	if (num > 6)
-		mlx_destroy_image(vars->mlx, vars->img->ceiling);
+	while (i < 8)
+	{
+		if (vars->img->text[i] && i < 4)
+			mlx_destroy_image(vars->mlx, vars->img->text[i]);
+		else if (vars->img->text[i] && vars->bonus)
+			mlx_destroy_image(vars->mlx, vars->img->text[i]);
+		i++;
+	}
 }
 
-void	*get_text(char *texture, int num)
+static void	*get_image(t_vars *vars, char *file, int num)
+{
+	void	*img;
+
+	img = mlx_xpm_file_to_image(vars->mlx, file, &vars->img->text_width[num], \
+	&vars->img->text_height[num]);
+	return (img);
+}
+
+static void	*get_text(char *texture, int num)
 {
 	t_vars	*vars;
 	void	*img;
@@ -43,63 +48,50 @@ void	*get_text(char *texture, int num)
 	vars = get_data();
 	texture_split = ft_split(texture, ' ');
 	tmp = ft_strtrim(texture_split[1], "\n");
-	img = mlx_xpm_file_to_image(vars->mlx, tmp, &vars->img->text_width[num],
-			&vars->img->text_height[num]);
+	img = get_image(vars, tmp, num);
 	free(tmp);
 	free_double_array((void **) texture_split);
 	if (!img)
-	{
-		ft_putstr_fd("Error\nXPM to image failure on textures\n", STDERR_FILENO);
-		destroy_images(num);
-		quit_game(32);
-	}
+		quit_game(18);
 	return (img);
 }
 
-void	build_bonus_assets(void)
+static void	build_bonus_assets(void)
 {
+	int		i;
 	t_vars	*vars;
 
+	i = 4;
 	vars = get_data();
-	vars->img->floor = mlx_xpm_file_to_image(vars->mlx, FLOOR_TEXT, \
-		&vars->img->floor_size[0], &vars->img->floor_size[1]);
-	if (!vars->img->floor)
+	vars->img->text[CHARACT] = get_image(vars, CHARACTER_ASSET, CHARACT);
+	vars->img->text[FLOOR] = get_image(vars, FLOOR_TEXT, FLOOR);
+	vars->img->text[CEILING] = get_image(vars, CEIL_TEXT, CEILING);
+	vars->img->text[DOOR] = get_image(vars, DOOR_TEXT, DOOR);
+	while (i < 8)
 	{
-		ft_putstr_fd("Error\nXPM to image failure on textures\n", STDERR_FILENO);
-		destroy_images(5);
-		quit_game(33);
-	}
-	vars->img->ceiling = mlx_xpm_file_to_image(vars->mlx, CEIL_TEXT, \
-		&vars->img->ceiling_size[0], &vars->img->ceiling_size[1]);
-	if (!vars->img->ceiling)
-	{
-		ft_putstr_fd("Error\nXPM to image failure on textures\n", STDERR_FILENO);
-		destroy_images(6);
-		quit_game(33);
+		if (!vars->img->text[i])
+			quit_game(19);
+		i++;
 	}
 }
 
 void	build_imgs(void)
 {
+	int		i;
 	t_vars	*vars;
 
+	i = 0;
 	vars = get_data();
 	vars->img = malloc(sizeof(*vars->img));
 	if (!vars->img)
-		quit_game(31);
-	vars->img->text[0] = get_text(vars->mapdata[0], 0);
-	vars->img->text[1] = get_text(vars->mapdata[1], 1);
-	vars->img->text[2] = get_text(vars->mapdata[2], 2);
-	vars->img->text[3] = get_text(vars->mapdata[3], 3);
-	if (vars->bonus == 1)
-		vars->img->text[4] = get_text(DOOR_ASSET, 4);
-	vars->img->character = mlx_xpm_file_to_image(vars->mlx, CHARACTER_ASSET,
-			&vars->img->character_size[0], &vars->img->character_size[1]);
-	if (!vars->img->character)
+		quit_game(17);
+	while (i < 8)
 	{
-		destroy_images(4);
-		ft_putstr_fd("Error\nXPM to image failure on textures\n", STDERR_FILENO);
-		quit_game(33);
+		if (i < 4)
+			vars->img->text[i] = get_text(vars->mapdata[i], i);
+		else if (vars->bonus == 0)
+			vars->img->text[i] = NULL;
+		i++;
 	}
 	if (vars->bonus)
 		build_bonus_assets();

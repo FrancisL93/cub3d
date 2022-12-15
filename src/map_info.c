@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:21 by malord            #+#    #+#             */
-/*   Updated: 2022/12/12 11:55:57 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 11:34:45 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@ void	get_mapdata(void)
 			else
 			{
 				free_double_array((void **) tmp);
-				ft_putstr_fd("Error\nBad configurations\n", STDERR_FILENO);
-				quit_game(15);
+				quit_game(10);
 			}
 		}
 		free_double_array((void **)tmp);

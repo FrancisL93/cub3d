@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_settings.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:25:45 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 10:38:57 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 11:29:34 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 //Bonus
 
 # define FLOOR_TEXT	"./img/floor1.xpm"
-# define CEIL_TEXT	"./img/ceiling.xpm"
-# define DOOR_ASSET "DO ./img/door.xpm"
+# define CEIL_TEXT	"./img/ceil.xpm"
+# define DOOR_TEXT "./img/door.xpm"
 
 #endif

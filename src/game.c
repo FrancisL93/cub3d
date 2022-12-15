@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:13 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 10:22:44 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 11:38:12 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	key_hook(int keycode, t_vars *vars)
 
 	increment = 5;
 	if (keycode == ESC)
-		quit_game(50);
+		quit_game(30);
 	else
 	{
 		set_movement(keycode);
@@ -44,7 +44,7 @@ void	init_data(void)
 	vars = get_data();
 	vars->game = malloc(sizeof(*vars->game));
 	if (!vars->game)
-		quit_game(34);
+		quit_game(20);
 	vars->img->screen_view = NULL;
 	vars->increment_angle = (double) FOCAL_LENGTH / WIN_WIDTH;
 	vars->game->movement = 3;
@@ -75,23 +75,17 @@ void	launch_game(void)
 	vars = get_data();
 	vars->mlx = mlx_init();
 	if (!vars->mlx)
-	{
-		ft_putstr_fd("Error\nMlx init failure\n", STDERR_FILENO);
-		quit_game(30);
-	}
+		quit_game(16);
 	build_imgs();
 	init_data();
 	if (vars->mlx != NULL)
 		vars->win = mlx_new_window(vars->mlx, WIN_WIDTH,
 				WIN_HEIGHT, GAME_NAME);
 	if (!vars->win)
-	{
-		ft_putstr_fd("Error\nMlx window creation failure\n", STDERR_FILENO);
-		quit_game(40);
-	}
+		quit_game(23);
 	generate_img(0);
 	launch_bonus();
 	mlx_hook(vars->win, 2, 0, key_hook, vars);
-	mlx_hook(vars->win, 17, 0, closewin, vars);
+	mlx_hook(vars->win, 17, 0, quit_game, (void *) 30);
 	mlx_loop(vars->mlx);
 }

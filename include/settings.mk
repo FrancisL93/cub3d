@@ -13,24 +13,20 @@ ARG_BONUS = maps/good_map_bonus.cub
 #ARG = maps/good_map.txt
 #ARG = maps/map.cub
 
-SRCS = 	map.c 				\
-		map_info.c 			\
-		assets.c			\
-		map_tools.c			\
+SRCS = 	assets.c			\
+		bonus_tools.c		\
+		doors.c				\
+		floor_casting.c		\
+		game.c				\
 		game_tools.c		\
+		map.c 				\
+		map_info.c 			\
+		map_parsing.c		\
+		map_tools.c			\
 		print.c 			\
 		print_tools.c		\
-		game.c				\
-		floor_casting.c		\
-		free.c 				\
-		map_parsing.c		\
-		data.c 				\
-		raycasting.c		\
-		raycasting_tools.c  \
-		minimap.c			\
-		mouse_move.c		\
-		parsing_bonus.c		\
-		doors.c
+		quit_game.c			\
+		raycasting.c		
 
 SRC := $(SRCS)
 SRC += main.c
