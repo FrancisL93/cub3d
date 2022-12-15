@@ -3,32 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   map_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:21 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 11:34:45 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/15 12:57:47 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	get_element_index(char *element)
+static int	get_element_index(char *element, char **tmp)
 {
 	char	*elem_list[6];
 	int		i;
+	t_vars	*vars;
 
-	i = 0;
+	i = -1;
+	vars = get_data();
 	elem_list[0] = "NO";
 	elem_list[1] = "SO";
 	elem_list[2] = "WE";
 	elem_list[3] = "EA";
 	elem_list[4] = "F";
 	elem_list[5] = "C";
-	while (element && i < 6)
+	while (element && ++i < 6)
 	{
 		if (ft_strncmp(element, elem_list[i], ft_strlen(elem_list[i])) == 0)
+		{
+			if (vars->mapdata[i])
+			{
+				free_double_array((void **)tmp);
+				quit_game(10);
+			}
 			return (i);
-		i++;
+		}
 	}
 	return (-1);
 }
@@ -61,9 +69,10 @@ void	get_mapdata(void)
 		tmp = ft_split(vars->full_config[i], ' ');
 		if (tmp && tmp[0][0] != '\n')
 		{
-			if (tmp[1] && get_element_index(tmp[0]) >= 0 \
+			if (tmp[1] && get_element_index(tmp[0], tmp) >= 0 \
 			&& check_full_config(vars) == false)
-				vars->mapdata[get_element_index(tmp[0])] = vars->full_config[i];
+				vars->mapdata[get_element_index(tmp[0], tmp)]
+					= vars->full_config[i];
 			else
 			{
 				free_double_array((void **) tmp);

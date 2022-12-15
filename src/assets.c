@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assets.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:08:53 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 11:23:36 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/15 12:46:06 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,12 @@ void	build_imgs(void)
 	if (!vars->img)
 		quit_game(17);
 	while (i < 8)
+		vars->img->text[i++] = NULL;
+	i = 0;
+	while (i < 8)
 	{
 		if (i < 4)
 			vars->img->text[i] = get_text(vars->mapdata[i], i);
-		else if (vars->bonus == 0)
-			vars->img->text[i] = NULL;
 		i++;
 	}
 	if (vars->bonus)
