@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:21 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 12:57:47 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 13:20:40 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	get_element_index(char *element, char **tmp)
 	elem_list[5] = "C";
 	while (element && ++i < 6)
 	{
-		if (ft_strncmp(element, elem_list[i], ft_strlen(elem_list[i])) == 0)
+		if (ft_strncmp(element, elem_list[i], ft_strlen(tmp[0])) == 0)
 		{
 			if (vars->mapdata[i])
 			{
