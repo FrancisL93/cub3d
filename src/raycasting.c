@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:18 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 11:19:53 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/15 13:27:17 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ int	get_texture(t_ray *ray)
 		return (texture);
 	}
 	if (x < floor(ray->x) && y == floor(ray->y))
-		texture = 1;
-	else if (x > floor(ray->x) && y == floor(ray->y))
-		texture = 0;
-	else if (y < floor(ray->y) && x == floor(ray->x))
 		texture = 3;
-	else if (y > floor(ray->y) && x == floor(ray->x))
+	else if (x > floor(ray->x) && y == floor(ray->y))
 		texture = 2;
+	else if (y < floor(ray->y) && x == floor(ray->x))
+		texture = 1;
+	else if (y > floor(ray->y) && x == floor(ray->x))
+		texture = 0;
 	return (texture);
 }
 
@@ -74,7 +74,7 @@ static void	calculate_ray(t_ray *ray)
 	ray->text_pos = floor((int)((int) vars->img->text_width[ray->texture] * \
 	(ray->x + ray->y))
 			% vars->img->text_width[ray->texture]);
-	if (ray->texture == 3 || ray->texture == 0)
+	if (ray->texture == 2 || ray->texture == 1)
 		ray->text_pos = vars->img->text_width[ray->texture] - ray->text_pos;
 	draw_ray(ray, vars);
 }
