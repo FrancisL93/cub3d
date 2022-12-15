@@ -6,11 +6,18 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:51 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 13:57:08 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 15:26:05 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+static void	free_n_quit(char **color_line, char **rgb)
+{
+	free_double_array((void **)color_line);
+	free_double_array((void **)rgb);
+	quit_game(22);
+}
 
 void	validate_rgb(char **color_line, char **rgb)
 {
@@ -30,14 +37,10 @@ void	validate_rgb(char **color_line, char **rgb)
 		{
 			tmp = ft_atoi(rgb[i]);
 			if (tmp < 0 || tmp > 255)
-			{
-				free_double_array((void **)color_line);
-				free_double_array((void **)rgb);
-				quit_game(22);
-			}
+				free_n_quit(color_line, rgb);
 		}
-		//else
-		//	quit_game(22);
+		else
+			free_n_quit(color_line, rgb);
 		i++;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:13 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 11:38:12 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/15 14:45:02 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,8 @@ void	launch_game(void)
 		quit_game(16);
 	build_imgs();
 	init_data();
-	if (vars->mlx != NULL)
-		vars->win = mlx_new_window(vars->mlx, WIN_WIDTH,
-				WIN_HEIGHT, GAME_NAME);
+	vars->win = mlx_new_window(vars->mlx, WIN_WIDTH,
+			WIN_HEIGHT, GAME_NAME);
 	if (!vars->win)
 		quit_game(23);
 	generate_img(0);

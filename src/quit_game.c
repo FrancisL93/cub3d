@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:02 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 12:00:37 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/15 15:23:46 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ int	quit_game(int error)
 		free_double_array((void **) vars->map);
 	if (error >= 4)
 		free_double_array((void **) vars->full_config);
-	free(vars);
 	if (error == 30)
 		exit(0);
 	exit(error);
