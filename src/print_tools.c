@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:51 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 15:34:02 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 16:02:01 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,38 @@ static void	free_n_quit(char **color_line, char **rgb)
 	quit_game(22);
 }
 
+static void	check_letters(char **rgb, char **color_line)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (rgb[i])
+	{
+		j = 0;
+		while (rgb[i][j])
+		{
+			if (ft_isalpha(rgb[i][j]) == 1)
+				free_n_quit(color_line, rgb);
+			j++;
+		}
+		i++;
+	}
+}
+
 void	validate_rgb(char **color_line, char **rgb)
 {
 	int	i;
 	int	tmp;
 
 	i = 0;
+	check_letters(rgb, color_line);
 	if (color_line[2] || rgb[3])
 	{
 		free_double_array((void **)color_line);
 		free_double_array((void **)rgb);
 		quit_game(21);
 	}
-	//for (int i = 0; rgb[i]; i++)
-	//{
-	//	printf("Ya quoi icite : %s\n", rgb[i]);
-	//	printf("la len est de %d\n", (int)ft_strlen(rgb[i]));
-	//}
 	while (rgb[i])
 	{
 		rgb[i] = ft_strtrim_free(rgb[i], "\n");
