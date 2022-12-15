@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:27 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 12:36:12 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 14:05:55 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ static void	check_zeros(int line, int column)
 		quit_game(12);
 	if (!vars->map[line + 1][column] || !(vars->map[line - 1][column])
 		|| vars->map[line - 1][column] == '\n'
-		|| vars->map[line + 1][column] == '\n')
+		|| vars->map[line + 1][column] == '\n'
+		|| (int)ft_strlen(vars->map[line - 1]) < column)
 		quit_game(13);
 }
 
