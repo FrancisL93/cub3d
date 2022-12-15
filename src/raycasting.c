@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:18 by malord            #+#    #+#             */
-/*   Updated: 2022/12/14 16:18:35 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 09:27:42 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ void	raycasting(void)
 		ray.y = vars->game->posy;
 		ray.cos = cos(ray.angle * (PI / 180)) / (double) RAY_PRECISION;
 		ray.sin = sin(ray.angle * (PI / 180)) / (double) RAY_PRECISION;
-		while (vars->map[(int) floor(ray.y)][(int) floor(ray.x)] == '0')
+		while (vars->map[(int) floor(ray.y)][(int) floor(ray.x)] == '0'
+			|| vars->map[(int) floor(ray.y)][(int) floor(ray.x)] == 'O')
 		{
 			ray.x += ray.cos;
 			ray.y += ray.sin;

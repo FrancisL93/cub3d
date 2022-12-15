@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:10:11 by malord            #+#    #+#             */
-/*   Updated: 2022/12/14 20:44:10 by mal              ###   ########.fr       */
+/*   Updated: 2022/12/15 09:13:36 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,16 +105,16 @@ void	generate_img(int win)
 		quit_game(42);
 	raycasting();
 	draw_minimap();
-	if (vars->flag == 1 && (int)vars->game->posy - 1 != vars->tmpy)
+	if (vars->flag == 1 && ((int)vars->game->posy - 1 != vars->tmpy || (int)vars->game->posx != vars->tmpx) && vars->map[(int)vars->game->posy][(int)vars->game->posx] != 'O')
 		vars->map[vars->tmpy][vars->tmpx] = 'D';
 	else if (vars->flag == 2 && ((int)vars->game->posx != vars->tmpx
-			|| (int)vars->game->posy + 1 != vars->tmpy))
+			|| (int)vars->game->posy + 1 != vars->tmpy) && vars->map[(int)vars->game->posy][(int)vars->game->posx] != 'O')
 				vars->map[vars->tmpy][vars->tmpx] = 'D';
 	else if (vars->flag == 3 && ((int)vars->game->posx - 1 != vars->tmpx
-			|| (int)vars->game->posy != vars->tmpy))
+			|| (int)vars->game->posy != vars->tmpy) && vars->map[(int)vars->game->posy][(int)vars->game->posx] != 'O')
 				vars->map[vars->tmpy][vars->tmpx] = 'D';
 	else if (vars->flag == 4 && ((int)vars->game->posx + 1 != vars->tmpx
-			|| (int)vars->game->posy != vars->tmpy))
+			|| (int)vars->game->posy != vars->tmpy) && vars->map[(int)vars->game->posy][(int)vars->game->posx] != 'O')
 			vars->map[vars->tmpy][vars->tmpx] = 'D';
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->screen_view, 0, 0);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->character, \

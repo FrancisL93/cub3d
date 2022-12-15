@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 15:20:33 by malord            #+#    #+#             */
-/*   Updated: 2022/12/13 16:46:39 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 09:19:55 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	draw_minimap(void)
 		{
 			if (vars->map[i][j] == '1')
 				sqmmap(i * 10, j * 10, 1, vars);
-			else if (vars->map[i][j] == '0')
+			else if (vars->map[i][j] == '0' || vars->map[i][j] == 'O')
 				sqmmap(i * 10, j * 10, 0, vars);
 			else if (vars->map[i][j] == 'D')
 				sqmmap(i * 10, j * 10, 3, vars);
