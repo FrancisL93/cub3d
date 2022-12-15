@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:51 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 15:26:05 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 15:34:02 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,14 @@ void	validate_rgb(char **color_line, char **rgb)
 		free_double_array((void **)rgb);
 		quit_game(21);
 	}
+	//for (int i = 0; rgb[i]; i++)
+	//{
+	//	printf("Ya quoi icite : %s\n", rgb[i]);
+	//	printf("la len est de %d\n", (int)ft_strlen(rgb[i]));
+	//}
 	while (rgb[i])
 	{
+		rgb[i] = ft_strtrim_free(rgb[i], "\n");
 		if (ft_strlen(rgb[i]) < 4)
 		{
 			tmp = ft_atoi(rgb[i]);
