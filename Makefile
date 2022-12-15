@@ -61,9 +61,9 @@ $(OBJ_BONUS): | $B
 $(OBJ_BONUS): $B%.o: $S%
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(BONUS): bonus
+bonus: $(BONUS)
 
-bonus: $(LIBS) $(OBJ_BONUS)
+$(BONUS): $(LIBS) $(OBJ_BONUS)
 	@$(CC) $(CFLAGS) $(OBJ_BONUS) $(LDFLAGS) $(LIBS) -o $(BONUS)
 	@echo "\033[0;32mCompiled! Execute as: ./$(EXECUTION_B)\033[0m"
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francislahoud <francislahoud@student.42    +#+  +:+       +#+        */
+/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:27 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 00:08:28 by francislaho      ###   ########.fr       */
+/*   Updated: 2022/12/15 11:59:35 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,15 @@ static void	check_spaces(int line, int column)
 			&& vars->map[line + 1][column] == '0')
 				|| (line > 0 && vars->map[line - 1][column]
 				&& vars->map[line - 1][column] == '0'))
+		quit_game(11);
+	else if ((column >= 0 && vars->map[line][column + 1]
+		&& ft_strchr("NSEW", vars->map[line][column + 1]))
+		|| (column >= 0 && vars->map[line][column - 1]
+		&& ft_strchr("NSEW", vars->map[line][column - 1]))
+			|| (line >= 0 && vars->map[line + 1]
+			&& ft_strchr("NSEW",vars->map[line + 1][column]))
+				|| (line > 0 && vars->map[line - 1][column]
+				&& ft_strchr("NSEW", vars->map[line - 1][column])))
 		quit_game(11);
 	else
 		vars->map[line][column] = '1';

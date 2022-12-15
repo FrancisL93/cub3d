@@ -6,7 +6,7 @@
 /*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:02 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 11:40:18 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/15 12:00:37 by flahoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	print_error_1(int error)
 	if (error == 10)
 		ft_putstr_fd("Error\nBad configurations\n", STDERR_FILENO);
 	if (error == 11)
-		ft_putstr_fd("Error\nInvalid space in map\n", STDERR_FILENO);
+		ft_putstr_fd("Error\nInvalid space or start in map\n", STDERR_FILENO);
 	if (error == 12 || error == 13)
 		ft_putstr_fd("Error\nMap is not closed everywhere\n", STDERR_FILENO);
 	print_error_2(error);
