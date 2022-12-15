@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:27 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 11:59:35 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/15 12:33:23 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,6 @@ static void	check_spaces(int line, int column)
 				|| (line > 0 && vars->map[line - 1][column]
 				&& vars->map[line - 1][column] == '0'))
 		quit_game(11);
-	else if ((column >= 0 && vars->map[line][column + 1]
-		&& ft_strchr("NSEW", vars->map[line][column + 1]))
-		|| (column >= 0 && vars->map[line][column - 1]
-		&& ft_strchr("NSEW", vars->map[line][column - 1]))
-			|| (line >= 0 && vars->map[line + 1]
-			&& ft_strchr("NSEW",vars->map[line + 1][column]))
-				|| (line > 0 && vars->map[line - 1][column]
-				&& ft_strchr("NSEW", vars->map[line - 1][column])))
-		quit_game(11);
 	else
 		vars->map[line][column] = '1';
 }
@@ -104,7 +95,8 @@ void	format_map(void)
 		{
 			if (vars->map[i][j] == ' ')
 				check_spaces(i, j);
-			if (vars->map[i][j] == '0' && vars->map[i + 1])
+			if ((vars->map[i][j] == '0' || ft_strchr("NSEW", vars->map[i][j]))
+				&& vars->map[i + 1])
 				check_zeros(i, j);
 			j++;
 		}
