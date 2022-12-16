@@ -134,6 +134,7 @@ list: 	#Show all make rules
 
 norm:	#norminette on all necessary files
 	@norminette include/cub3d.h
+	@norminette cub3d_settings.h
 	@norminette include/libft/include
 	@norminette include/libft/src
 	@norminette src/

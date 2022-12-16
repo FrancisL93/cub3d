@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:51 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 16:02:01 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/16 13:36:04 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ static void	check_letters(char **rgb, char **color_line)
 	int	j;
 
 	i = 0;
-	while (rgb[i])
+	while (rgb && rgb[i])
 	{
 		j = 0;
+		rgb[i] = ft_strtrim_free(rgb[i], "\n");
+		if (!rgb[i][0])
+			free_n_quit(color_line, rgb);
 		while (rgb[i][j])
 		{
-			if (ft_isalpha(rgb[i][j]) == 1)
+			if (ft_isdigit(rgb[i][j]) == 0)
 				free_n_quit(color_line, rgb);
 			j++;
 		}
@@ -45,7 +48,7 @@ void	validate_rgb(char **color_line, char **rgb)
 
 	i = 0;
 	check_letters(rgb, color_line);
-	if (color_line[2] || rgb[3])
+	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2] || rgb[3] || color_line[2])
 	{
 		free_double_array((void **)color_line);
 		free_double_array((void **)rgb);

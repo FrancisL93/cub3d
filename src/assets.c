@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:08:53 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 12:46:06 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/16 13:55:33 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,12 @@ static void	*get_text(char *texture, int num)
 	tmp = ft_strtrim(texture_split[1], "\n");
 	img = get_image(vars, tmp, num);
 	free(tmp);
-	free_double_array((void **) texture_split);
-	if (!img)
+	if ((texture_split[2] && ft_strncmp(texture_split[2], "\n", 1)) || !img)
+	{
+		free_double_array((void **) texture_split);
 		quit_game(18);
+	}
+	free_double_array((void **) texture_split);
 	return (img);
 }
 
