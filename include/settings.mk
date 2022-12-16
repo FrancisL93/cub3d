@@ -13,6 +13,9 @@ ARG_BONUS = maps/good_map_bonus.cub
 #ARG = maps/good_map.txt
 #ARG = maps/map.cub
 
+TEST = maps/error_start.cub maps/error_wall.cub maps/good_map.txt maps/error_2start.cub \
+		maps/map.cub maps/good_map.txt maps/error_textures.cub maps/error_config.cub
+
 SRCS = 	assets.c			\
 		bonus_tools.c		\
 		doors.c				\
@@ -46,6 +49,12 @@ MLXA = include/mlx/libmlx.a
 ##                             Pre-Compilation                                ##
 ## ************************************************************************** ##
 all: $(NAME)
+
+test: $(TEST)
+	@$(foreach file,$(TEST),./$(NAME) $(file);)
+
+test-bonus: $(TEST)
+	@$(foreach file,$(TEST),./$(NAME) $(file);)
 
 $(LIBFTA):
 	@echo "\033[0;32mCompiling libft...\033[0m"
