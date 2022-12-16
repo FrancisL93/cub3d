@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:27 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 14:05:55 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/16 08:50:32 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	format_map(void)
 		{
 			if (vars->map[i][j] == ' ')
 				check_spaces(i, j);
-			if ((vars->map[i][j] == '0' || ft_strchr("NSEW", vars->map[i][j]))
+			if ((vars->map[i][j] == '0' || ft_strchr("NSEWD", vars->map[i][j]))
 				&& vars->map[i + 1])
 				check_zeros(i, j);
 			j++;
