@@ -3,14 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   doors.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 09:55:56 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 10:21:56 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/15 23:25:43 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+static void	consecutive_doors(void)
+{
+	t_vars	*vars;
+	int		i;
+	int		j;
+
+	vars = get_data();
+	i = 0;
+	while (vars->map[i])
+	{
+		j = 0;
+		while (vars->map[i][j])
+		{
+			if (vars->map[i][j] == 'O')
+				vars->map[i][j] = 'D';
+			j++;
+		}
+		i++;
+	}
+}
+
+static void	close_doors(void)
+{
+	t_vars	*vars;
+
+	vars = get_data();
+	vars->map[vars->tmpy][vars->tmpx] = 'D';
+	consecutive_doors();
+}
 
 void	replace_door(void)
 {
@@ -20,19 +50,19 @@ void	replace_door(void)
 	if (vars->flag == 1 && ((int)vars->game->posy - 1 != vars->tmpy
 			|| (int)vars->game->posx != vars->tmpx)
 		&& vars->map[(int)vars->game->posy][(int)vars->game->posx] != 'O')
-		vars->map[vars->tmpy][vars->tmpx] = 'D';
+		close_doors();
 	else if (vars->flag == 2 && ((int)vars->game->posx != vars->tmpx
 			|| (int)vars->game->posy + 1 != vars->tmpy)
 		&& vars->map[(int)vars->game->posy][(int)vars->game->posx] != 'O')
-				vars->map[vars->tmpy][vars->tmpx] = 'D';
+		close_doors();
 	else if (vars->flag == 3 && ((int)vars->game->posx - 1 != vars->tmpx
 			|| (int)vars->game->posy != vars->tmpy)
 		&& vars->map[(int)vars->game->posy][(int)vars->game->posx] != 'O')
-				vars->map[vars->tmpy][vars->tmpx] = 'D';
+		close_doors();
 	else if (vars->flag == 4 && ((int)vars->game->posx + 1 != vars->tmpx
 			|| (int)vars->game->posy != vars->tmpy)
 		&& vars->map[(int)vars->game->posy][(int)vars->game->posx] != 'O')
-			vars->map[vars->tmpy][vars->tmpx] = 'D';
+		close_doors();
 }
 
 static void	position_door(double posy, double posx)
