@@ -6,7 +6,7 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:17 by malord            #+#    #+#             */
-/*   Updated: 2022/12/16 19:00:01 by mal              ###   ########.fr       */
+/*   Updated: 2022/12/17 12:36:42 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ int	main(int argc, char **argv)
 
 	vars = get_data();
 	if (argc != 2)
-	{
-		ft_putstr_fd("Error\nExecute as ./cub3d map.cub\n", STDERR_FILENO);
 		quit_game(1);
-	}
 	vars->bonus = 1;
 	validate_map(argv[1]);
 	get_map();
