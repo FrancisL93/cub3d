@@ -6,7 +6,7 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:42:57 by mal               #+#    #+#             */
-/*   Updated: 2022/12/16 19:16:16 by mal              ###   ########.fr       */
+/*   Updated: 2022/12/16 19:20:24 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,10 @@ void	start_screen(void)
 	i = 0;
 	while (start_file[i])
 	{
-		mlx_string_put(vars->mlx, vars->win, WIN_HEIGHT / 2 - 5, 
+		mlx_string_put(vars->mlx, vars->win, WIN_HEIGHT / 2 - 5,
 			height, 0xff10f0, start_file[i]);
 		i++;
-		height += 12; 
+		height += 12;
 	}
 	free_double_array((void **)start_file);
 	mlx_hook(vars->win, 2, 0, key_hook, vars);
