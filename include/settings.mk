@@ -20,8 +20,10 @@ SRCS = 	assets.c			\
 		bonus_tools.c		\
 		doors.c				\
 		floor_casting.c		\
-		game.c				\
+		init_data.c 		\
 		game_tools.c		\
+		keys.c				\
+		launcher.c 			\
 		map.c 				\
 		map_info.c 			\
 		map_parsing.c		\
@@ -29,7 +31,8 @@ SRCS = 	assets.c			\
 		print.c 			\
 		print_tools.c		\
 		quit_game.c			\
-		raycasting.c		
+		raycasting.c		\
+		start_screen.c
 
 SRC := $(SRCS)
 SRC += main.c

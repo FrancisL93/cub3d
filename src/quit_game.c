@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:02 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 15:23:46 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/16 16:42:16 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,18 @@ int	quit_game(int error)
 	print_error_1(error);
 	if (error > 23)
 		mlx_destroy_window(vars->mlx, vars->win);
-	if (error > 25)
+	if (error > 25 && vars->game_start == true)
 		mlx_destroy_image(vars->mlx, vars->img->screen_view);
-	if (error > 20)
+	if (error > 20 && vars->game_start == true)
 		free(vars->game);
-	if (error > 17)
+	if (error > 17 && vars->game_start == true)
 	{
 		destroy_images();
 		free(vars->img);
 	}
-	if (error > 9)
+	if (error > 9 && vars->game_start == true)
 		free_double_array((void **) vars->map);
-	if (error >= 4)
+	if (error >= 4 && vars->game_start == true)
 		free_double_array((void **) vars->full_config);
 	if (error == 30)
 		exit(0);

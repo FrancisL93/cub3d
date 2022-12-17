@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flahoud <flahoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/16 08:50:56 by flahoud          ###   ########.fr       */
+/*   Updated: 2022/12/16 18:58:42 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ library (-lm man man 3 math)
 # define LEFTA	123
 # define RIGHTA 124
 # define SPACE	49
+# define Y_KEY	16
 
 # define CHARACT 4
 # define FLOOR	5
@@ -94,6 +95,7 @@ typedef struct s_vars {
 	int		flag;
 	int		tmpx;
 	int		tmpy;
+	bool	game_start;
 	t_game	*game;
 	t_img	*img;
 }	t_vars;
@@ -111,8 +113,12 @@ void	door_handling(t_vars *vars);
 void	print_floor(t_ray *ray, int i);
 //game_tools.c
 void	set_movement(int keycode);
-//game.c
+//init_data.c
+void	init_data(void);
+int		key_hook(int keycode, t_vars *vars);
+//launcher.c
 void	launch_game(void);
+int		launch_game_bonus(void);
 //main.c && main_bonus.c
 t_vars	*get_data(void);
 //quit.c
@@ -143,5 +149,7 @@ double	init_increment(t_ray *ray);
 char	*init_tmp(int x, int *i);
 int		get_texture(t_ray *ray);
 void	raycasting(void);
+//start_screen.c
+void	start_screen(void);
 
 #endif

@@ -1,59 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   launcher.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 10:09:13 by malord            #+#    #+#             */
-/*   Updated: 2022/12/15 14:45:02 by malord           ###   ########.fr       */
+/*   Created: 2022/12/16 18:53:03 by mal               #+#    #+#             */
+/*   Updated: 2022/12/16 18:53:54 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-int	key_hook(int keycode, t_vars *vars)
-{
-	int			increment;
-
-	increment = 5;
-	if (keycode == ESC)
-		quit_game(30);
-	else
-	{
-		set_movement(keycode);
-		if (keycode == SPACE)
-			door_handling(vars);
-		if (keycode == LEFTA)
-			vars->game->dirx -= increment;
-		else if (keycode == RIGHTA)
-			vars->game->dirx += increment;
-		if (vars->game->dirx > 360)
-			vars->game->dirx = increment;
-		else if (vars->game->dirx < 0)
-			vars->game->dirx = 360 - increment;
-		generate_img(1);
-	}
-	return (0);
-}
-
-void	init_data(void)
-{
-	t_vars	*vars;
-
-	vars = get_data();
-	vars->game = malloc(sizeof(*vars->game));
-	if (!vars->game)
-		quit_game(20);
-	vars->img->screen_view = NULL;
-	vars->increment_angle = (double) FOCAL_LENGTH / WIN_WIDTH;
-	vars->game->movement = 3;
-	vars->game->posx = 0;
-	vars->game->posy = 0;
-	vars->game->diry = 0;
-	set_up_start();
-	set_colors();
-}
 
 static void	launch_bonus(void)
 {
@@ -66,6 +23,24 @@ static void	launch_bonus(void)
 		mlx_hook(vars->win, 6, 0, mouse_move, vars);
 	}
 	return ;
+}
+
+int	launch_game_bonus(void)
+{
+	t_vars	*vars;
+
+	vars = get_data();
+	mlx_clear_window(vars->mlx, vars->win);
+	if (!vars->mlx)
+		quit_game(16);
+	build_imgs();
+	init_data();
+	if (!vars->win)
+		quit_game(23);
+	generate_img(0);
+	launch_bonus();
+	mlx_hook(vars->win, 17, 0, quit_game, (void *) 30);
+	return (0);
 }
 
 void	launch_game(void)
