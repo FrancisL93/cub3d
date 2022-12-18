@@ -6,7 +6,7 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:42:57 by mal               #+#    #+#             */
-/*   Updated: 2022/12/17 21:22:39 by mal              ###   ########.fr       */
+/*   Updated: 2022/12/17 21:56:14 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	background_screen(void)
 		}
 		y++;
 	}
-	system("afplay sounds/storeopen.wav");
+	system("afplay sounds/storeopen.wav&");
 }
 
 static int	get_file_size(void)

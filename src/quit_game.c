@@ -6,7 +6,7 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:02 by malord            #+#    #+#             */
-/*   Updated: 2022/12/16 16:42:16 by mal              ###   ########.fr       */
+/*   Updated: 2022/12/17 22:04:42 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,15 @@ void	print_error_1(int error)
 	print_error_2(error);
 }
 
+static void	kill_sound(void)
+{
+	t_vars	*vars;
+
+	vars = get_data();
+	if (vars->bonus == 1)
+		system("killall afplay");
+}
+
 int	quit_game(int error)
 {
 	t_vars	*vars;
@@ -89,6 +98,9 @@ int	quit_game(int error)
 	if (error >= 4 && vars->game_start == true)
 		free_double_array((void **) vars->full_config);
 	if (error == 30)
+	{
+		kill_sound();
 		exit(0);
+	}
 	exit(error);
 }
