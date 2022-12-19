@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:09:27 by malord            #+#    #+#             */
-/*   Updated: 2022/12/16 08:50:32 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/19 11:17:42 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,19 @@ static void	check_spaces(int line, int column)
 	t_vars	*vars;
 
 	vars = get_data();
-	if ((column >= 0 && vars->map[line][column + 1]
+	if (column >= 0 && vars->map[line][column + 1]
 		&& vars->map[line][column + 1] == '0')
-		|| (column >= 0 && vars->map[line][column - 1]
-		&& vars->map[line][column - 1] == '0')
-			|| (line >= 0 && vars->map[line + 1]
-			&& vars->map[line + 1][column] == '0')
-				|| (line > 0 && vars->map[line - 1][column]
-				&& vars->map[line - 1][column] == '0'))
 		quit_game(11);
-	else
-		vars->map[line][column] = '1';
+	if (column >= 0 && vars->map[line][column - 1]
+		&& vars->map[line][column - 1] == '0')
+		quit_game(11);
+	if (line >= 0 && vars->map[line + 1]
+		&& vars->map[line + 1][column] == '0')
+		quit_game(11);
+	if (line > 0 && vars->map[line - 1][column]
+		&& vars->map[line - 1][column] == '0')
+		quit_game(11);
+	vars->map[line][column] = '1';
 }
 
 static void	check_zeros(int line, int column)
@@ -74,10 +76,13 @@ static void	check_zeros(int line, int column)
 	vars = get_data();
 	if (line == 0)
 		quit_game(12);
-	if (!vars->map[line + 1][column] || !(vars->map[line - 1][column])
-		|| vars->map[line - 1][column] == '\n'
-		|| vars->map[line + 1][column] == '\n'
-		|| (int)ft_strlen(vars->map[line - 1]) < column)
+	if (!vars->map[line + 1][column] || !vars->map[line - 1][column])
+		quit_game(13);
+	if ((int) ft_strlen(vars->map[line - 1]) <= column + 1)
+		quit_game(13);
+	if ((int) ft_strlen(vars->map[line + 1]) < column)
+		quit_game(13);
+	if (!vars->map[line + 1][column] || vars->map[line + 1][column] == '\n')
 		quit_game(13);
 }
 
