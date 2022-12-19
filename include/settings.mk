@@ -31,13 +31,12 @@ SRCS = 	assets.c			\
 		print.c 			\
 		print_tools.c		\
 		quit_game.c			\
-		raycasting.c		\
-		start_screen.c
+		raycasting.c		
 
 SRC := $(SRCS)
 SRC += main.c
 SRC_BONUS := $(SRCS)
-SRC_BONUS += main_bonus.c
+SRC_BONUS += main_bonus.c start_screen.c keysbonus.c
 
 LDFLAGS	+= -framework OpenGL -framework AppKit
 LIBS 	= $(LIBFTA) $(MLXA)

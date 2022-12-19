@@ -5,21 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 13:00:45 by malord            #+#    #+#             */
-/*   Updated: 2022/12/19 13:02:31 by malord           ###   ########.fr       */
+/*   Created: 2022/12/16 18:55:00 by mal               #+#    #+#             */
+/*   Updated: 2022/12/19 12:59:40 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	key_hook(int keycode, t_vars *vars)
+static void	ingame_controls(int keycode)
 {
-	int	increment;
+	t_vars	*vars;
+	int		increment;
 
 	increment = 5;
-	if (keycode == ESC)
-		quit_game(30);
-	else
+	vars = get_data();
+	if (vars->game_start == true)
 	{
 		set_movement(keycode);
 		if (keycode == SPACE)
@@ -33,6 +33,21 @@ int	key_hook(int keycode, t_vars *vars)
 		else if (vars->game->dirx < 0)
 			vars->game->dirx = 360 - increment;
 		generate_img(1);
+	}
+}
+
+int	key_hook_bonus(int keycode, t_vars *vars)
+{
+	if (keycode == ESC)
+		quit_game(30);
+	else
+	{
+		if (keycode == Y_KEY && vars->game_start == false)
+		{
+			vars->game_start = true;
+			launch_game_bonus();
+		}
+		ingame_controls(keycode);
 	}
 	return (0);
 }

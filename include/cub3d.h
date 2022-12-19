@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:52:16 by malord            #+#    #+#             */
-/*   Updated: 2022/12/16 18:58:42 by mal              ###   ########.fr       */
+/*   Updated: 2022/12/19 13:03:24 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void	set_movement(int keycode);
 //init_data.c
 void	init_data(void);
 int		key_hook(int keycode, t_vars *vars);
+int		key_hook_bonus(int keycode, t_vars *vars);
 //launcher.c
 void	launch_game(void);
 int		launch_game_bonus(void);

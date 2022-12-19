@@ -21,7 +21,7 @@ S = src/
 I = include/
 
 CC ?=	gcc
-CFLAGS	+= -g -Wall -Wextra -Werror
+CFLAGS	+= -Wall -Wextra -Werror
 CFLAGS	+= -I$I
 DEBUG	= -g
 SFLAGS	= -fsanitize=address

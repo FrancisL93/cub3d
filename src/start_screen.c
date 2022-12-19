@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:42:57 by mal               #+#    #+#             */
-/*   Updated: 2022/12/19 09:40:20 by malord           ###   ########.fr       */
+/*   Updated: 2022/12/19 12:59:26 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,5 @@ void	start_screen(void)
 		height += 12;
 	}
 	free_double_array((void **)start_file);
-	mlx_hook(vars->win, 2, 0, key_hook, vars);
+	mlx_hook(vars->win, 2, 0, key_hook_bonus, vars);
 }
