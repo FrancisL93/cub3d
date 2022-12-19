@@ -110,7 +110,7 @@ exe-bonus: $(BONUS)
 exe-leak: $(NAME)
 	@leaks --atExit -- ./$(NAME) $(ARG)
 exe-bleak: $(BONUS)
-	@leaks --atExit -- ./$(BONUS) $(ARG)
+	@leaks --atExit -- ./$(BONUS) $(ARG_BONUS)
 #	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(MAP)
 #	--trace-children=yes
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_screen.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:42:57 by mal               #+#    #+#             */
-/*   Updated: 2022/12/17 21:56:14 by mal              ###   ########.fr       */
+/*   Updated: 2022/12/19 09:40:20 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void	start_screen(void)
 	vars->win = mlx_new_window(vars->mlx, WIN_WIDTH,
 			WIN_HEIGHT, GAME_NAME);
 	height = (WIN_WIDTH / 2) - 560;
+	build_imgs();
+	init_data();
 	background_screen();
 	start_file = fill_array();
 	i = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   launcher.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:53:03 by mal               #+#    #+#             */
-/*   Updated: 2022/12/17 22:00:14 by mal              ###   ########.fr       */
+/*   Updated: 2022/12/19 09:38:51 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	launch_game_bonus(void)
 	system("afplay sounds/storemusic.mp3&");
 	if (!vars->mlx)
 		quit_game(16);
-	build_imgs();
-	init_data();
 	if (!vars->win)
 		quit_game(23);
 	generate_img(0);
